@@ -73,7 +73,9 @@ return {
     event = "VeryLazy",
     config = function ()
       local harpoon = require("harpoon")
-      harpoon:setup()
+      harpoon:setup({
+        settings = { save_on_toggle = true }
+      })
       -- keymap to add current file to harpoon list
       vim.keymap.set("n", "<leader><leader>a", function() harpoon:list():add() end,
         { desc = "Harpoon [A]dd" })
