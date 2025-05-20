@@ -1,0 +1,58 @@
+-- return function(use)
+--   use({
+--     -- Themes
+--     "catppuccin/nvim",
+--     "phanviet/vim-monokai-pro",
+--     "rose-pine/neovim",
+--     "bluz71/vim-nightfly-colors",
+--     "bluz71/vim-moonfly-colors",
+--
+--     -- Text editing / Extra functionality
+--     "tpope/vim-surround",
+--     "tpope/vim-repeat",
+--     "jiangmiao/auto-pairs",
+--     "wellle/targets.vim",
+--
+--     -- Epic features
+--     "ThePrimeagen/harpoon",
+--     "gennaro-tedesco/nvim-peekup",
+--     "folke/zen-mode.nvim",
+--     "mawkler/modicator.nvim",
+--     'nanotee/zoxide.vim',
+--
+--     -- Flutter shit
+--     'akinsho/flutter-tools.nvim',
+--     'dart-lang/dart-vim-plugin',
+--
+--     -- Other
+--     "ThePrimeagen/vim-be-good",
+--
+--     config = function()
+--       -- require("auto-pairs").setup({})
+--
+--       --[[ require("harpoon").setup({
+--         menu = {
+--           width = vim.api.nvim_win_get_width(0) - 4,
+--         }
+--       }) ]]
+--
+--       -- local modicator = require('modicator')
+--       -- modicator.setup({
+--       --   show_warnings = true, -- Show warning if any required option is missing
+--       --   highlights = {
+--       --     modes = {
+--       --       ['i'] = "#ffffff",
+--       --       ['v'] = modicator.get_highlight_fg('Type'),
+--       --       ['V'] = modicator.get_highlight_fg('Type'),
+--       --       [''] = modicator.get_highlight_fg('Type'),
+--       --       ['s'] = modicator.get_highlight_fg('Keyword'),
+--       --       ['S'] = modicator.get_highlight_fg('Keyword'),
+--       --       ['R'] = modicator.get_highlight_fg('Title'),
+--       --       ['c'] = modicator.get_highlight_fg('Constant'),
+--       --     },
+--       --   },
+--       -- })
+--
+--     end
+--   })
+-- end

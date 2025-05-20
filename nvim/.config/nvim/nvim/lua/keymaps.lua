@@ -1,0 +1,91 @@
+-- [[ NAVIGATION ]]
+
+-- Space in normal/visual mode doesn't move cursor
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- j and k move one *visual* line (for dealing with word wrap)
+vim.keymap.set({ 'n', 'v' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- ctrl-u/d and n/N centre the cursor
+vim.keymap.set('n', '<c-d>', '<c-d>zz')
+vim.keymap.set('n', '<c-u>', '<c-u>zz')
+vim.keymap.set('n', 'n', 'nzvzz')
+vim.keymap.set('n', 'N', 'Nzvzz')
+
+-- ctrl-e and ctrl-y move two rows at a time instead of one
+vim.keymap.set('n', '<c-e>', "v:count == 0 ? '2<c-e>' : '<c-e>'", { expr = true, silent = true })
+vim.keymap.set('n', '<c-y>', "v:count == 0 ? '2<c-y>' : '<c-y>'", { expr = true, silent = true })
+
+
+-- [[ YANK & PASTE ]]
+-- x cuts to black hole register
+vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
+-- Paste over selection without overriding text in register
+vim.keymap.set('x', '<leader>p', '"_xP')
+
+
+-- [[ MODE STUFF ]]
+-- jj to quickly exit insert mode
+vim.keymap.set('i', 'jj', '<esc>')
+vim.keymap.set('i', 'Jj', '<esc>')
+vim.keymap.set('i', 'JJ', '<esc>')
+-- ESC in a terminal buffer exits insert mode
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set('t', '<c-æ>', '<C-\\><C-n>')
+
+
+-- [[ TEXT EDITING ]]
+
+-- shortcut for adding semicolon to end of line
+vim.keymap.set('n', '<leader>;', 'A;<esc>')
+
+-- <leader>o adds a new line above AND below cursor and enters insert mode
+-- (sometimes at the correct indentation too)
+vim.keymap.set('n', '<leader>o', '"_cc.<esc>O<esc>jo<esc>k^"_s')
+
+-- ctrl-k/j adds empty line above/below current line
+vim.keymap.set('n', '<c-k>', 'O<esc>0"_Dj_')
+vim.keymap.set('n', '<c-j>', 'o<esc>0"_Dk_')
+
+
+-- [[ DIAGNOSTICS ]]
+
+-- jump to next/previous diagnostic
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump({count = -1, float = true}) end)
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump({count = 1, float = true}) end)
+
+-- Show float menu with diagnostics
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic float menu" })
+
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+
+-- [[ OTHER ]]
+
+-- Resize windows by three units at a time
+vim.keymap.set('n', '<M-<>', '<c-w>3<')
+vim.keymap.set('n', '<M->>', '<c-w>3>')
+vim.keymap.set('n', '<M-+>', '<c-w>3+')
+vim.keymap.set('n', '<M-->', '<c-w>3-')
+-- To acheive same effect on a Norwegian Mac keyboard:
+vim.keymap.set('n', '≤', '<c-w>3<')
+vim.keymap.set('n', '≥', '<c-w>3>')
+vim.keymap.set('n', '±', '<c-w>3+')
+vim.keymap.set('n', '–', '<c-w>3-')
+
+--[[
+-- Show treesitter capture group for textobject under cursor.
+vim.keymap.set('n', "˛",--"<M-h>",
+  function()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    print(vim.inspect(result))
+  end,
+  { silent = false }
+)
+]]
+
+
+-- vim: foldmethod=indent nowrap ts=2 sts=2 sw=2 et
