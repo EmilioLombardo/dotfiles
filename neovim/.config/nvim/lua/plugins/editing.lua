@@ -94,7 +94,7 @@ return {
   { "tpope/vim-repeat", event = "VeryLazy" },
 
   -- Auto-pairs parentheses, quotes, etc. in insert mode
-  { "jiangmiao/auto-pairs", event = "InsertEnter" },
+  { "jiangmiao/auto-pairs", },
 
   -- Adds more text objects
   --  Examples:
