@@ -62,16 +62,16 @@ return {
   { -- Filetype glyphs
     'nvim-tree/nvim-web-devicons',
     lazy = true,
-    config = function()
-      require('nvim-web-devicons').set_icon {
-        txt = {
-          icon = "",
-          -- color = "#428850",
-          -- cterm_color = "65",
-          name = "Txt"
-        }
-      }
-    end,
+    -- config = function()
+    --   require('nvim-web-devicons').set_icon {
+    --     txt = {
+    --       icon = "",
+    --       -- color = "#428850",
+    --       -- cterm_color = "65",
+    --       name = "Txt"
+    --     }
+    --   }
+    -- end,
   },
 
   { -- Add indentation guides even on blank lines
