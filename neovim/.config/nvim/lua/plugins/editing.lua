@@ -77,8 +77,11 @@ return {
     end
   },
 
-  -- Adds keymap "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', event = "VeryLazy" },
+  { -- Adds keymap "gc" to comment visual regions/lines
+    'numToStr/Comment.nvim',
+    event = "VeryLazy",
+    opts = {},
+  },
 
   -- Detects tabstop and shiftwidth automatically for each file
   { 'tpope/vim-sleuth', event = "VeryLazy" },
