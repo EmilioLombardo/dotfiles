@@ -71,7 +71,7 @@ vim.keymap.set('n', '<M-<>', '<c-w>3<')
 vim.keymap.set('n', '<M->>', '<c-w>3>')
 vim.keymap.set('n', '<M-+>', '<c-w>3+')
 vim.keymap.set('n', '<M-->', '<c-w>3-')
--- To acheive same effect on a Norwegian Mac keyboard:
+-- To achieve same effect on a Norwegian Mac keyboard:
 vim.keymap.set('n', '≤', '<c-w>3<')
 vim.keymap.set('n', '≥', '<c-w>3>')
 vim.keymap.set('n', '±', '<c-w>3+')
