@@ -26,7 +26,7 @@ return {
     end
   },
 
-  { -- Fancier statusline
+  { -- Lualine: Fancier statusline
     'nvim-lualine/lualine.nvim',
     event = "VeryLazy",
     -- lazy = false,
@@ -35,7 +35,9 @@ return {
         icons_enabled = true,
         theme = require("themes.nightfly_custom_lualine"),
         component_separators = '│',-- '|',
-        section_separators = '',
+        -- section_separators = '',
+        -- section_separators = { left = '',right = '' },
+        section_separators = { left = ' ',right = ' ' },
       },
       sections = {
         lualine_b = {
@@ -43,7 +45,7 @@ return {
           'diff',
           {
             'diagnostics',
-            symbols = {
+            --[[ symbols = {
               -- error = ' ',
               error = ' ',
               -- warn = ' ',
@@ -53,7 +55,7 @@ return {
               -- hint = ''
               -- hint = ''
               hint = ''
-            },
+            }, ]]
           }
         },
       },
