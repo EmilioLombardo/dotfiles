@@ -40,9 +40,12 @@ vim.keymap.set('t', '<c-æ>', '<C-\\><C-n>')
 -- shortcut for adding semicolon to end of line
 vim.keymap.set('n', '<leader>;', 'A;<esc>')
 
--- <leader>o adds a new line above AND below cursor and enters insert mode
--- (sometimes at the correct indentation too)
-vim.keymap.set('n', '<leader>o', '"_cc.<esc>O<esc>jo<esc>k^"_s')
+-- <leader>o is like o, but adds an additional blank line below
+vim.keymap.set('n', '<leader>o', 'o<esc>0"_Dk_o<esc>0"_cc')
+-- <leader>O is like O, but adds an additional blank line above
+vim.keymap.set('n', '<leader>O', 'O<esc>0"_Dj_O<esc>0"_cc')
+-- Main use case: when cursor is on a blank line, <leader>o will add a blank
+-- line above and below and enter insert mode.
 
 -- ctrl-k/j adds empty line above/below current line
 vim.keymap.set('n', '<c-k>', 'O<esc>0"_Dj_')
