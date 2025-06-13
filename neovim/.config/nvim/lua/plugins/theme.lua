@@ -22,7 +22,7 @@ return {
         group = custom_highlight_augroup,
       })
 
-      vim.cmd [[colorscheme nightfly]] -- EDIT
+      vim.cmd [[colorscheme nightfly]]
     end
   },
 
