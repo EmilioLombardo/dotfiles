@@ -77,6 +77,47 @@ return {
     end
   },
 
+  { -- VimTeX: Improved LaTeX support
+    "lervag/vimtex",
+    lazy = false,     -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "skim"
+      vim.g.vimtex_imaps_enabled = 0
+      vim.g.vimtex_view_skim_sync = 1 -- do forward search after compile
+      vim.g.vimtex_view_skim_no_select = 1 -- don't highlight text after forward search
+
+      vim.g.vimtex_delim_toggle_mod_list = {
+        { [[\left]], [[\right]] },
+        { [[\bigl]], [[\bigr]] },
+        { [[\Bigl]], [[\Bigr]] },
+        { [[\biggl]], [[\biggr]] },
+        { [[\Biggl]], [[\Biggr]] },
+      }
+
+      vim.g.vimtex_env_toggle_math_map = {
+        ["$"] = "\\[",
+        ["$$"] = "\\[",
+        ["\\("] = "$",
+        ["\\["] = "equation",
+        ["equation"] = "align",
+      }
+
+      -- use m instead of $ for toggle, change and delete math environment
+      vim.keymap.set({"n"}, "tsm", "<Plug>(vimtex-env-toggle-math)")
+      vim.keymap.set({"n"}, "csm", "<Plug>(vimtex-env-change-math)")
+      vim.keymap.set({"n"}, "dsm", "<Plug>(vimtex-env-delete-math)")
+      -- Use 'ai' and 'ii' for the item text object
+      vim.keymap.set({"x", "o"}, "ai", "<Plug>(vimtex-am)")
+      vim.keymap.set({"x", "o"}, "ii", "<Plug>(vimtex-im)")
+      -- Use 'am' and 'im' for the inline math text object
+      vim.keymap.set({"x", "o"}, "am", "<Plug>(vimtex-a$)")
+      vim.keymap.set({"x", "o"}, "im", "<Plug>(vimtex-i$)")
+
+    end,
+  },
+
   { -- Adds keymap "gc" to comment visual regions/lines
     'numToStr/Comment.nvim',
     event = "VeryLazy",
