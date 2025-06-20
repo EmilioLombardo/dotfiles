@@ -80,6 +80,9 @@ vim.keymap.set('n', '≥', '<c-w>3>')
 vim.keymap.set('n', '±', '<c-w>3+')
 vim.keymap.set('n', '–', '<c-w>3-')
 
+-- Refresh LuaSnip snippets
+vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
+
 --[[
 -- Show treesitter capture group for textobject under cursor.
 vim.keymap.set('n', "˛",--"<M-h>",
