@@ -158,6 +158,25 @@ return {
     end,
   },
 
+  {
+    'L3MON4D3/LuaSnip',
+    event = "InsertEnter",
+    config = function ()
+      local luasnip = require('luasnip')
+
+      luasnip.config.set_config{
+        -- Enable autotriggered snippets
+        enable_autosnippets = true,
+        store_selection_keys = "<Tab>",
+      }
+
+      -- Lazy-load snippets, i.e. only load when required, e.g. for a given filetype
+      require("luasnip.loaders.from_lua").lazy_load({paths = { "~/.config/nvim/LuaSnip/" }})
+
+      -- other snippet-related keymaps are defined in the nvim-cmp config
+    end
+  },
+
   { -- Autocompletion (All this is taken from kickstart.nvim)
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -199,12 +218,14 @@ return {
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
+          -- ['<C-l>'] = cmp.mapping(function()
+          ['jk'] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             end
           end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
+          -- ['<C-h>'] = cmp.mapping(function()
+          ['jh'] = cmp.mapping(function()
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             end
