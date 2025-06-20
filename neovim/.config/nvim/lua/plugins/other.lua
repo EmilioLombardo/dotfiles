@@ -12,13 +12,36 @@ return {
     },
   } },
 
+  {
+    "benfowler/telescope-luasnip.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", 'L3MON4D3/LuaSnip' },
+  },
+
   -- Telescope: Fuzzy finder menu (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       -- Enable telescope fzf native, if installed
       pcall(require('telescope').load_extension, 'fzf')
 
+      local lst = require('telescope').extensions.luasnip
+      local luasnip = require('luasnip')
+
       require('telescope').setup {
+        extensions = {
+          luasnip = {
+            search = function(entry)
+              local res = lst.filter_null(string.gsub(entry.context.trigger, [[%(%[%^%%a]%)]], "")) .. " " ..
+                -- [[%(%[%^%%a]%)]] matches ([^%a]) exactly
+                -- [[%(%[%^%%%a]%)]] matches ([^%x]) with any letter in place of the x
+                lst.filter_null(entry.context.name) .. " " ..
+                (lst.filter_description(entry.context.name, entry.context.description) or "") .. " " ..
+                entry.ft
+              -- print(vim.inspect(entry)) -- DEBUG
+              -- print(res) -- DEBUG
+              return res
+            end
+          },
+        },
         defaults = {
           path_display = { truncate = 3, shorten = { len = 6, exclude = {-1, -2} } },
           mappings = {
@@ -41,6 +64,8 @@ return {
         },
       }
 
+      require('telescope').load_extension('luasnip')
+
       -- See `:help telescope.builtin`
       vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
       -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -60,6 +85,12 @@ return {
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[S]earch [C]ommands' })
       vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
+
+      vim.keymap.set('n', '<leader>ss',
+        function()
+          require'telescope'.extensions.luasnip.luasnip{}
+          -- vim.cmd [[ Telescope luasnip ]]
+        end, { desc = '[S]earch [S]nippets' })
     end
   },
   -- Fuzzy finder algorithm for Telescope
