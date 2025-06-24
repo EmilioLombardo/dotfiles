@@ -316,7 +316,8 @@ return {
   -- [[ Common symbols ++ ]] (cdot, partial, subset, quad, nabla, infty, ...) {{{
 
   -- semantic
-  autoexpand("([^%a\\])to", "\\to", { regTrig=true, dscr="same as \\rightarrow" }),
+  autoexpand("([^%a\\m])to", "\\to", { regTrig=true, dscr="same as \\rightarrow" }),
+  autoexpand("([^%a])(\\?)mto", "\\mapsto", { regTrig=true, dscr="right arrow with a cap on the left end" }),
   autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }),
   autoexpand("([^%a\\])cd", "\\cdot", { regTrig=true, dscr="centered dot (multiplication)", }),
   autoexpand("([^%a\\])co", "\\circ", { regTrig=true, dscr="circle (combination)", }),
