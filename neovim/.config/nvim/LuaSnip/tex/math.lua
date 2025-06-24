@@ -285,6 +285,10 @@ return {
   autoexpand("jT", "\\tran", { dscr="transpose" }),-- }}}
   -- jH -> \hermconj (hermitian conjugate) (NB! Custom command) {{{
   autoexpand("jH", "\\hermconj", { dscr="hermitian conjugate" }),-- }}}
+  -- ^o -> \degree {{{
+  autoexpand("ô", "\\degree", { dscr="degree symbol" }),-- }}}
+  -- ^dg -> ^\dag {{{
+  autoexpand("^dg", "^\\dag", { dscr="dagger superscript" }),-- }}}
 
   -- 00 -> _{0} {{{
   -- (only after letters and closing delimiters, but not in numbers like 100)
