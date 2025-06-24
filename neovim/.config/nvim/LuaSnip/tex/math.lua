@@ -348,13 +348,14 @@ return {
   -- (o)jt -> \(o)times {{{
   s({trig="(o?)jt", name="\\(o)times", dscr="cross product (tensor product)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
      fmta( "\\<>times", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
+  -- [ Union and intersection ] {{{
   autoexpand("([^%a])jU", "\\cup", { regTrig=true, dscr="union", }),
   autoexpand("([^%a])jS", "\\cap", { regTrig=true, dscr="intersection", }),
   autoexpand("([^%a])JU", "\\bigcup", { regTrig=true, dscr="big union symbol", }),
-  autoexpand("([^%a])JS", "\\bigcap", { regTrig=true, dscr="big intersection symbol", }),
-  autoexpand("jq", "\\quad"),
-  autoexpand("jQ", "\\qquad"),
-  autoexpand("ji", "\\infty", { dscr="infinity" }),
+  autoexpand("([^%a])JS", "\\bigcap", { regTrig=true, dscr="big intersection symbol", }),-- }}}
+  autoexpand("jq", "\\quad", { dscr="quad space", }),
+  autoexpand("jQ", "\\qquad", { dscr="double quad space", }),
+  autoexpand("ji", "\\infty", { dscr="infinity", }),
   -- ,.
   autoexpand(",.<", "\\langle"), -- needed?
   autoexpand(",.>", "\\rangle"), -- needed?
