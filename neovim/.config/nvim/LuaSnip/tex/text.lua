@@ -178,6 +178,7 @@ return {
         \end{<>}
       ]],
       { i(1), d(2, get_visual), rep(1), })), -- }}}
+
   -- nn -> \begin{equation}...\end{equation} ( nN for equation* ) {{{
   snip_begin_env("nn", "equation", {multiline=true, cond=line_begin_in_text}),
   snip_begin_env("nN", "equation*", {multiline=true, cond=line_begin_in_text}), -- }}}
@@ -187,6 +188,10 @@ return {
   -- ng -> \begin{gather}...\end{gather} ( nG for gather* ) {{{
   snip_begin_env("ng", "gather", {multiline=true, cond=line_begin_in_text}),
   snip_begin_env("nG", "gather*", {multiline=true, cond=line_begin_in_text}), -- }}}
+  -- nm -> \begin{multline}...\end{multline} ( nM for multline* ) {{{
+  snip_begin_env("nm", "multline", {multiline=true, cond=line_begin_in_text}),
+  snip_begin_env("nM", "multline*", {multiline=true, cond=line_begin_in_text}), -- }}}
+
 
   -- }}}
 
