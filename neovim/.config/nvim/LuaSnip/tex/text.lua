@@ -192,6 +192,27 @@ return {
   snip_begin_env("nm", "multline", {multiline=true, cond=line_begin_in_text}),
   snip_begin_env("nM", "multline*", {multiline=true, cond=line_begin_in_text}), -- }}}
 
+  -- nf -> \begin{figure}... {{{
+  s({ trig="nf", name="\\begin{figure}...", dscr="Insert a figure", condition=line_begin_in_text, snippetType="autosnippet" },
+    fmta(
+      [[
+      \begin{figure}[<>]
+          \centering
+          \includegraphics[width=<>]{<>}
+          \caption{<>}
+          \label{fig:<>}
+      \end{figure}
+      ]],
+      {
+        i(1, "h"),
+        i(2, "0.65\\linewidth"),
+        i(3, "path/to/figure"),
+        i(4),
+        i(5),
+      }
+    )
+  ),
+  -- }}}
 
   -- }}}
 
