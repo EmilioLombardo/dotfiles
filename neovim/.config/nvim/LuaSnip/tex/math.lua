@@ -319,7 +319,7 @@ return {
 
   -- [[ Common symbols ++ ]] (cdot, partial, subset, quad, nabla, infty, ...) {{{
 
-  -- semantic
+  -- semantic shortcuts
   autoexpand("([^%a\\m])to", "\\to", { regTrig=true, dscr="same as \\rightarrow" }),
   autoexpand("([^%a])(\\?)mto", "\\mapsto", { regTrig=true, dscr="right arrow with a cap on the left end" }),
   autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }),
@@ -331,7 +331,6 @@ return {
   autoexpand("df", "\\diff"), -- (NB! \diff is a custom command)
   autoexpand("dl", "\\partial"),
   autoexpand("sT", "\\text{ s.t. }", { dscr=[["such that" abbreviation]], }),
-  -- j
   autoexpand("::", "\\colon", { dscr="colon with less space before it", }),
 
   -- [ Subset & superset symbols ] {{{
@@ -349,6 +348,7 @@ return {
      fmta( "\\<>supseteq", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
   -- }}}
 
+  -- j + letter
   -- (o)jt -> \(o)times {{{
   s({trig="(o?)jt", name="\\(o)times", dscr="cross product (tensor product)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
      fmta( "\\<>times", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
