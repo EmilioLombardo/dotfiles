@@ -356,6 +356,8 @@ return {
   autoexpand("jq", "\\quad", { dscr="quad space", }),
   autoexpand("jQ", "\\qquad", { dscr="double quad space", }),
   autoexpand("ji", "\\infty", { dscr="infinity", }),
+  autoexpand("j=", "\\approx", { dscr="approximately equal to", }),
+
   -- ,.
   autoexpand(",.<", "\\langle"), -- needed?
   autoexpand(",.>", "\\rangle"), -- needed?
