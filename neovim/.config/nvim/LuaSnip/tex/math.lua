@@ -211,14 +211,17 @@ return {
   snip_command("jm", "\\min_{<>}", { name="\\min_{...}", dscr="minimum", }),-- }}}
   -- jM -> \max_{} {{{
   snip_command("jM", "\\max_{<>}", { name="\\max_{...}", dscr="maximum", }),-- }}}
-  -- jI -> \inf_{} {{{
-  snip_command("jI", "\\inf_{<>}", { name="\\inf_{...}", dscr="infimum", }),-- }}}
-  -- jS -> \sup_{} {{{
-  snip_command("jS", "\\sup_{<>}", { name="\\sup_{...}", dscr="supremum", }),-- }}}
-  -- jA -> \arg {{{
-  autoexpand("jA", "\\arg", { dscr="argument", }),-- }}}
-  -- jK -> \ker {{{
-  autoexpand("jK", "\\ker", { dscr="kernel", }),-- }}}
+
+  -- inf -> \inf_{} {{{
+  snip_command("([^%a\\])inf", "\\inf_{<>}", { name="\\inf_{...}", dscr="infimum", regTrig=true }),-- }}}
+  -- sup -> \sup_{} {{{
+  snip_command("([^%a\\])sup", "\\sup_{<>}", { name="\\sup_{...}", dscr="supremum", regTrig=true, }),-- }}}
+  -- arg -> \arg {{{
+  autoexpand("([^%a\\])arg", "\\arg", { dscr="argument", regTrig=true, }),-- }}}
+  -- ker -> \ker {{{
+  autoexpand("([^%a\\])ker", "\\ker", { dscr="kernel", regTrig=true, }),-- }}}
+  -- dim -> \dim {{{
+  autoexpand("([^%a\\])dim", "\\dim", { dscr="dimension", regTrig=true, }),-- }}}
 
   -- }}}
 
