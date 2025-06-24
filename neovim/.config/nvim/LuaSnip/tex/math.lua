@@ -331,8 +331,8 @@ return {
   autoexpand("df", "\\diff"), -- (NB! \diff is a custom command)
   autoexpand("dl", "\\partial"),
   autoexpand("sT", "\\text{ s.t. }", { dscr=[["such that" abbreviation]], }),
-  autoexpand("::", "\\!:", { dscr="Colon with less space before it", }),
   -- j
+  autoexpand("::", "\\colon", { dscr="colon with less space before it", }),
 
   -- [ Subset & superset symbols ] {{{
   -- (n)sbs -> (\not)\subset {{{
