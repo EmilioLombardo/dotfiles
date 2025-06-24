@@ -326,13 +326,25 @@ return {
      fmta( "\\<>dots", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
   autoexpand("df", "\\diff"), -- (NB! \diff is a custom command)
   autoexpand("dl", "\\partial"),
-  autoexpand("sbs", "\\subset"),
-  autoexpand("sbe", "\\subseteq"),
-  autoexpand("sps", "\\supset"),
-  autoexpand("spe", "\\supseteq"),
   autoexpand("sT", "\\text{ s.t. }", { dscr=[["such that" abbreviation]], }),
   autoexpand("::", "\\!:", { dscr="Colon with less space before it", }),
   -- j
+
+  -- [ Subset & superset symbols ] {{{
+  -- (n)sbs -> (\not)\subset {{{
+  autoexpand("([^n])sbs", "\\subset", { dscr="strict subset", regTrig=true, }),
+  autoexpand("nsbs", "\\not\\subset", { dscr="not strict subset" }),-- }}}
+  -- (n)sbe -> \(n)subseteq {{{
+  s({trig="(n?)sbe", name="\\(n)subseteq", dscr="(not) subset", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
+     fmta( "\\<>subseteq", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
+  -- (n)sps -> (\not)\(n)supset {{{
+  autoexpand("([^n])sps", "\\supset", { dscr="strict superset", regTrig=true, }),
+  autoexpand("nsps", "\\not\\supset", { dscr="not strict superset" }),-- }}}
+  -- (n)spe -> \(n)supseteq {{{
+  s({trig="(n?)spe", name="\\(n)supseteq", dscr="(not) superset", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
+     fmta( "\\<>supseteq", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
+  -- }}}
+
   -- (o)jt -> \(o)times {{{
   s({trig="(o?)jt", name="\\(o)times", dscr="cross product (tensor product)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
      fmta( "\\<>times", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
