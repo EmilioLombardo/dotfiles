@@ -403,9 +403,12 @@ return {
 
   -- te -> \text{} {{{
   snip_command("([^%a])te", "\\text{<>}", { regTrig=true, name="\\text{...}", dscr="text in math zone" }),-- }}}
+  -- tin -> \intertext{} {{{
+  snip_command("([^%a])tin", "\\intertext{<>}", { regTrig=true, name="\\intertext{...}", dscr="text paragraph within multiline math environment, preserves alignment" }),-- }}}
   -- stk -> \substack{} {{{
   s({trig="([^%a])stk", name="\\substack{...}", regTrig=true, wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
      fmta( [[\substack{<>\\ <>}]], { d(1, get_visual), i(2), })),-- }}}
+
   -- mc -> \mathcal{} (calligraphic) {{{
   snip_command("([^%a])mc", "\\mathcal{<>}", { regTrig=true, name="\\mathcal{...}", dscr="math calligraphic style", }),-- }}}
   -- mrm -> \mathrm{} (roman) {{{
@@ -418,6 +421,20 @@ return {
   snip_command("([^%a])mit", "\\mathit{<>}", { regTrig=true, name="\\mathit{...}", dscr="math italic", }),-- }}}
   -- msf -> \mathsf{} (sans serif) {{{
   snip_command("([^%a])msf", "\\mathsf{<>}", { regTrig=true, name="\\mathsf{...}", dscr="math sans serif", }),-- }}}
+  -- mfk -> \mathfrak{} (fraktur) {{{
+  snip_command("([^%a])mfk", "\\mathfrak{<>}", { regTrig=true, name="\\mathfrak{...}", dscr="math fraktur/gothic style", }),-- }}}
+
+  -- mds -> \displaystyle {{{
+  autoexpand("([^%a])mds", "\\textstyle", { regTrig=true, name="\\displaystyle", }),-- }}}
+  -- mts -> \textstyle {{{
+  autoexpand("([^%a])mts", "\\textstyle", { regTrig=true, name="\\textstyle", }),-- }}}
+  -- msc -> \scriptstyle {{{
+  autoexpand("([^%a])msc", "\\scriptstyle", { regTrig=true, name="\\scriptstyle", }),-- }}}
+  -- mss -> \scriptscriptstyle {{{
+  autoexpand("([^%a])mss", "\\scriptscriptstyle", { regTrig=true, name="\\scriptscriptstyle", }),-- }}}
+
+  -- jop -> \operatorname{} (operator name) {{{
+  snip_command("([^%a])jop", "\\operatorname{<>}", { regTrig=true, name="\\operatorname{...}", dscr="operator name", }),-- }}}
 
   -- }}}
 
