@@ -214,6 +214,13 @@ return {
   ),
   -- }}}
 
+  -- ni -> \begin{itemize}...\end{itemize} {{{
+  snip_begin_env("ni", "itemize", {multiline=true, cond=line_begin_in_text}), -- }}}
+  -- ne -> \begin{enumerate}...\end{enumerate} {{{
+  snip_begin_env("ne", "enumerate", {multiline=true, cond=line_begin_in_text}), -- }}}
+  -- nd -> \begin{description}...\end{description} {{{
+  snip_begin_env("nd", "description", {multiline=true, cond=line_begin_in_text}), -- }}}
+
   -- }}}
 
   -- [[ Backslash shortcuts ]]
