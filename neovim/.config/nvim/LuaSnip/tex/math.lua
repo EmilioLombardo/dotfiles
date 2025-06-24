@@ -372,7 +372,7 @@ return {
 
   -- }}}
 
-  -- [[ Wrap in delimeters ]] js[lpbBvVa] {{{
+  -- [[ Wrap in delimeters ]] js[lpbBvVacfe] {{{
   -- j"surround"<letter>
 
   -- jsl -> \left...\right {{{
@@ -389,6 +389,13 @@ return {
   snip_command("jsV", [[\left\lVert<>\right\rVert]], { name="\\left\\lVert...\\right\\rVert", dscr="Surround with double vertical bar delimeters", }),-- }}}
   -- jsa -> \left\langle...\right\rangle {{{
   snip_command("jsa", [[\left\langle<>\right\rangle]], { name="\\left\\langle...\\right\\rangle", dscr="Surround with angle bracket delimeters", }),-- }}}
+  -- jsc -> \left\lceil...\right\rceil {{{
+  snip_command("jsc", [[\left\lceil<>\right\rceil]], { name="\\left\\lceil...\\right\\rceil", dscr="Surround with ceiling delimeters", }),-- }}}
+  -- jsf -> \left\lfloor...\right\rfloor {{{
+  snip_command("jsf", [[\left\lfloor<>\right\rfloor]], { name="\\left\\lfloor...\\right\\rfloor", dscr="Surround with floor delimeters", }),-- }}}
+  -- jse -> \left. ... right\rvert_{} (evaluated at) {{{
+  s({ trig="jsa", name="\\left. ...\\right\\rvert_{...}", dscr="'Evaluated at' vertical bar", wordTrig=false, snippetType="autosnippet" },
+    fmta( [[\left.<>\rvert_{<>}]], { d(1, get_visual), i(2), } )),-- }}}
 
   -- }}}
 
