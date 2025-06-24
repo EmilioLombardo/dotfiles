@@ -245,6 +245,9 @@ return {
   -- ttt -> \texttt{...} (typewriter text) {{{
   s({trig = "ttt", name="\\texttt{...}", dscr = "Typewriter text", snippetType="autosnippet"},
     fmta("\\texttt{<>}", { d(1, get_visual), }) ),-- }}}
+  -- tsc -> \textsc{...} (small caps) {{{
+  s({trig = "tsc", name="\\textsc{...}", dscr = "Small caps", snippetType="autosnippet"},
+    fmta("\\textsc{<>}", { d(1, get_visual), }) ),-- }}}
   -- tvv -> \verb|...| (verbatim) {{{
   s({trig = "tvv", name="\\verb|...|", dscr = "Verbatim", snippetType="autosnippet"},
     fmta("\\verb|<>|", { d(1, get_visual), }) ),-- }}}
