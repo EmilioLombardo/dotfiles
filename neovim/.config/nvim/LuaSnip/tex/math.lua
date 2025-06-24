@@ -321,9 +321,6 @@ return {
   autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }),
   autoexpand("([^%a\\])cd", "\\cdot", { regTrig=true, dscr="centered dot (multiplication)", }),
   autoexpand("([^%a\\])co", "\\circ", { regTrig=true, dscr="circle (combination)", }),
-  s({trig="(o?)ct", name="\\(o)times", dscr="cross product (tensor product)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
-     fmta( "\\<>times", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
-  -- TODO: replace ct snippet with variant that supports oct to make \otimes
   -- (vd)ds -> \(vd)dots {{{
   s({trig="([vd]?)ds", name="\\dots", dscr="Ellipsis (normal, vertical or diagonal)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
      fmta( "\\<>dots", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
@@ -336,6 +333,9 @@ return {
   autoexpand("sT", "\\text{ s.t. }", { dscr=[["such that" abbreviation]], }),
   autoexpand("::", "\\!:", { dscr="Colon with less space before it", }),
   -- j
+  -- (o)jt -> \(o)times {{{
+  s({trig="(o?)jt", name="\\(o)times", dscr="cross product (tensor product)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
+     fmta( "\\<>times", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
   autoexpand("([^%a])jU", "\\cup", { regTrig=true, dscr="union", }),
   autoexpand("([^%a])jS", "\\cap", { regTrig=true, dscr="intersection", }),
   autoexpand("([^%a])JU", "\\bigcup", { regTrig=true, dscr="big union symbol", }),
