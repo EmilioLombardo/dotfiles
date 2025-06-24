@@ -28,6 +28,8 @@ end-- }}}
 
 -- Snippet generator: autoexpand in math zone
 -- default opts: { wordTrig = false, regTrig = false }
+-- NOTE: opts.regTrig only works for using a lua pattern to match a single
+-- character at the beginning of the trigger
 local function autoexpand(trigger, text, opts)-- {{{
   if opts then
     opts.regTrig = opts.regTrig or false
@@ -91,10 +93,10 @@ local function snip_command(trigger, text, opts)-- {{{
   if opts then
     opts.regTrig = opts.regTrig or false
     opts.wordTrig = opts.wordTrig or false
-    opts.name = opts.name or nil
+    opts.name = opts.name or string.gsub(text, "<>", "...")
     opts.dscr = opts.dscr or nil
   else
-    opts = { math_only = true, multiline = false }
+    opts = { name=string.gsub(text, "<>", "..."), regTrig=false, wordTrig=false, }
   end
 
   local _, count = string.gsub(text, "<>", "")

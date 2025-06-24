@@ -32,7 +32,8 @@ local line_begin_in_text = function(line_to_cursor, matched_trigger)
   return in_text() and line_begin(line_to_cursor, matched_trigger)
 end
 
-local function section_snippet(level, description)
+-- Snippet generator: create section headers with h1, h2, h3
+local function section_snippet(level, description) -- {{{
   local trigger = "h" .. level
   local text = "\\" .. string.rep("sub",level - 1) .. "section{<>}"
   local name = "\\" .. string.rep("sub",level - 1) .. "section{...}"
@@ -42,8 +43,72 @@ local function section_snippet(level, description)
       { i(1) }
     )
 )
-end
+end-- }}}
 
+-- Snippet generator: autoexpand in text
+-- default opts: { name=text, condition=in_text, wordTrig=false, regTrig=false }
+local function autoexpand(trigger, text, opts) -- {{{
+  if opts then
+    opts.regTrig = opts.regTrig or false
+    opts.wordTrig = opts.wordTrig or false
+    opts.name = opts.name or text
+    opts.dscr = opts.dscr or nil
+    opts.condition = opts.condition or in_text
+  else
+    opts = { regTrig=false, wordTrig=false, name=text, condition=in_text }
+  end
+  if opts.regTrig then
+    return s(
+      {
+        trig=trigger, name=opts.name, dscr=opts.dscr, snippetType="autosnippet", condition=opts.condition,
+        wordTrig=false, regTrig=opts.regTrig
+      },
+      { f(function(_, snip) return snip.captures[1] end), t(text), }
+    )
+  end
+
+  return s({trig=trigger, name=opts.name, dscr=opts.dscr, snippetType="autosnippet", condition=opts.condition,
+    wordTrig=opts.wordTrig}, { t(text), })
+end-- }}}
+
+-- Snippet generator: for any text with exactly one node, indicated with <>.
+-- Uses d(1, get_visual) as the snippet node, meaning it can wrap LS_SELECT_RAW.
+-- default opts: { name=text, condition=in_text, wordTrig=false, regTrig=false }
+-- NOTE: opts.regTrig only works for using a lua pattern to match a single
+-- character at the beginning of the trigger
+local function snip_command(trigger, text, opts)-- {{{
+  if opts then
+    opts.regTrig = opts.regTrig or false
+    opts.wordTrig = opts.wordTrig or false
+    opts.name = opts.name or string.gsub(text, "<>", "...")
+    opts.dscr = opts.dscr or nil
+    opts.condition = opts.condition or in_text
+  else
+    opts = { regTrig=false, wordTrig=false, name=string.gsub(text, "<>", "..."), condition=in_text }
+  end
+
+  local _, count = string.gsub(text, "<>", "")
+  if count ~= 1 then
+    error("snip_command: text must contain exactly one <>")
+  end
+
+  if opts.regTrig then
+    if opts.wordTrig then
+      error("regTrig and wordTrig should not both be set to true")
+    end
+    return s(
+      {trig=trigger, name=opts.name, dscr=opts.dscr, regTrig=true, wordTrig=false, condition=opts.condition, snippetType="autosnippet"},
+      fmta(
+        "<>"..text,
+        { f(function(_, snip) return snip.captures[1] end), d(1, get_visual) }
+      )
+    )
+  end
+  return s(
+    {trig=trigger, name=opts.name, dscr=opts.dscr, snippetType="autosnippet", condition=opts.condition, wordTrig=opts.wordTrig},
+    fmta( text, { d(1, get_visual), })
+  )
+end-- }}}
 
 -- Snippet generator: \begin{...}...\end{...}
 local function snip_begin_env(trigger, env_name, opts)-- {{{
