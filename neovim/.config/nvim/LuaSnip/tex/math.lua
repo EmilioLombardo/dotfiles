@@ -439,7 +439,7 @@ return {
   -- }}}
 
   -- [[ Arrows ]] {{{
-  -- Arrows             af[hjklø] {{{
+  -- Arrows             af[hjkløå] {{{
   autoexpand("afh", "\\leftarrow"),
   autoexpand("afj", "\\downarrow"),
   autoexpand("afk", "\\uparrow"),
