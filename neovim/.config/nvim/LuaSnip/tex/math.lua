@@ -325,6 +325,9 @@ return {
   autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }),
   autoexpand("([^%a\\])cd", "\\cdot", { regTrig=true, dscr="centered dot (multiplication)", }),
   autoexpand("([^%a\\])ci", "\\circ", { regTrig=true, dscr="circle (combination)", }),
+  autoexpand("([^%a\\])not", "\\not", { regTrig=true, dscr="print a slash over the following symbol", }),
+  autoexpand("([^%a])cnot", "\\centernot", --{{{ -- (NB! requires centernot package)
+    { regTrig=true, dscr="like \\not, but centred horisontally", }),-- }}}
   -- (vd)ds -> \(vd)dots {{{
   s({trig="([vd]?)ds", name="\\dots", dscr="Ellipsis (normal, vertical or diagonal)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
      fmta( "\\<>dots", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
