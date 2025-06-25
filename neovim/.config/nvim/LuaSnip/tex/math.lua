@@ -324,7 +324,7 @@ return {
   autoexpand("([^%a])(\\?)mto", "\\mapsto", { regTrig=true, dscr="right arrow with a cap on the left end" }),
   autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }),
   autoexpand("([^%a\\])cd", "\\cdot", { regTrig=true, dscr="centered dot (multiplication)", }),
-  autoexpand("([^%a\\])co", "\\circ", { regTrig=true, dscr="circle (combination)", }),
+  autoexpand("([^%a\\])ci", "\\circ", { regTrig=true, dscr="circle (combination)", }),
   -- (vd)ds -> \(vd)dots {{{
   s({trig="([vd]?)ds", name="\\dots", dscr="Ellipsis (normal, vertical or diagonal)", regTrig=true, snippetType="autosnippet", condition=in_mathzone, wordTrig=false},
      fmta( "\\<>dots", { f(function(_, snip) return snip.captures[1] end), })),-- }}}
