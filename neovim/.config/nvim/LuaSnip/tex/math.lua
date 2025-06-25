@@ -317,7 +317,7 @@ return {
 
   -- }}}
 
-  -- [[ Common symbols ++ ]] (cdot, partial, subset, quad, nabla, infty, ...) {{{
+  -- [[ Various symbols ]] (cdot, partial, subset, quad, nabla, infty, ...) {{{
 
   -- semantic shortcuts
   autoexpand("([^%a\\m])to", "\\to", { regTrig=true, dscr="same as \\rightarrow" }),
@@ -463,7 +463,7 @@ return {
   autoexpand("aal", "\\Rightarrow", { dscr="Double right arrow" }),
   autoexpand("aaø", "\\Leftrightarrow", { dscr="Double left–right arrow" }),
   autoexpand("aaå", "\\Updownarrow", { dscr="Double up–down arrow" }),-- }}}
-  -- Long double arrows lln[hjklø] {{{
+  -- Long double arrows ll[hjklø] {{{
   autoexpand("llh", "\\Longleftarrow", { dscr="Long double left arrow" }),
   autoexpand("llj", "\\Longdownarrow", { dscr="Long double down arrow" }),
   autoexpand("llk", "\\Longuparrow", { dscr="Long double up arrow" }),
