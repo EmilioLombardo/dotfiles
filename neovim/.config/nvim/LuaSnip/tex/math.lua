@@ -335,7 +335,7 @@ return {
   autoexpand("sT", "\\text{ s.t. }", { dscr=[["such that" abbreviation]], }),
   autoexpand("::", "\\colon", { dscr="colon with less space before it", }),
 
-  -- [ Subset & superset symbols ] {{{
+  -- [ Subset & superset ] sbs/sps -> subset/superset {{{
   -- (n)sbs -> (\not)\subset {{{
   autoexpand("([^n])sbs", "\\subset", { dscr="strict subset", regTrig=true, }),
   autoexpand("nsbs", "\\not\\subset", { dscr="not strict subset" }),-- }}}
