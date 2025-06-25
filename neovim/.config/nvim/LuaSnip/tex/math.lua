@@ -322,7 +322,6 @@ return {
   -- semantic shortcuts
   autoexpand("([^%a\\m])to", "\\to", { regTrig=true, dscr="same as \\rightarrow" }),
   autoexpand("([^%a])(\\?)mto", "\\mapsto", { regTrig=true, dscr="right arrow with a cap on the left end" }),
-  autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }),
   autoexpand("([^%a\\])cd", "\\cdot", { regTrig=true, dscr="centered dot (multiplication)", }),
   autoexpand("([^%a\\])ci", "\\circ", { regTrig=true, dscr="circle (combination)", }),
   autoexpand("([^%a\\])not", "\\not", { regTrig=true, dscr="print a slash over the following symbol", }),
@@ -360,6 +359,7 @@ return {
   autoexpand("([^%a])jS", "\\cap", { regTrig=true, dscr="intersection", }),
   autoexpand("([^%a])JU", "\\bigcup", { regTrig=true, dscr="big union symbol", }),
   autoexpand("([^%a])JS", "\\bigcap", { regTrig=true, dscr="big intersection symbol", }),-- }}}
+  autoexpand("([^%a])je", "\\in", { regTrig=true, dscr="set membership", }), -- e for "element in"
   autoexpand("jq", "\\quad", { dscr="quad space", }),
   autoexpand("jQ", "\\qquad", { dscr="double quad space", }),
   autoexpand("ji", "\\infty", { dscr="infinity", }),
