@@ -527,35 +527,5 @@ return {
 
 }
 
--- List of VimTeX's default insert mode mappings (for reference)
---[[ 
-x  `0  ->  '\emptyset'                    vimtex#imaps#wrap_math
-x  `2  ->  '\sqrt'                        vimtex#imaps#wrap_math
-x  `6  ->  '\partial'                     vimtex#imaps#wrap_math
-x  `8  ->  '\infty'                       vimtex#imaps#wrap_math
-   `=  ->  '\equiv'                       vimtex#imaps#wrap_math
-   `\  ->  '\setminus'                    vimtex#imaps#wrap_math
-x  `.  ->  '\cdot'                        vimtex#imaps#wrap_math
-   `*  ->  '\times'                       vimtex#imaps#wrap_math
-x  `<  ->  '\langle'                      vimtex#imaps#wrap_math
-x  `>  ->  '\rangle'                      vimtex#imaps#wrap_math
-x  `H  ->  '\hbar'                        vimtex#imaps#wrap_math
-   `+  ->  '\dagger'                      vimtex#imaps#wrap_math
-x  `[  ->  '\subseteq'                    vimtex#imaps#wrap_math
-x  `]  ->  '\supseteq'                    vimtex#imaps#wrap_math
-x  `(  ->  '\subset'                      vimtex#imaps#wrap_math
-x  `)  ->  '\supset'                      vimtex#imaps#wrap_math
-x  `A  ->  '\forall'                      vimtex#imaps#wrap_math
-   `B  ->  '\boldsymbol'                  vimtex#imaps#wrap_math
-x  `E  ->  '\exists'                      vimtex#imaps#wrap_math
-x  `N  ->  '\nabla'                       vimtex#imaps#wrap_math
-   #/  ->  vimtex#imaps#style_math("slashed") vimtex#imaps#wrap_math
-x  #b  ->  vimtex#imaps#style_math("mathbf") vimtex#imaps#wrap_math
-   #f  ->  vimtex#imaps#style_math("mathfrak") vimtex#imaps#wrap_math
-x  #c  ->  vimtex#imaps#style_math("mathcal") vimtex#imaps#wrap_math
-x  #-  ->  vimtex#imaps#style_math("overline") vimtex#imaps#wrap_math
-x  #B  ->  vimtex#imaps#style_math("mathbb") vimtex#imaps#wrap_math
-   ``  ->  '``'                           vimtex#imaps#wrap_trivial
---]]
 
 -- vim: foldmethod=marker sw=2 sts=2 et nowrap
