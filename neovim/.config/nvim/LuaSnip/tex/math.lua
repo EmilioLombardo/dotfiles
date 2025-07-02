@@ -365,6 +365,22 @@ return {
     end)
   ),-- }}}
 
+  -- 2x space after \begin{...} adds a new correctly indented line below {{{
+  s({ trig="(\\begin{.-})  ", name="2x space after \\begin{...}", dscr="<CR> and indent", regTrig=true, wordTrig=false, snippetType="autosnippet", },
+    fmta(
+      [[
+        <>
+            <>
+
+      ]],
+      {
+        f( function(_, snip) return snip.captures[1] end ),
+        i(1),
+        -- f( function(_, snip) return snip.captures[2] end ),
+      }
+    )
+  ),-- }}}
+
   -- }}}
 
   -- [[ Various symbols ]] (cdot, partial, subset, quad, nabla, infty, ...) {{{
