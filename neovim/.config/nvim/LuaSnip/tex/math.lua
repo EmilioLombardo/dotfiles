@@ -315,6 +315,56 @@ return {
   snip_begin_env("jbv", "vmatrix"),
   snip_begin_env("jbV", "Vmatrix"),
 
+  -- m2x3 -> matrix contents with 2 rows and 3 cols (captial M for multiline)
+  -- m2x3 -> 11 & 12\\ 21 & 22\\ 31 & 32 {{{
+  s(
+    { trig="([Mm])([%d]+)x([%d]+) ", name="m(rows)x(cols)", dscr="write matrix entries with specified dimensions", regTrig=true, snippetType="autosnippet"},
+    d(1, function(_, snip)
+      -- Get info from the trigger that was typed
+      local multiline = snip.captures[1] == "M" and true or false
+      local rows = tonumber(snip.captures[2]) or 2
+      local cols = tonumber(snip.captures[3]) or 1
+
+      local nodes = {} -- Will populate this with text nodes and insert nodes
+
+      -- Generate default text for insert node at the given position.
+      -- Returns "12" when row=1 and col=2 , or "1,2" if rows>=10 or cols>=10,
+      -- or just "1" if cols=1.
+      local function default_text(row, col)-- {{{
+        local left = rows > 1 and tostring(row) or ""
+        local right = cols > 1 and tostring(col) or ""
+        local sep = ""
+        -- Add a comma between row & col indices if they have more than 1 digit
+        if left ~= "" and right ~= "" and (rows >= 10 or cols >= 10) then
+          sep = ","
+        end
+        return left..sep..right
+      end-- }}}
+
+      for idx = 1, rows*cols do
+        local row = math.floor((idx - 1) / cols) + 1
+        local col = ((idx - 1) % cols) + 1
+
+        if row ~= 1 and col == 1 and multiline then
+          -- insert newline
+          table.insert(nodes, t({"", ""}))
+        end
+        -- insert editable matrix entry
+        table.insert(nodes, i(idx, default_text(row, col)))
+
+        -- insert delimiter between entries
+        if col == cols and row < rows then
+          table.insert(nodes, t("\\\\ "))
+        elseif col < cols then
+          table.insert(nodes, t(" & "))
+        end
+      end
+
+      -- wrap in a snippet_node so it's treated as a mini-snippet
+      return sn(nil, nodes)
+    end)
+  ),-- }}}
+
   -- }}}
 
   -- [[ Various symbols ]] (cdot, partial, subset, quad, nabla, infty, ...) {{{
