@@ -223,6 +223,15 @@ return {
   -- dim -> \dim {{{
   autoexpand("([^%a\\])dim", "\\dim", { dscr="dimension", regTrig=true, }),-- }}}
 
+  -- TODO: Decide whether I like these snippets or not {{{
+  -- spn -> \operatorname{span}
+  autoexpand("([^%a\\])sp(a?)n", "\\operatorname{span}", { dscr="span", regTrig=true, }),
+  -- ran -> \operatorname{ran} 
+  autoexpand("([^%a\\])ran", "\\operatorname{ran}", { dscr="range", regTrig=true, }),
+  -- rnk -> \operatorname{rank} 
+  autoexpand("([^%a\\])rnk", "\\operatorname{rank}", { dscr="rank", regTrig=true, }),
+  -- }}}
+
   -- }}}
 
   -- [[ cancel, overbrace, underbrace ]] {{{
