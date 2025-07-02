@@ -137,8 +137,17 @@ return {
   -- Allows . to repeat plugin commands as well as vim-native commands
   { "tpope/vim-repeat", event = "VeryLazy" },
 
-  -- Auto-pairs parentheses, quotes, etc. in insert mode
-  { "jiangmiao/auto-pairs", },
+  { -- Auto-pairs parentheses, quotes, etc. in insert mode
+    "jiangmiao/auto-pairs",
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "tex", "markdown" },
+        callback = function()
+          vim.b.AutoPairs = vim.fn.AutoPairsDefine({["$"]="$"})
+        end
+      })
+    end,
+  },
 
   -- Adds more text objects
   --  Examples:
