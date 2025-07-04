@@ -38,7 +38,7 @@ vim.o.hlsearch = false
 
 -- FOLDS
 vim.o.foldmethod = "syntax"
-vim.o.foldlevel = 2
+vim.o.foldlevelstart = 2
 
 -- OTHER
 vim.o.updatetime = 1000  -- see :help updatetime
