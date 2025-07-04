@@ -156,6 +156,10 @@ return {
   --   c2inq -> change inside next next quote
   { "wellle/targets.vim", event = "VeryLazy" },
 
+  {
+    'mbbill/undotree', event = "VeryLazy"
+  },
+
   { -- nvim-peekup: handy menu for registers
     "gennaro-tedesco/nvim-peekup",
     lazy = true,
