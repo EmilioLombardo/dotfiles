@@ -12,6 +12,13 @@ return {
     },
   } },
 
+  { -- hardtime.nvim: Block repeating stuff like jjjjj and give vim motion hints
+   "m4xshen/hardtime.nvim",
+   lazy = false,
+   dependencies = { "MunifTanjim/nui.nvim" },
+   opts = {},
+  },
+
   {
     "benfowler/telescope-luasnip.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", 'L3MON4D3/LuaSnip' },
