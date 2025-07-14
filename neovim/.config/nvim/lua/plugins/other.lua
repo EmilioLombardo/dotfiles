@@ -115,6 +115,7 @@ return {
     event = "VeryLazy",
     config = function ()
       local harpoon = require("harpoon")
+      local extensions = require("harpoon.extensions")
       harpoon:setup({
         settings = { save_on_toggle = true }
       })
@@ -127,27 +128,25 @@ return {
       -- keymap to select file no. 1
       vim.keymap.set("n", "<leader><leader>j", function()
         harpoon:list():select(1)
-        vim.cmd 'doautocmd BufRead'  -- hack to trigger modeline
       end, { desc = "Harpoon file [1]" })
       -- keymap to select file no. 2
       vim.keymap.set("n", "<leader><leader>k", function()
         harpoon:list():select(2)
-        vim.cmd 'doautocmd BufRead'  -- hack to trigger modeline
       end, { desc = "Harpoon file [2]" })
       -- keymap to select file no. 3
       vim.keymap.set("n", "<leader><leader>l", function()
         harpoon:list():select(3)
-        vim.cmd 'doautocmd BufRead'  -- hack to trigger modeline
       end, { desc = "Harpoon file [3]" })
       -- keymap to select file no. 4
       vim.keymap.set("n", "<leader><leader>ø", function()
         harpoon:list():select(4)
-        vim.cmd 'doautocmd BufRead'  -- hack to trigger modeline
       end, { desc = "Harpoon file [4]" })
 
       -- Highlight current file in the Harpoon quick menu
-      local harpoon_extensions = require("harpoon.extensions")
-      harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
+      harpoon:extend(extensions.builtins.highlight_current_file())
+
+      -- Make sure modeline is processed when navigating to a new file
+      harpoon:extend(extensions.builtins.command_on_nav("doautocmd BufEnter"));
 
     end,
   },
