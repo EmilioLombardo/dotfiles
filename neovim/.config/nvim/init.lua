@@ -35,6 +35,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 -- No search highlight
 vim.o.hlsearch = false
+vim.opt.path:append("**") -- use :find to search in subdirectories as well
 
 -- FOLDS
 vim.o.foldmethod = "syntax"
