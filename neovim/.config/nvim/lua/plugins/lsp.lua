@@ -175,4 +175,4 @@ return {
 
 }
 
--- vim: sts=2 sw=2 et foldmethod=indent foldlevel=1
+-- vim: sts=2 sw=2 et foldmethod=indent
