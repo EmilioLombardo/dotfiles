@@ -13,10 +13,14 @@ return {
   } },
 
   { -- hardtime.nvim: Block repeating stuff like jjjjj and give vim motion hints
-   "m4xshen/hardtime.nvim",
-   lazy = false,
-   dependencies = { "MunifTanjim/nui.nvim" },
-   opts = {},
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      disabled_filetypes = {
+        ["harpoon"] = true,
+      },
+    },
   },
 
   {
