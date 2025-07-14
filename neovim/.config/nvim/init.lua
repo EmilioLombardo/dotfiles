@@ -77,8 +77,9 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
 -- [[ CUSTOM COMMANDS ]]
 
 -- Compare edited buffer with file saved on disk
-vim.cmd [[ command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
-       \ | diffthis | wincmd p | diffthis ]]
+vim.api.nvim_create_user_command("DiffOrig",
+  [[vert new | set buftype=nofile | read ++edit # | 0d_ |
+  diffthis | wincmd p | diffthis]], {})
 
 -- Shortcuts for compiling C++ project (for the university course TDT4102 at NTNU)
 vim.cmd [[ command! TDT4102compile w | term meson compile -C builddir && ./builddir/program ]]
