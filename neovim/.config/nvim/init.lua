@@ -28,6 +28,8 @@ vim.o.cursorline = true -- Highlight line containing cursor
 vim.o.breakindent = true
 vim.g.netrw_winsize = 25 -- Set window width for netrw (file explorer)
 vim.g.netrw_banner = 0 -- Disable help banner for netrw (file explorer)
+-- add relative line numbers to netrw
+vim.g.netrw_bufsettings="noma nomod nu nobl nowrap ro rnu"
 vim.o.winborder = "rounded" -- border style for all floating windows
 
 -- SEARCH
