@@ -26,11 +26,13 @@ vim.o.showmode = false -- Don't show mode in command line (e.g. "-- INSERT --")
 vim.o.cursorline = true -- Highlight line containing cursor
 -- Wrapped lines align with same indent level as original line
 vim.o.breakindent = true
-vim.g.netrw_winsize = 25 -- Set window width for netrw (file explorer)
-vim.g.netrw_banner = 0 -- Disable help banner for netrw (file explorer)
+vim.o.winborder = "rounded" -- border style for all floating windows
+
+-- NETRW (file explorer)
+vim.g.netrw_winsize = 25 -- Set window width
+vim.g.netrw_banner = 0 -- Disable help banner
 -- add relative line numbers to netrw
 vim.g.netrw_bufsettings="noma nomod nu nobl nowrap ro rnu"
-vim.o.winborder = "rounded" -- border style for all floating windows
 
 -- SEARCH
 -- Case insensitive searching UNLESS /C or capital in search
