@@ -61,7 +61,7 @@ return {
           nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
           -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
           nmap('ø', vim.lsp.buf.signature_help, 'Signature Documentation') -- EDIT
-          vim.keymap.set('i', '<c-ø>', vim.lsp.buf.signature_help, { desc = 'Signature Help' }) -- EDIT (ADDED)
+          vim.keymap.set('i', '<c-ø>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: Signature Help' })
 
           -- Lesser used LSP functionality
           nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
