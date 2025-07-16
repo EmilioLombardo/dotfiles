@@ -90,6 +90,19 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+-- Hack to remove border from backdrop of Lazy's floating window
+-- Shouldn't be needed once this issue is resolved:
+-- https://github.com/folke/lazy.nvim/issues/1951
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "User: fix backdrop for lazy window",
+	pattern = "lazy_backdrop",
+	group = vim.api.nvim_create_augroup("lazynvim-fix", { clear = true }),
+	callback = function(ctx)
+		local win = vim.fn.win_findbuf(ctx.buf)[1]
+		vim.api.nvim_win_set_config(win, { border = "none" })
+	end,
+})
+
 -- [[ CUSTOM COMMANDS ]]
 
 -- Compare edited buffer with file saved on disk
