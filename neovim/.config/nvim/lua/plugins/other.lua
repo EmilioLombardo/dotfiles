@@ -2,15 +2,32 @@ return {
   -- Git related plugins
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-rhubarb' },
-  { 'lewis6991/gitsigns.nvim', opts = {
-    signs = {
-      add = { text = '+' },
-      change = { text = '~' },
-      delete = { text = '_' },
-      topdelete = { text = '‾' },
-      changedelete = { text = '~' },
-    },
-  } },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      local gitsigns = require("gitsigns")
+      gitsigns.setup({
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+      })
+
+      vim.keymap.set("n", "<leader>h", function() gitsigns.preview_hunk() end,
+        { desc = "Gitsigns: Preview hunk under cursor" })
+
+      ---@diagnostic disable-next-line
+      vim.keymap.set("n", "]c", function() gitsigns.nav_hunk("next") end,
+          { desc = "Gitsigns: Go to next unstaged hunk" })
+
+      ---@diagnostic disable-next-line
+      vim.keymap.set("n", "[c", function() gitsigns.nav_hunk("prev") end,
+          { desc = "Gitsigns: Go to previous unstaged hunk" })
+    end,
+  },
 
   { -- hardtime.nvim: Block repeating stuff like jjjjj and give vim motion hints
     "m4xshen/hardtime.nvim",
