@@ -88,8 +88,7 @@ return {
   },
 
   { -- Zen Mode
-    "folke/zen-mode.nvim",
-    -- lazy = true,
+    "emiliolombardo/zen-mode.nvim",
     cmd = "ZenMode",
   },
 
