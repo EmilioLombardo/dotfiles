@@ -28,6 +28,7 @@ vim.o.cursorline = true -- Highlight line containing cursor
 vim.o.breakindent = true
 vim.g.netrw_winsize = 25 -- Set window width for netrw (file explorer)
 vim.g.netrw_banner = 0 -- Disable help banner for netrw (file explorer)
+vim.o.winborder = "rounded" -- border style for all floating windows
 
 -- SEARCH
 -- Case insensitive searching UNLESS /C or capital in search
@@ -73,6 +74,21 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
   end
 })
 
+-- Hack to make Telescope support new option vim.o.winborder
+-- Shouldn't be needed once this pull request is merged:
+-- https://github.com/nvim-lua/plenary.nvim/pull/649
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopeFindPre",
+  callback = function()
+    vim.opt_local.winborder = "none"
+    vim.api.nvim_create_autocmd("WinLeave", {
+      once = true,
+      callback = function()
+        vim.opt_local.winborder = "rounded"
+      end,
+    })
+  end,
+})
 
 -- [[ CUSTOM COMMANDS ]]
 
