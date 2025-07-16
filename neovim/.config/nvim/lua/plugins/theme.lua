@@ -34,7 +34,47 @@ return {
     end
   },
 
-  {'norcalli/nvim-colorizer.lua', event = "VeryLazy", opts = { "*"; "!lazy" }},
+  { -- colorizer: highlight colour codes like #00FFAA
+    'norcalli/nvim-colorizer.lua',
+    cmd = {
+      "ColorizerAttachToBuffer",
+      "ColorizerDetachFromBuffer",
+      "ColorizerReloadAllBuffers",
+      "ColorizerToggle",
+      "ColorizerModeFg",
+      "ColorizerModeBg",
+    },
+    ft = { "css", "html" },
+    config = function()
+      local colorizer = require("colorizer")
+      local filetypes = {
+        html = { names = false },
+        css = { css = true }
+      }
+      local user_default_options = { mode = "background" }
+      local user_default_options_bg = { mode = "background" }
+      local user_default_options_fg = { mode = "foreground" }
+
+      colorizer.setup(filetypes, user_default_options)
+
+      vim.api.nvim_create_user_command("ColorizerModeFg",
+        function()
+          vim.cmd [[ ColorizerDetachFromBuffer ]]
+          colorizer.setup(filetypes, user_default_options_fg)
+          vim.cmd [[ ColorizerAttachToBuffer ]]
+        end,
+        { desc = "Set display mode to foreground and attach to buffer" })
+
+      vim.api.nvim_create_user_command("ColorizerModeBg",
+        function()
+          vim.cmd [[ ColorizerDetachFromBuffer ]]
+          colorizer.setup(filetypes, user_default_options_bg)
+          vim.cmd [[ ColorizerAttachToBuffer ]]
+        end,
+        { desc = "Set display mode to background and attach to buffer" })
+    end,
+
+  },
 
   { -- Lualine: Fancier statusline
     'nvim-lualine/lualine.nvim',
