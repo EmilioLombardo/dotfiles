@@ -52,7 +52,6 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
 
       local lst = require('telescope').extensions.luasnip
-      local luasnip = require('luasnip')
 
       require('telescope').setup {
         extensions = {
