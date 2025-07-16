@@ -141,8 +141,8 @@ return {
       -- keymap to toggle quick menu showing harpoon list
       vim.keymap.set("n", "<leader><leader>m", function()
         harpoon.ui:toggle_quick_menu(harpoon:list(), {
-          title=" Harpoon ",
-          border = { "╭", "─" ,"╮", "│", "╯", "─", "╰", "│" }
+          title = " Harpoon ",
+          border = "rounded" or vim.o.winborder,
         })
       end, { desc = "Harpoon quick [M]enu" })
       -- keymap to select file no. 1
