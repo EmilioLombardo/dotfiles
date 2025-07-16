@@ -90,6 +90,15 @@ return {
   { -- Zen Mode
     "emiliolombardo/zen-mode.nvim",
     cmd = "ZenMode",
+    keys = {
+      { "<leader>z", "<cmd>ZenMode<cr>", desc = "Toggle ZenMode" },
+    },
+    opts = {
+      window = {
+        width = 90,
+        backdrop = 0.7,
+      },
+    },
   },
 
   { 'nanotee/zoxide.vim' },
