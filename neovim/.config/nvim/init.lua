@@ -47,6 +47,7 @@ vim.o.foldmethod = "syntax"
 vim.o.foldlevelstart = 2
 
 -- OTHER
+vim.o.lazyredraw = true
 vim.o.updatetime = 1000  -- see :help updatetime
 vim.o.mouse = 'a'
 vim.o.undofile = true  -- Save undo history
