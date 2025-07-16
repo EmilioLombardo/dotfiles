@@ -34,6 +34,8 @@ return {
     end
   },
 
+  {'norcalli/nvim-colorizer.lua', event = "VeryLazy", opts = { "*" }},
+
   { -- Lualine: Fancier statusline
     'nvim-lualine/lualine.nvim',
     event = "VeryLazy",
