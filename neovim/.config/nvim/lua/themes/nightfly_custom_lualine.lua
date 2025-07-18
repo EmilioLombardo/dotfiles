@@ -1,45 +1,45 @@
--- Copyright (c) 2020-2021 shadmansaleh
--- MIT license, see LICENSE for more details.
+-- Modified version of the lualine nightfly colorscheme
 -- stylua: ignore
 local colors = {
-  color0   = '#092236',
-  color1   = '#ff5874',
-  color2   = '#c3ccdc',
-  color3   = '#2c3043',
-  color6   = '#a1aab8',
-  color7   = '#82aaff',
-  color8   = '#ae81ff',
-  mellow_yellow = "#EAC38C",
-  green = "#20c9a7",--"#1FC6A6",
-  visual_orange = "#efa26e",--"#f29b60",
+  dark_blue   = '#092236', -- nightfly dark_blue
+  white       = '#c3ccdc', -- nightfly white
+  slate_blue  = '#2c3043', -- nightfly slate_blue
+  cadet_blue  = '#a1aab8', -- nightfly cadet_blue
+  normal_col  = '#82aaff', -- nightfly blue
+  replace_col = '#ff5874', -- nightfly watermelon
+  insert_col  = "#21c7a8", -- nightfly emerald
+  command_col = "#ffcb8b", -- nightfly peach -- EDITED FROM "#EAC38C",
+  visual_col  = "#efa26e", -- custom orange :)
+  -- visual_col  = "#f78c6c", -- nightfly orange
+  -- visual_col  = '#ae81ff', -- nightfly purple
 }
 
 return {
   replace = {
-    a = { fg = colors.color0, bg = colors.color1, gui = 'bold' },
-    b = { fg = colors.color1, bg = colors.color3 },
+    a = { fg = colors.dark_blue, bg = colors.replace_col, gui = 'bold' },
+    b = { fg = colors.replace_col, bg = colors.slate_blue },
   },
   inactive = {
-    a = { fg = colors.color6, bg = colors.color3, gui = '' },
-    b = { fg = colors.color6, bg = colors.color3 },
-    c = { fg = colors.color6, bg = colors.color3 },
+    a = { fg = colors.cadet_blue, bg = colors.slate_blue, gui = '' },
+    b = { fg = colors.cadet_blue, bg = colors.slate_blue },
+    c = { fg = colors.cadet_blue, bg = colors.slate_blue },
   },
   normal = {
-    a = { fg = colors.color0, bg = colors.color7, gui = '' },
-    b = { fg = colors.color7, bg = colors.color3 },
-    c = { fg = colors.color2, bg = colors.color3 },
+    a = { fg = colors.dark_blue, bg = colors.normal_col, gui = '' },
+    b = { fg = colors.normal_col, bg = colors.slate_blue },
+    c = { fg = colors.white, bg = colors.slate_blue },
   },
   visual = {
-    a = { fg = colors.color0, bg = colors.visual_orange, gui = '' },
-    b = { fg = colors.visual_orange, bg = colors.color3 },
+    a = { fg = colors.dark_blue, bg = colors.visual_col, gui = '' },
+    b = { fg = colors.visual_col, bg = colors.slate_blue },
   },
   insert = {
-    a = { fg = colors.color0, bg = colors.green, gui = 'bold' },
-    b = { fg = colors.green, bg = colors.color3 },
+    a = { fg = colors.dark_blue, bg = colors.insert_col, gui = 'bold' },
+    b = { fg = colors.insert_col, bg = colors.slate_blue },
   },
   command = {
-    a = { fg = colors.color0, bg = colors.mellow_yellow, gui = '' },
-    b = { fg = colors.mellow_yellow, bg = colors.color3 },
-    c = { fg = colors.color2, bg = colors.color3 },
+    a = { fg = colors.dark_blue, bg = colors.command_col, gui = '' },
+    b = { fg = colors.command_col, bg = colors.slate_blue },
+    c = { fg = colors.white, bg = colors.slate_blue },
   }
 }
