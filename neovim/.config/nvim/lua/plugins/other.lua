@@ -36,55 +36,57 @@ return {
     opts = {
       disabled_filetypes = {
         ["harpoon"] = true,
+        ["grapple"] = true,
       },
     },
   },
 
-  { -- harpoon: per-project file switcher
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
-    config = function ()
-      local harpoon = require("harpoon")
-      local extensions = require("harpoon.extensions")
-      harpoon:setup({
-        settings = { save_on_toggle = true }
+
+  { -- grapple: per-project file switcher (replacement for harpoon)
+    "cbochs/grapple.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = "Grapple",
+    keys = {
+      { "<leader><leader>a", "<cmd>Grapple toggle<cr>", desc = "Tag a file" },
+      { "<leader><leader>m", "<cmd>Grapple toggle_tags<cr>", desc = "Toggle tags menu" },
+
+      { "<leader><leader>j", "<cmd>Grapple select index=1<cr>", desc = "Select first tag" },
+      { "<leader><leader>k", "<cmd>Grapple select index=2<cr>", desc = "Select second tag" },
+      { "<leader><leader>l", "<cmd>Grapple select index=3<cr>", desc = "Select third tag" },
+      { "<leader><leader>ø", "<cmd>Grapple select index=4<cr>", desc = "Select fourth tag" },
+
+      { "<leader><leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Go to next tag" },
+      { "<leader><leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Go to previous tag" },
+    },
+    opts = {
+      scope = "git",
+      icons = false,
+      win_opts = {
+        width = 60,
+        height = 8,
+        border = "rounded",
+        footer = "",
+      }
+    },
+    config = function(_, opts)
+      require("grapple").setup(opts)
+
+      local grapple_augroup = vim.api.nvim_create_augroup("Grapple", {})
+      -- Autocommand to change grapple scope to cwd for my nvim dotfiles
+      vim.api.nvim_create_autocmd({ "DirChanged", "UIEnter", }, {
+        -- pattern = '*/.dotfiles/neovim/.config/nvim/*',
+        -- pattern = vim.fn.expand('~') .. '*/.dotfiles/neovim/.config/nvim/*',
+        pattern = "*",
+        callback = function()
+          -- Check if cwd ends with ".dotfiles/neovim/.config/nvim"
+          if string.find(vim.fn.getcwd(), ".+/%.dotfiles/neovim/%.config/nvim$") then
+            vim.cmd("Grapple use_scope cwd")
+          end
+        end,
+        group = grapple_augroup,
       })
-      -- keymap to add current file to harpoon list
-      vim.keymap.set("n", "<leader><leader>a", function() harpoon:list():add() end,
-        { desc = "Harpoon [A]dd" })
-      -- keymap to toggle quick menu showing harpoon list
-      vim.keymap.set("n", "<leader><leader>m", function()
-        harpoon.ui:toggle_quick_menu(harpoon:list(), {
-          title = " Harpoon ",
-          border = "rounded" or vim.o.winborder,
-        })
-      end, { desc = "Harpoon quick [M]enu" })
-      -- keymap to select file no. 1
-      vim.keymap.set("n", "<leader><leader>j", function()
-        harpoon:list():select(1)
-      end, { desc = "Harpoon file [1]" })
-      -- keymap to select file no. 2
-      vim.keymap.set("n", "<leader><leader>k", function()
-        harpoon:list():select(2)
-      end, { desc = "Harpoon file [2]" })
-      -- keymap to select file no. 3
-      vim.keymap.set("n", "<leader><leader>l", function()
-        harpoon:list():select(3)
-      end, { desc = "Harpoon file [3]" })
-      -- keymap to select file no. 4
-      vim.keymap.set("n", "<leader><leader>ø", function()
-        harpoon:list():select(4)
-      end, { desc = "Harpoon file [4]" })
-
-      -- Highlight current file in the Harpoon quick menu
-      harpoon:extend(extensions.builtins.highlight_current_file())
-
-      -- Make sure modeline is processed when navigating to a new file
-      harpoon:extend(extensions.builtins.command_on_nav("doautocmd BufEnter"));
-
-    end,
+      -- TODO?: set Grapple use_scope to opts.scope when changing away from nvim dotfiles (DirChangedPre?)
+    end
   },
 
   { -- Zen Mode

@@ -26,6 +26,8 @@ return {
 
           vim.api.nvim_set_hl(0, "CursorLineSign", { bg = hl_Normal.bg })
 
+          vim.api.nvim_set_hl(0, "SignColumn", { fg = hl_LineNr.fg }) -- for grapple list
+
           -- Floating windows
           vim.api.nvim_set_hl(0, "NormalFloat", { bg = hl_Normal.bg })
           vim.api.nvim_set_hl(0, "FloatTitle", { fg = hl_LineNr.fg })
