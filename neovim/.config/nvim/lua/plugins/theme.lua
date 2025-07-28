@@ -1,3 +1,7 @@
+-- used for a lualine component
+-- symbol codes: e712, e70f, e711
+local fileformat_symbols = { unix = '', dos = '', mac = '', }
+
 return {
   { -- MAIN COLORSCHEME
     "bluz71/vim-nightfly-colors",
@@ -78,6 +82,7 @@ return {
 
   { -- Lualine: Fancier statusline
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = "VeryLazy",
     -- lazy = false,
     opts = {
@@ -87,26 +92,31 @@ return {
         component_separators = '│',-- '|',
         -- section_separators = '',
         -- section_separators = { left = '',right = '' },
-        section_separators = { left = ' ',right = ' ' },
+        -- section_separators = { left = ' ',right = ' ' },
+        section_separators = { left = ' ',right = '' },
       },
       sections = {
-        lualine_b = {
-          'branch',
-          'diff',
-          {
-            'diagnostics',
-            --[[ symbols = {
-              -- error = ' ',
-              error = ' ',
-              -- warn = ' ',
-              warn = ' ',
-              -- info = ' ',
-              info = ' ',
-              -- hint = ''
-              -- hint = ''
-              hint = ''
-            }, ]]
-          }
+        lualine_b = { 'branch', 'diff', 'diagnostics', },
+        lualine_x = {
+          -- Custom lualine component:
+          -- Shows fileencoding, but only if it's NOT utf-8
+          function()
+            local encoding = vim.bo.fileencoding
+            if encoding == "utf-8" then return "" end
+            return encoding
+          end,
+          -- Custom lualine component:
+          -- Shows fileformat, but only if it's NOT unix
+          function()
+            local fileformat = vim.bo.fileformat
+            if fileformat == "unix" then return "" end
+            if require'lualine'.get_config().options.icons_enabled then
+              return fileformat_symbols[fileformat] or fileformat
+            else
+              return fileformat
+            end
+          end,
+          'filetype',
         },
       },
     }
