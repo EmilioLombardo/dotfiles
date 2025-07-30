@@ -19,6 +19,7 @@ vim.keymap.set('n', '<c-y>', "v:count == 0 ? '2<c-y>' : '<c-y>'", { expr = true,
 
 -- Open file explorer
 vim.keymap.set('n', '<leader>e', "<cmd>Explore<cr>", { desc = "Open file explorer (netrw)" })
+vim.keymap.set('n', '<leader>E', "<cmd>Rexplore<cr>", { desc = "Toggle between last edited file and last netrw location" })
 
 -- When in file explorer: use the same keymap to close file explorer
 vim.api.nvim_create_autocmd("FileType", {
