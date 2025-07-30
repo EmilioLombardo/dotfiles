@@ -61,7 +61,7 @@ vim.keymap.set('n', ']d', function()
   vim.diagnostic.jump({count = 1, float = true}) end)
 
 -- Show float menu with diagnostics
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic float menu" })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Open diagnostic float menu" })
 
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
