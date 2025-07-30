@@ -35,7 +35,6 @@ return {
       { 'folke/lazydev.nvim' },
     },
     config = function ()
-      -- Define LSP-keymaps like goto definition and rename symbol
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -47,14 +46,9 @@ return {
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
           end
 
-          nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
           nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-          nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
           nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
           nmap('ø', vim.lsp.buf.signature_help, 'Signature Documentation')
           vim.keymap.set('i', '<c-ø>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: Signature Help' })
 
@@ -75,14 +69,10 @@ return {
       -- reduce visual clutter for lsp diagnostics
       vim.diagnostic.config({
         virtual_text = {
-          severity = {
-            min = vim.diagnostic.severity.ERROR
-          }
+          severity = { min = vim.diagnostic.severity.ERROR, },
         },
         signs = {
-          severity = {
-            min = vim.diagnostic.severity.ERROR
-          }
+          severity = { min = vim.diagnostic.severity.ERROR, },
         },
         underline = true,
       })
@@ -128,7 +118,6 @@ return {
             }
           }
         },
-
         lua_ls = { -- Pleide å være sumneko_lua
           Lua = {
             workspace = { checkThirdParty = false },
@@ -136,6 +125,7 @@ return {
           },
         },
       }
+
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
