@@ -66,7 +66,11 @@ return {
         height = 8,
         border = "rounded",
         footer = "",
-      }
+      },
+      -- Use `:silent! edit` instead of `:edit` to open a file with grapple.
+      -- This way there is no error if you select the current file while it
+      -- has unsaved changes
+      command = function(path) vim.cmd("silent! edit " .. path) end,
     },
     config = function(_, opts)
       require("grapple").setup(opts)
