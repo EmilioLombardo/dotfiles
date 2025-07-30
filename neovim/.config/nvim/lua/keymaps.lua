@@ -16,6 +16,20 @@ vim.keymap.set('n', 'N', 'Nzvzz')
 -- ctrl-e and ctrl-y move two rows at a time instead of one
 vim.keymap.set('n', '<c-e>', "v:count == 0 ? '2<c-e>' : '<c-e>'", { expr = true, silent = true })
 vim.keymap.set('n', '<c-y>', "v:count == 0 ? '2<c-y>' : '<c-y>'", { expr = true, silent = true })
+
+-- Open file explorer
+vim.keymap.set('n', '<leader>e', "<cmd>Explore<cr>", { desc = "Open file explorer (netrw)" })
+
+-- When in file explorer: use the same keymap to close file explorer
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function(event)
+    vim.keymap.set('n', '<leader>e', "<cmd>Rexplore<cr>",
+      { desc = "Return to last edited file", buffer = event.buf, })
+  end,
+})
+
+
 -- }}}
 
 -- [[ YANK & PASTE ]] {{{
