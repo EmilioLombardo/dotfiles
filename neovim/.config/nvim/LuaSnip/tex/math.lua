@@ -149,7 +149,7 @@ return {
 
   -- int -> \int_{}^{} {{{
   s({trig="([^%a])(i+)nt", name="\\int_{}^{}", dscr="integral (single or multiple)", regTrig=true, condition=in_mathzone, snippetType="autosnippet", wordTrig=false},
-     fmta( "<>\\<>nt_{<>}^{<>}",
+    fmta( "<>\\<>nt_{<>}^{<>}",
       {
         f(function(_, snip) return snip.captures[1] end),
         f(function(_, snip) return snip.captures[2] end),
