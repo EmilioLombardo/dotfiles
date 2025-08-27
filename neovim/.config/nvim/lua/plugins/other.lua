@@ -4,17 +4,18 @@ return {
   { 'tpope/vim-rhubarb' },
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+    config = function(_, opts)
       local gitsigns = require("gitsigns")
-      gitsigns.setup({
-        signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-        },
-      })
+      gitsigns.setup(opts)
 
       vim.keymap.set("n", "<leader>h", function() gitsigns.preview_hunk() end,
         { desc = "Gitsigns: Preview hunk under cursor" })
