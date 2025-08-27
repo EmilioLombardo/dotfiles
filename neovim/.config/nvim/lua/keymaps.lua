@@ -111,4 +111,37 @@ vim.keymap.set('n', "˛",--"<M-h>",
 
 -- }}}
 
+-- [[ INSERT MODE ALT/META-BINDINGS ]] {{{
+
+-- <M-e> puts cursor after end of word instead of just before last char
+vim.keymap.set("i", "<M-E>", "<c-o>E<c-o>a")
+-- <M-E> puts cursor after end of WORD instead of just before last char
+vim.keymap.set("i", "<M-e>", "<c-o>e<c-o>a")
+
+-- <M-n>/<M-N> centres cursor and opens folds, just like the corresponding
+-- normal mode keymap for n/N (see above)
+vim.keymap.set("i", "<M-n>", "<cmd>norm! nzvzz<cr>")
+vim.keymap.set("i", "<M-N>", "<cmd>norm! Nzvzz<cr>")
+
+-- MIRROR ALT/META-KEYMAPS TO WORK ON NORWEGIAN MAC KEYBOARD {{{
+-- h, j, k, l
+vim.keymap.set("i", "˛", "<c-o>h")
+vim.keymap.set("i", "√", "<c-o>j")
+vim.keymap.set("i", "ª", "<c-o>k")
+vim.keymap.set("i", "ﬁ", "<c-o>l")
+-- w, e, b
+vim.keymap.set("i", "Ω", "<c-o>w")
+vim.keymap.set("i", "É", "<c-o>E<c-o>a")
+vim.keymap.set("i", "›", "<c-o>b")
+-- W, E, B
+vim.keymap.set("i", "˝", "<c-o>W")
+vim.keymap.set("i", "é", "<c-o>e<c-o>a")
+vim.keymap.set("i", "»", "<c-o>B")
+-- n, N
+vim.keymap.set("i", "‘", "<cmd>norm! nzvzz<cr>")
+vim.keymap.set("i", "“", "<cmd>norm! Nzvzz<cr>")
+-- }}}
+
+-- }}}
+
 -- vim: foldmethod=marker nowrap ts=2 sts=2 sw=2 et
