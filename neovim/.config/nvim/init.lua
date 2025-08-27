@@ -55,6 +55,8 @@ vim.o.undofile = true  -- Save undo history
 --    menuone: show the menu even with only one match
 --    noselect: don't automatically select an item in the menu
 vim.o.completeopt = 'menuone,noselect'
+-- Allow the cursor to move past the end of the line in visual block mode
+vim.o.virtualedit = 'block'
 
 -- [[ AUTOCOMMANDS ]]
 
