@@ -210,8 +210,8 @@ return {
           ['<C-p>'] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
 
           -- Scroll the documentation window [b]ack / [f]orward
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-b>'] = cmp.mapping.scroll_docs(-1),
+          ['<C-f>'] = cmp.mapping.scroll_docs(1),
 
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
@@ -257,6 +257,7 @@ return {
           { name = 'nvim_lsp_signature_help' },
           { name = 'luasnip' },
         },
+        window = { documentation = { border = vim.o.winborder or "rounded" } },
       }
     end,
   },
