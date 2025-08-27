@@ -10,8 +10,8 @@ vim.keymap.set({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, si
 -- ctrl-u/d and n/N centre the cursor
 vim.keymap.set('n', '<c-d>', '<c-d>zz')
 vim.keymap.set('n', '<c-u>', '<c-u>zz')
-vim.keymap.set('n', 'n', 'nzvzz')
-vim.keymap.set('n', 'N', 'Nzvzz')
+vim.keymap.set('n', 'n', '<cmd>norm! nzvzz<cr>', { noremap = true })
+vim.keymap.set('n', 'N', '<cmd>norm! Nzvzz<cr>', { noremap = true })
 
 -- ctrl-e and ctrl-y move two rows at a time instead of one
 vim.keymap.set('n', '<c-e>', "v:count == 0 ? '2<c-e>' : '<c-e>'", { expr = true, silent = true })
