@@ -81,6 +81,16 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
   end
 })
 
+-- Set height of quickfix window
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function(ctx)
+    local win = vim.fn.win_findbuf(ctx.buf)[1]
+    vim.api.nvim_win_set_config(win, { height = 5 })
+  end,
+  group = vim.api.nvim_create_augroup("custom-qf-window", { clear = true }),
+})
+
 
 -- Hack to remove border from backdrop of Lazy's floating window
 -- Shouldn't be needed once this issue is resolved:
