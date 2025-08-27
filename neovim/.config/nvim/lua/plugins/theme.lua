@@ -130,7 +130,9 @@ return {
     main = 'ibl',
     opts = {
       indent = {
-        char = '▏', --[['┊']] --[[ , highlight = { "Comment" } ]]
+        -- char = '▏', --[['┊']] --[[ , highlight = { "Comment" } ]]
+        -- char = '│',
+        char = '┃',
       },
       scope = { enabled = false },
     },
