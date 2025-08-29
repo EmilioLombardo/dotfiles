@@ -50,7 +50,6 @@ return {
           nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           nmap('ø', vim.lsp.buf.signature_help, 'Signature Documentation')
-          vim.keymap.set('i', '<c-ø>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: Signature Help' })
 
           -- Lesser used LSP functionality
           nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
