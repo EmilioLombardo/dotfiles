@@ -17,10 +17,16 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    hello
+
+    neofetch
+    tree
+    fzf
+    tmux
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -39,6 +45,8 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ".config/nvim".source = ./neovim/.config/nvim;
+    ".tmux.conf".source = ./tmux/.tmux.conf;
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -49,6 +57,26 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  };
+
+  programs.git = {
+    enable = true;
+    settings.user = {
+      name = "Emilio Lombardo";
+      email = "emilomb3@gmail.com";
+    };
+  };
+
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      q = "exit";
+    };
   };
 
   # Home Manager can also manage your environment variables through
