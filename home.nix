@@ -31,9 +31,6 @@
     gcc
 
     # dolphin
-    ghostty  # TODO: configure ghostty using nix, enableZshIntegration
-
-    # TODO: Install FiraCode Nerd Font
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -54,12 +51,7 @@
   home.file = {
     ".config/nvim".source = ./neovim/.config/nvim;
     ".tmux.conf".source = ./tmux/.tmux.conf;
-    ".config/ghostty".source = ./ghostty/.config/ghostty;
     ".config/hypr".source = ./hyprland/.config/hypr;
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -90,6 +82,21 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      command = "/home/emilio/.nix-profile/bin/zsh";
+      theme = "Monokai Remastered";
+      font-family = "FiraCode Nerd Font";
+      font-size = 14;
+      cursor-color = "#fefefe";
+      cursor-style = "block";
+      adjust-cursor-thickness = 1;
+      adjust-box-thickness = 1;
+    };
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -113,3 +120,5 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+
+# vim: sts=2 sw=2
