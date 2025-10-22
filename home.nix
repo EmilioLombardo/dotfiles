@@ -30,6 +30,11 @@
 
     gcc
 
+    # dolphin
+    ghostty  # TODO: configure ghostty using nix, enableZshIntegration
+
+    # TODO: Install FiraCode Nerd Font
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -49,6 +54,7 @@
   home.file = {
     ".config/nvim".source = ./neovim/.config/nvim;
     ".tmux.conf".source = ./tmux/.tmux.conf;
+    ".config/ghostty".source = ./ghostty/.config/ghostty;
     ".config/hypr".source = ./hyprland/.config/hypr;
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
