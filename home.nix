@@ -28,6 +28,8 @@
     fzf
     tmux
 
+    gcc
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -47,6 +49,7 @@
   home.file = {
     ".config/nvim".source = ./neovim/.config/nvim;
     ".tmux.conf".source = ./tmux/.tmux.conf;
+    ".config/hypr".source = ./hyprland/.config/hypr;
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -69,6 +72,7 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     vimAlias = true;
   };
 
@@ -76,6 +80,7 @@
     enable = true;
     shellAliases = {
       q = "exit";
+      # hm-switch = "home-manager switch --flake ~/.dotfiles";
     };
   };
 
