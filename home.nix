@@ -30,6 +30,8 @@
 
     gcc
 
+    zsh-powerlevel10k
+
     # dolphin
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -52,6 +54,7 @@
     ".config/nvim".source = ./neovim/.config/nvim;
     ".tmux.conf".source = ./tmux/.tmux.conf;
     ".config/hypr".source = ./hyprland/.config/hypr;
+    # ".p10k.zsh".source = ./powerlevel10k/.p10k.zsh;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -76,10 +79,27 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
     shellAliases = {
       q = "exit";
       # hm-switch = "home-manager switch --flake ~/.dotfiles";
     };
+    plugins = [
+    {
+      name = "powerlevel10k-config";
+      src = ./powerlevel10k;
+      file = ".p10k.zsh";
+    }
+    {
+      name = "zsh-powerlevel10k";
+      src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+      file = "powerlevel10k.zsh-theme";
+    }
+    ];
+    # initContent = ''
+    #   POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+    #   source ~/powerlevel10k/powerlevel10k.zsh-theme
+    # '';
   };
 
   programs.ghostty = {
@@ -94,6 +114,7 @@
       cursor-style = "block";
       adjust-cursor-thickness = 1;
       adjust-box-thickness = 1;
+      background-opacity = 0.8;
     };
   };
 
