@@ -102,6 +102,16 @@
     # '';
   };
 
+  programs.tmux = {
+    enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    terminal = "tmux-256color";
+    keyMode = "vi";
+    extraConfig = ''
+      set-option -g update-environment "PATH"
+    '';
+  };
+
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
