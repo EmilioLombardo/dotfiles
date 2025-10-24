@@ -27,6 +27,9 @@
     fzf
     tmux
 
+    rofi
+    waybar
+
     gcc
 
     zsh-powerlevel10k
@@ -53,6 +56,7 @@
     ".config/nvim".source = ./neovim/.config/nvim;
     ".tmux.conf".source = ./tmux/.tmux.conf;
     ".config/hypr".source = ./hyprland/.config/hypr;
+    ".config/waybar".source = ./waybar/.config/waybar;
     # ".p10k.zsh".source = ./powerlevel10k/.p10k.zsh;
 
     # # You can also set the file content immediately.
@@ -82,7 +86,6 @@
     shellAliases = {
       q = "exit";
       d = "dirs -v | head -10";
-      # hm-switch = "home-manager switch --flake ~/.dotfiles";
     };
     plugins = [
     {
