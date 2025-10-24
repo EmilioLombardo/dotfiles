@@ -18,7 +18,7 @@ return {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
           'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim',
-          "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
+          "markdown", "markdown_inline", "r", "rnoweb", "yaml", --[[ "latex", ]] "csv",
         },
 
         highlight = { enable = true },
