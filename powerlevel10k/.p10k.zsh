@@ -195,7 +195,8 @@
   #################################[ os_icon: os identifier ]##################################
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=238
+  # typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=$([[ -n "$IN_NIX_SHELL" ]] && echo 051 || echo 255)
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=$([[ -n "$IN_NIX_SHELL" ]] && echo 055 || echo 238)
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
