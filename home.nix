@@ -82,7 +82,7 @@
     enableCompletion = true;
     shellAliases = {
       q = "exit";
-      d = "dirs -v | HEAD -10";
+      d = "dirs -v | head -10";
       # hm-switch = "home-manager switch --flake ~/.dotfiles";
     };
     plugins = [
