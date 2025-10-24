@@ -17,7 +17,16 @@ return {
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       { 'mason-org/mason.nvim', opts = {} },
-      { 'mason-org/mason-lspconfig.nvim' },
+      { 'mason-org/mason-lspconfig.nvim',
+        opts = {
+          ensure_installed = {
+            "pylsp",
+            "lua_ls",
+          },
+          automatic_installation = true,
+          automatic_enable = true,
+        }
+      },
 
       -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', opts = {
