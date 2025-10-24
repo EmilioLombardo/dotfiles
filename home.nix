@@ -82,6 +82,7 @@
     enableCompletion = true;
     shellAliases = {
       q = "exit";
+      d = "dirs -v | HEAD -10";
       # hm-switch = "home-manager switch --flake ~/.dotfiles";
     };
     plugins = [
@@ -96,10 +97,15 @@
       file = "powerlevel10k.zsh-theme";
     }
     ];
-    # initContent = ''
-    #   POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-    #   source ~/powerlevel10k/powerlevel10k.zsh-theme
-    # '';
+    initContent = ''
+      # type only name of directory = cd into that directory (e.g. type .. to go up a dir)
+      setopt autocd
+      # automatically pushd for each cd. allows cd +1 to go back to prev. dir
+      setopt autopushd
+      # remove duplicates from directory stack
+      # (going back and forth between two dirs doesn't fill up the stack)
+      setopt pushdignoredups
+    '';
   };
 
   programs.tmux = {
