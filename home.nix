@@ -112,6 +112,10 @@
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
     keyMode = "vi";
+    plugins = with pkgs; [
+      tmuxPlugins.resurrect
+      tmuxPlugins.continuum
+    ];
     extraConfig = ''
       set-option -g update-environment "PATH"
     '';
