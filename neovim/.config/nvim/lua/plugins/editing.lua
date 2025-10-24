@@ -16,7 +16,10 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim' },
+        ensure_installed = {
+          'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim',
+          "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
+        },
 
         highlight = { enable = true },
         indent = { enable = true, disable = { 'python' } },
@@ -193,7 +196,7 @@ return {
   { -- Autocompletion (All this is taken from kickstart.nvim)
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'R-nvim/cmp-r' },
     config = function ()
       -- See `:help cmp`
       local cmp = require 'cmp'
@@ -248,6 +251,7 @@ return {
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         sources = {
+          { name = "cmp_r" },
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
@@ -259,6 +263,7 @@ return {
         },
         window = { documentation = { border = vim.o.winborder or "rounded" } },
       }
+      require("cmp_r").setup({})
     end,
   },
 

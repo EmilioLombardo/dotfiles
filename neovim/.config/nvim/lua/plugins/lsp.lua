@@ -143,6 +143,11 @@ return {
     end
   },
 
+  { -- R stuff
+    "R-nvim/R.nvim",
+    lazy = false
+  },
+
   -- Flutter shit
   { 'nvim-flutter/flutter-tools.nvim',
     ft = "dart",
