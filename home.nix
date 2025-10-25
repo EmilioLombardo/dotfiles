@@ -35,7 +35,7 @@
     zsh-powerlevel10k
 
     lua-language-server
-    pylsp
+    python313Packagespython-lsp-server
     #clangd
 
     # dolphin
