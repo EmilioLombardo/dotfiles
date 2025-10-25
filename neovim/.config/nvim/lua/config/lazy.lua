@@ -26,6 +26,8 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+  -- don't generate a notification every time any plugin config is edited
+  change_detection = { notify = false },
 })
 
 -- vim: ts=2 sts=2 sw=2 et foldmethod=indent
