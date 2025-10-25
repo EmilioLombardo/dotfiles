@@ -35,6 +35,8 @@
     zsh-powerlevel10k
 
     lua-language-server
+    pylsp
+    #clangd
 
     # dolphin
 
