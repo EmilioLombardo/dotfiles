@@ -4,7 +4,11 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-require("config.lazy")  -- ~/.config/nvim/lua/config/lazy.lua
+-- Lazy.nvim plugin manager
+-- This in turn loads all plugin specs in ~/.config/nvim/lua/plugins
+require("config.lazy") -- ~/.config/nvim/lua/config/lazy.lua
+
+-- Custom keymaps
 require("keymaps") -- ~/.config/nvim/lua/keymaps.lua
 
 -- [[ VIM OPTIONS ]]
@@ -22,17 +26,17 @@ vim.o.relativenumber = true
 vim.o.wrap = false
 vim.o.signcolumn = 'yes'
 vim.o.termguicolors = true -- Enable 24-bit colour
-vim.o.showmode = false -- Don't show mode in command line (e.g. "-- INSERT --")
-vim.o.cursorline = true -- Highlight line containing cursor
+vim.o.showmode = false     -- Don't show mode in command line (e.g. "-- INSERT --")
+vim.o.cursorline = true    -- Highlight line containing cursor
 -- Wrapped lines align with same indent level as original line
 vim.o.breakindent = true
 vim.o.winborder = "rounded" -- border style for all floating windows
 
 -- NETRW (file explorer)
 vim.g.netrw_winsize = 25 -- Set window width
-vim.g.netrw_banner = 0 -- Disable help banner
+vim.g.netrw_banner = 0   -- Disable help banner
 -- add relative line numbers to netrw
-vim.g.netrw_bufsettings="noma nomod nu nobl nowrap ro rnu"
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
 
 -- SEARCH
 -- Case insensitive searching UNLESS /C or capital in search
@@ -48,9 +52,9 @@ vim.o.foldlevelstart = 2
 
 -- OTHER
 vim.o.lazyredraw = false
-vim.o.updatetime = 1000  -- see :help updatetime
+vim.o.updatetime = 1000 -- see :help updatetime
 vim.o.mouse = 'a'
-vim.o.undofile = true  -- Save undo history
+vim.o.undofile = true   -- Save undo history
 -- Set completeopt to have a better completion experience
 --    menuone: show the menu even with only one match
 --    noselect: don't automatically select an item in the menu
@@ -108,13 +112,13 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Shouldn't be needed once this issue is resolved:
 -- https://github.com/folke/lazy.nvim/issues/1951
 vim.api.nvim_create_autocmd("FileType", {
-	desc = "User: fix backdrop for lazy window",
-	pattern = "lazy_backdrop",
-	group = vim.api.nvim_create_augroup("lazynvim-fix", { clear = true }),
-	callback = function(ctx)
-		local win = vim.fn.win_findbuf(ctx.buf)[1]
-		vim.api.nvim_win_set_config(win, { border = "none" })
-	end,
+  desc = "User: fix backdrop for lazy window",
+  pattern = "lazy_backdrop",
+  group = vim.api.nvim_create_augroup("lazynvim-fix", { clear = true }),
+  callback = function(ctx)
+    local win = vim.fn.win_findbuf(ctx.buf)[1]
+    vim.api.nvim_win_set_config(win, { border = "none" })
+  end,
 })
 
 -- [[ CUSTOM COMMANDS ]]
