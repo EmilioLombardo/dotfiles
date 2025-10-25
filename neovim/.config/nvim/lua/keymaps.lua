@@ -75,8 +75,9 @@ vim.keymap.set('n', '[d', function()
 vim.keymap.set('n', ']d', function()
   vim.diagnostic.jump({count = 1, float = true}) end)
 
--- Show float menu with diagnostics
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Open diagnostic float menu" })
+-- -- Show float menu with diagnostics
+-- vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Open diagnostic float menu" })
+-- -- Removed in favor of the default mapping for this: <c-w> d
 
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
