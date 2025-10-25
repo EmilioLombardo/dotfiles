@@ -29,7 +29,7 @@ return {
     'neovim/nvim-lspconfig',
     event = "VeryLazy",
     config = function ()
-      vim.lsp.enable({ "luals", "pylsp", "clangd" })
+      vim.lsp.enable({ "lua_ls", "pylsp", "clangd" })
       vim.lsp.config["clangd"] = {
         cmd = {
           "clangd",
