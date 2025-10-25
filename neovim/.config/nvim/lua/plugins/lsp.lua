@@ -31,6 +31,8 @@ return {
     config = function ()
       vim.lsp.enable({ "lua_ls", "pylsp", "clangd" })
 
+      -- TODO? move lsp configs to nvim/lsp/
+
       vim.lsp.config["clangd"] = {
         cmd = {
           "clangd",
