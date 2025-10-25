@@ -164,12 +164,12 @@ return {
     },
   },
 
-  -- More themes
-  "catppuccin/nvim",
-  "phanviet/vim-monokai-pro",
-  "rose-pine/neovim",
-  "bluz71/vim-moonfly-colors",
-  "navarasu/onedark.nvim", -- Theme inspired by Atom
+  -- -- More themes
+  -- "catppuccin/nvim",
+  -- "phanviet/vim-monokai-pro",
+  -- "rose-pine/neovim",
+  -- "bluz71/vim-moonfly-colors",
+  -- "navarasu/onedark.nvim", -- Theme inspired by Atom
 
 }
 
