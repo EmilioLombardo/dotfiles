@@ -83,6 +83,34 @@ vim.keymap.set('n', ']d', function()
 
 -- }}}
 
+-- [[ LSP ]] {{{
+
+-- Autocommand for setting up LSP stuff whenever an LSP starts up
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  callback = function(event)
+    local nmap = function(keys, func, desc)
+      if desc then
+        desc = 'LSP: ' .. desc
+      end
+
+      vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
+    end
+
+    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+    nmap('ø', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+    -- Create a command `:Format` local to the LSP buffer
+    vim.api.nvim_buf_create_user_command(event.buf, 'Format', function(_)
+      vim.lsp.buf.format()
+    end, { desc = 'Format current buffer with LSP' })
+  end
+})
+
+-- }}}
+
 -- [[ OTHER ]] {{{
 
 -- Resize windows by three units at a time

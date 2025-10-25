@@ -58,6 +58,18 @@ vim.o.completeopt = 'menuone,noselect'
 -- Allow the cursor to move past the end of the line in visual block mode
 vim.o.virtualedit = 'block'
 
+-- DIAGNOSTICS
+-- reduce visual clutter for lsp diagnostics
+vim.diagnostic.config({
+  virtual_text = {
+    severity = { min = vim.diagnostic.severity.ERROR, },
+  },
+  signs = {
+    severity = { min = vim.diagnostic.severity.ERROR, },
+  },
+  underline = true,
+})
+
 -- [[ AUTOCOMMANDS ]]
 
 -- Highlight on yank
