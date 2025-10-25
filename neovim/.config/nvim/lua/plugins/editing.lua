@@ -68,12 +68,8 @@ return {
           },
           swap = {
             enable = true,
-            swap_next = {
-              ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-              ['<leader>A'] = '@parameter.inner',
-            },
+            swap_next = { ['<leader>a'] = '@parameter.inner', },
+            swap_previous = { ['<leader>A'] = '@parameter.inner', },
           },
         },
       }
@@ -121,7 +117,7 @@ return {
     end,
   },
 
-  { -- Adds keymap "gc" to comment visual regions/lines
+  { -- Extends functionality for commenting visual regions/lines (keybind `gc`)
     'numToStr/Comment.nvim',
     event = "VeryLazy",
     opts = {},
