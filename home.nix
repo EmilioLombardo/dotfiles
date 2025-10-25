@@ -34,6 +34,8 @@
 
     zsh-powerlevel10k
 
+    lua-language-server
+
     # dolphin
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
