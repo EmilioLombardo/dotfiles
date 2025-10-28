@@ -122,7 +122,18 @@
       # remove duplicates from directory stack
       # (going back and forth between two dirs doesn't fill up the stack)
       setopt pushdignoredups
+
+      # zoxide: resolve symlinks before adding directories to the database
+      export _ZO_RESOLVE_SYMLINKS=1
     '';
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
   };
 
   programs.tmux = {
