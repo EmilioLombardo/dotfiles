@@ -75,6 +75,8 @@
     shellAliases = {
       q = "exit";
       d = "dirs -v | head -10";
+      # gt -> git log with nice graph view
+      gt = "git log --graph --abbrev-commit --decorate --oneline --all";
     };
     plugins = [# {{{
     {
