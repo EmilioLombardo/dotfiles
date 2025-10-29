@@ -170,7 +170,7 @@
   #
   # }}}
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    NH_HOME_FLAKE = "$HOME/.dotfiles";
   };
 
   # Let Home Manager install and manage itself.
