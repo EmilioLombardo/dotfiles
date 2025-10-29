@@ -71,13 +71,14 @@
     # '';
   };
 
-  programs.git = {
+  programs.git = {# {{{
     enable = true;
     settings.user = {
       name = "Emilio Lombardo";
       email = "emilomb3@gmail.com";
+      push.autoSetupRemote = true;
     };
-  };
+  };# }}}
 
   programs.neovim = {
     enable = true;
