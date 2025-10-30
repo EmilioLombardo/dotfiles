@@ -99,6 +99,11 @@
         sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
       };
     }
+    { # better and faster vi mode
+      name = "vi-mode";
+      src = pkgs.zsh-vi-mode;
+      file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+    }
     ];# }}}
     initContent = ''
       # type only name of directory = cd into that directory (e.g. type .. to go up a dir)
@@ -111,6 +116,9 @@
 
       # zoxide: resolve symlinks before adding directories to the database
       export _ZO_RESOLVE_SYMLINKS=1
+
+      # zsh-vi-mode: remap jj in insert mode to ESC
+      export ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
     '';
   }; # }}}
 
