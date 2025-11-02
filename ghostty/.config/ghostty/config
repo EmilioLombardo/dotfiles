@@ -1,4 +1,4 @@
-# This is the configuration file for Ghostty.
+# This is the configuration file for Ghostty. {{{
 #
 # This template file has been automatically created at the following
 # path since Ghostty couldn't find any existing config files on your system:
@@ -41,18 +41,30 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
+# }}}
 
 command = "/bin/zsh"
 
-font-family = "FiraCode"
-# font-family = "FiraCodeNerdFont"
-font-size = 14
-#font-family = "MesloLGS NF"
-theme = "Monokai Remastered"
+# Font settings
+font-family = "FiraCode Nerd Font"
+font-size = 17
+font-thicken = true
 
+# Window settings
+theme = "Abernathy"
 background-opacity=0.8
 
+# Cursor settings
 cursor-color = "#fefefe"
+cursor-text = "black"
 cursor-style = "block"
 adjust-cursor-thickness = 1
 adjust-box-thickness = 1
+
+# Quick terminal settings
+keybind = "global:alt+space=toggle_quick_terminal"
+quick-terminal-size = 70%
+quick-terminal-position = "top"
+quick-terminal-animation-duration = 0
+
+# vim: foldmethod=marker foldlevelstart=0 foldlevel=0

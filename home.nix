@@ -149,14 +149,18 @@
     enableZshIntegration = true;
     settings = {
       command = "/home/emilio/.nix-profile/bin/zsh";
-      theme = "Monokai Remastered";
+      theme = "Abernathy";
       font-family = "FiraCode Nerd Font";
       font-size = 14;
       cursor-color = "#fefefe";
+      cursor-text = "black";
       cursor-style = "block";
       adjust-cursor-thickness = 1;
       adjust-box-thickness = 1;
       background-opacity = 0.8;
+      # keybind = [
+      #   "global:alt+space=toggle_quick_terminal"
+      # ];
     };
   };# }}}
 
