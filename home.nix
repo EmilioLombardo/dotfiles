@@ -158,6 +158,7 @@
       cursor-color = "#fefefe";
       cursor-text = "black";
       cursor-style = "block";
+      mouse-hide-while-typing = true;
       adjust-cursor-thickness = 1;
       adjust-box-thickness = 1;
       background-opacity = 0.8;
