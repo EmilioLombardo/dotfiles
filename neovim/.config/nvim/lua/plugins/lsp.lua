@@ -100,11 +100,9 @@ return {
       vim.lsp.config["pylsp"] = {
         pylsp = {
           plugins = {
-            pycodestyle = {
-              enabled = false,
-              ignore = {'W391'},
-              maxLineLength = 80
-            }
+            ruff = {
+              lineLength = 80,
+            },
           }
         }
       }
