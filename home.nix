@@ -20,7 +20,9 @@
     neofetch tree fzf tmux zsh-powerlevel10k
 
     # --- Hyprland ---
+    hyprpaper
     rofi waybar #dolphin
+    socat jq # used in setwallpaper.sh script
 
     # --- LSP ---
     lua-language-server
@@ -163,6 +165,8 @@
       # ];
     };
   };# }}}
+
+  services.hyprpaper.enable = true;
 
   # Info: home.sessionVariables # {{{
   # 
