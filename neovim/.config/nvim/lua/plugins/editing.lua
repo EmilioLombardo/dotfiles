@@ -21,7 +21,7 @@ return {
           "markdown", "markdown_inline", "r", "rnoweb", "yaml", --[[ "latex", ]] "csv",
         },
 
-        highlight = { enable = true },
+        highlight = { enable = true, disable = { "latex" } },
         indent = { enable = true, disable = { 'python' } },
         incremental_selection = {
           enable = true,
