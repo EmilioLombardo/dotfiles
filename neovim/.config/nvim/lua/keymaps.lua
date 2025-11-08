@@ -127,6 +127,21 @@ vim.keymap.set('n', '–', '<c-w>3-')
 -- Refresh LuaSnip snippets
 vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
 
+local latex_scratchpad_keymap = '<leader>l'
+local latex_scratchpad = require("latex_scratchpad")
+
+-- Open LaTeX scratchpad
+vim.keymap.set('n',
+  latex_scratchpad_keymap,
+  function() latex_scratchpad(false, latex_scratchpad_keymap) end,
+  { desc = "Open LaTeX scratchpad" })
+
+-- Edit visual selection in LaTeX scratchpad
+vim.keymap.set('x',
+  latex_scratchpad_keymap,
+  function() latex_scratchpad(true, latex_scratchpad_keymap) end,
+  { desc = "Edit visual selection in LaTeX scratchpad" })
+
 --[[
 -- Show treesitter capture group for textobject under cursor.
 vim.keymap.set('n', "˛",--"<M-h>",
