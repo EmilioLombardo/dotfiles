@@ -18,10 +18,17 @@ return {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
           'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim',
-          "markdown", "markdown_inline", "r", "rnoweb", "yaml", --[[ "latex", ]] "csv",
+          "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
         },
 
-        highlight = { enable = true, disable = { "latex" } },
+        highlight = {
+          enable = true,
+          disable = function(lang, bufnr)
+            -- disable for .tex files to avoid conflict with VimTeX plugin
+            local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+            return lang == "latex" and ft == "tex"
+          end
+        },
         indent = { enable = true, disable = { 'python' } },
         incremental_selection = {
           enable = true,
