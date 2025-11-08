@@ -170,6 +170,14 @@
 
   services.hyprpaper.enable = true;
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
+
   # Info: home.sessionVariables # {{{
   # 
   # Home Manager can also manage your environment variables through
