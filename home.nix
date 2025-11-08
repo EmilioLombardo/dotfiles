@@ -54,6 +54,7 @@
     ".tmux.conf".source = ./tmux/.tmux.conf;
     ".config/hypr".source = ./hyprland/.config/hypr;
     ".config/waybar".source = ./waybar/.config/waybar;
+    ".config/xkb".source = ./xkb/.config/xkb;
   };
 
   programs.git = {# {{{
