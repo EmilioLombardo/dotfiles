@@ -75,9 +75,9 @@ local function latex_scratchpad(paste_visual, close_and_paste_keymap)
   vim.keymap.set("n", close_and_paste_keymap, function()
     vim.api.nvim_win_close(0, false)
     if paste_visual then
-      vim.cmd('norm! gv')
+      vim.cmd('norm! gv') -- ESC, restore most recent visual selection
     end
-    vim.cmd('norm! "oP')
+    vim.cmd('norm! "oP') -- paste from register "o
   end, { buffer = buf_id, desc = "Close scratchpad and insert content."})
 
   vim.api.nvim_create_autocmd("BufUnload", {
