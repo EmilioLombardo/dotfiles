@@ -162,6 +162,7 @@ return {
   -- jC -> \cite[...]{...} {{{
   s({ trig="jC", name="\\cite[...]{...}", dscr="citation with page number", condition=in_text, wordTrig=false, snippetType="autosnippet" },
     fmta( "\\cite[<>]{<>}", { i(1), d(2, get_visual), } )),-- }}}
+  snip_command("rr", "\\autoref{<>}", { wordTrig=true }),
   snip_command("jr", "\\ref{<>}"),
   snip_command("je", "\\eqref{<>}", { wordTrig=true }),
 
