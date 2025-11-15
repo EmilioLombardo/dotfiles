@@ -125,7 +125,9 @@ vim.keymap.set('n', '±', '<c-w>3+')
 vim.keymap.set('n', '–', '<c-w>3-')
 
 -- Refresh LuaSnip snippets
-vim.keymap.set('n', '<leader>rL', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
+vim.keymap.set('n', '<leader>rl',
+  '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"}); '
+  ..'print("(LuaSnip) Snippets reloaded!")<CR>')
 
 local latex_scratchpad_keymap = '<leader>L'
 local latex_scratchpad = require("latex_scratchpad")
