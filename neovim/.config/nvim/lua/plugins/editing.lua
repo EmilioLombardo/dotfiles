@@ -96,7 +96,6 @@ return {
 
       vim.g.vimtex_delim_toggle_mod_list = {
         { [[\left]], [[\right]] },
-        { "", "" },
         { [[\bigl]], [[\bigr]] },
         { [[\Bigl]], [[\Bigr]] },
         { [[\biggl]], [[\biggr]] },
