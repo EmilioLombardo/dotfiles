@@ -30,6 +30,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Go to mark with same ergonomics as US keyboard
+vim.keymap.set({"n", "o", "x"}, "æ", "'")
 
 -- }}}
 
