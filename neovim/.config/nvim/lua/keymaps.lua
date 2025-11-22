@@ -65,6 +65,24 @@ vim.keymap.set('n', '<leader>O', 'O<esc>0"_Dj_O<esc>0"_cc')
 -- ctrl-k/j adds empty line above/below current line
 vim.keymap.set('n', '<c-k>', 'O<esc>0"_Dj_')
 vim.keymap.set('n', '<c-j>', 'o<esc>0"_Dk_')
+
+-- Toggle markdown checkboxes (buffer-local)
+local md = require("md_utils")
+vim.api.nvim_create_augroup("CustomMarkdownKeymaps", {})
+vim.api.nvim_create_autocmd("FileType", {
+  group = "CustomMarkdownKeymaps",
+  pattern = { "markdown", "rmd" },
+  callback = function(event)
+    -- Toggle the checkbox of the todo item under the cursor
+    vim.keymap.set('n', '<leader>x', md.toggle_checkbox,
+      { desc = "Mark todo item as done", buffer = event.buf, })
+    -- Toggle all checkboxes in visual selection
+    vim.keymap.set('x', '<leader>x',
+      md.toggle_selected_checkboxes,
+      { desc = "Toggle the selected range of checkboxes", buffer = event.buf, })
+  end,
+})
+
 -- }}}
 
 -- [[ DIAGNOSTICS ]] {{{
