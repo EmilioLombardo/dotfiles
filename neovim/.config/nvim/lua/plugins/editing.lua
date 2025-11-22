@@ -19,6 +19,7 @@ return {
         ensure_installed = {
           'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim',
           "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
+          "html",
         },
 
         highlight = {

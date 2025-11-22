@@ -35,6 +35,32 @@ return {
           set_hl("NormalFloat", { bg = hl_Normal.bg })
           set_hl("FloatTitle", { fg = hl_LineNr.fg })
           set_hl("FloatBorder", { fg = hl_LineNr.fg })
+
+          -- Markdown stuff
+
+          set_hl("@markup.strong.markdown_inline", { bold = true, fg = palette.orchid, })
+          set_hl("@markup.quote.markdown", { fg = palette.cinnamon, })
+          set_hl("@markup.list.markdown", { bold = true, fg = palette.watermelon, })
+          set_hl("RenderMarkdownBullet", { bold = true, fg = palette.watermelon, })
+
+          set_hl("@markup.heading.1.markdown", { bold = true, fg = palette.lavender })
+          set_hl("RenderMarkdownH1Bg", { fg = palette.lavender, bg = palette.regal_blue })
+
+          set_hl("@markup.heading.2.markdown", { fg = palette.violet }) -- default: lavender
+          set_hl("RenderMarkdownH2Bg", { fg = palette.violet, bg = palette.stone_blue })
+
+          set_hl("@markup.heading.3.markdown", { fg = palette.watermelon }) -- default: turquoise
+          set_hl("RenderMarkdownH3Bg", { fg = palette.watermelon, bg = palette.storm_blue })
+
+          set_hl("@markup.heading.4.markdown", { fg = palette.cinnamon }) -- defualt: orange
+          set_hl("RenderMarkdownH4Bg", { fg = palette.cinnamon, bg = palette.storm_blue })
+
+          set_hl("@markup.heading.5.markdown", { fg = palette.orchid }) -- default: malibu
+          set_hl("RenderMarkdownH5Bg", { fg = palette.orchid, bg = palette.storm_blue })
+
+          set_hl("@markup.heading.6.markdown", { fg = palette.ash_blue }) -- defualt: violet
+          set_hl("RenderMarkdownH6Bg", { fg = palette.ash_blue, bg = palette.storm_blue })
+
         end,
         group = custom_highlight_augroup,
       })
@@ -163,6 +189,39 @@ return {
           -- Whether to use lualine's mode highlight's foreground or background
           highlight = 'bg',
         },
+      },
+    },
+  },
+
+  { -- Render markdown elements with pretty icons and colours
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {
+      file_types = { 'markdown', 'rmd' },
+      completions = { lsp = { enabled = true } },
+      heading = {
+        width = 'block',
+        border = { true, true, false },
+        right_pad = 2,
+        -- sign = false,
+        -- signs = { '󰫎 ' }, -- default
+        -- signs = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+        signs = { '󰐣 ', '● ', '* ', '· ', '  ', '  ' },
+        -- icons = { ' 󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+        icons = { '󰐣 ', '·· ', '··· ', '···· ', '····· ', '······ ' },
+        -- icons = { '󰐣 ', '·· ', '··· ', '*·· ', '**· ', '*** ' },
+        -- position = "inline",
+        -- icons = {},
+      },
+      bullet = {
+        icons = { '●', '○', '◆', '◇' }, -- default
+      },
+      checkbox = {
+        right_pad = 0, -- make todo items aligned with bullet point items
+        checked = { icon = "󰄵 ", },
+        unchecked = { icon = '󰄱 ', },
       },
     },
   },
