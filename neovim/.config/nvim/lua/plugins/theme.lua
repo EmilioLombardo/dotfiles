@@ -12,26 +12,29 @@ return {
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "nightfly",
         callback = function()
+          local function set_hl(name, opts)
+            vim.api.nvim_set_hl(0, name, opts)
+          end
           local palette = require("nightfly").palette
           local hl_Normal = vim.api.nvim_get_hl(0, {name="Normal"})
           local hl_LineNr = vim.api.nvim_get_hl(0, {name="LineNr"})
-          vim.api.nvim_set_hl(0, "Comment", { fg = palette.steel_blue, italic = false })
-          vim.api.nvim_set_hl(0, "@field", { fg = "#59d6ae" })
-          vim.api.nvim_set_hl(0, "@namespace", { fg = "#59d6ae" })
-          vim.api.nvim_set_hl(0, "@constant.builtin", { fg = palette.orange })
-          vim.api.nvim_set_hl(0, "@parameter", { fg = "#ffc7b5" })
-          vim.api.nvim_set_hl(0, "@type", { fg = "#29d89e" })
-          -- vim.api.nvim_set_hl(0, "@type.qualifier", { fg = "#d35281" })
-          vim.api.nvim_set_hl(0, "@type.qualifier", { fg = "#ff8d59" })
+          set_hl("Comment", { fg = palette.steel_blue, italic = false })
+          set_hl("@field", { fg = "#59d6ae" })
+          set_hl("@namespace", { fg = "#59d6ae" })
+          set_hl("@constant.builtin", { fg = palette.orange })
+          set_hl("@parameter", { fg = "#ffc7b5" })
+          set_hl("@type", { fg = "#29d89e" })
+          -- set_hl("@type.qualifier", { fg = "#d35281" })
+          set_hl("@type.qualifier", { fg = "#ff8d59" })
 
-          vim.api.nvim_set_hl(0, "CursorLineSign", { bg = hl_Normal.bg })
+          set_hl("CursorLineSign", { bg = hl_Normal.bg })
 
-          vim.api.nvim_set_hl(0, "SignColumn", { fg = hl_LineNr.fg }) -- for grapple list
+          set_hl("SignColumn", { fg = hl_LineNr.fg }) -- for grapple list
 
           -- Floating windows
-          vim.api.nvim_set_hl(0, "NormalFloat", { bg = hl_Normal.bg })
-          vim.api.nvim_set_hl(0, "FloatTitle", { fg = hl_LineNr.fg })
-          vim.api.nvim_set_hl(0, "FloatBorder", { fg = hl_LineNr.fg })
+          set_hl("NormalFloat", { bg = hl_Normal.bg })
+          set_hl("FloatTitle", { fg = hl_LineNr.fg })
+          set_hl("FloatBorder", { fg = hl_LineNr.fg })
         end,
         group = custom_highlight_augroup,
       })
