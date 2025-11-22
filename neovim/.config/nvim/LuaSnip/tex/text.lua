@@ -145,7 +145,7 @@ return {
   -- }}}
 
   -- mm -> $...$ (inline math) {{{
-  s({ trig = "([^%a%d])mm", name="$...$", dscr="Inline math", wordTrig = false, regTrig = true, snippetType="autosnippet",
+  s({ trig = "([^%a%d~])mm", name="$...$", dscr="Inline math", wordTrig = false, regTrig = true, snippetType="autosnippet",
     condition=in_text },
     fmta("<>$<>$",
       {
