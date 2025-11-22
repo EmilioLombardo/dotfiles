@@ -70,9 +70,9 @@ vim.keymap.set('n', '<c-j>', 'o<esc>0"_Dk_')
 
 -- Toggle markdown checkboxes (buffer-local)
 local md = require("md_utils")
-vim.api.nvim_create_augroup("CustomMarkdownKeymaps", {})
+local custom_md_keymaps_augroup = vim.api.nvim_create_augroup("CustomMarkdownKeymaps", {})
 vim.api.nvim_create_autocmd("FileType", {
-  group = "CustomMarkdownKeymaps",
+  group = custom_md_keymaps_augroup,
   pattern = { "markdown", "rmd" },
   callback = function(event)
     -- Toggle the checkbox of the todo item under the cursor
