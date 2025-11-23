@@ -27,6 +27,7 @@ return {
         defaults = {
           path_display = { truncate = 3, shorten = { len = 6, exclude = {-1, -2} } },
           mappings = {
+          layout_config = { scroll_speed = 3 },
             i = {
               -- ['<C-u>'] = false,
               -- ['<C-d>'] = false,
@@ -39,6 +40,14 @@ return {
               },
               ["<C-k>"] = {
                 require('telescope.actions').move_selection_previous, type = "action",
+                opts = { nowait = true, silent = true }
+              },
+              ["<C-f>"] = {
+                require('telescope.actions').preview_scrolling_down, type = "action",
+                opts = { nowait = true, silent = true }
+              },
+              ["<C-b>"] = {
+                require('telescope.actions').preview_scrolling_up, type = "action",
                 opts = { nowait = true, silent = true }
               },
             },
