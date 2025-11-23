@@ -1,7 +1,7 @@
 return {
 
   -- Telescope: Fuzzy finder menu (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' },
+  { 'nvim-telescope/telescope.nvim', tag = 'v0.1.9', dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       -- Enable telescope fzf native, if installed
       pcall(require('telescope').load_extension, 'fzf')
@@ -29,8 +29,8 @@ return {
           layout_config = { scroll_speed = 3 },
           mappings = {-- {{{
             i = {
-              -- ['<C-u>'] = false,
-              -- ['<C-d>'] = false,
+              -- ['jk'] = false,
+              -- ['jh'] = false,
               ["jj"] = {
                 require('telescope.actions').close, type = "action",
                 --[[ opts = { nowait = true, silent = true } ]] },
@@ -43,11 +43,11 @@ return {
                 opts = { nowait = true, silent = true }
               },
               ["<C-f>"] = {
-                require('telescope.actions').preview_scrolling_down, type = "action",
+                require('telescope.actions').preview_scrolling_right, type = "action",
                 opts = { nowait = true, silent = true }
               },
               ["<C-b>"] = {
-                require('telescope.actions').preview_scrolling_up, type = "action",
+                require('telescope.actions').preview_scrolling_left, type = "action",
                 opts = { nowait = true, silent = true }
               },
             },
