@@ -10,7 +10,7 @@ return {
 
       require('telescope').setup {
         extensions = {
-          luasnip = {
+          luasnip = {-- {{{
             search = function(entry)
               local res = lst.filter_null(string.gsub(entry.context.trigger, [[%(%[%^%%a]%)]], "")) .. " " ..
                 -- [[%(%[%^%%a]%)]] matches ([^%a]) exactly
@@ -22,12 +22,12 @@ return {
               -- print(res) -- DEBUG
               return res
             end
-          },
+          },-- }}}
         },
         defaults = {
           path_display = { truncate = 3, shorten = { len = 6, exclude = {-1, -2} } },
-          mappings = {
           layout_config = { scroll_speed = 3 },
+          mappings = {-- {{{
             i = {
               -- ['<C-u>'] = false,
               -- ['<C-d>'] = false,
@@ -51,12 +51,13 @@ return {
                 opts = { nowait = true, silent = true }
               },
             },
-          },
+          },-- }}}
         },
       }
 
       require('telescope').load_extension('luasnip')
 
+      -- Keymaps to open different pickers {{{
       -- See `:help telescope.builtin`
       vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
       -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -83,6 +84,7 @@ return {
           require'telescope'.extensions.luasnip.luasnip{}
           -- vim.cmd [[ Telescope luasnip ]]
         end, { desc = '[S]earch [S]nippets' })
+      -- }}}
     end
   },
 
@@ -94,3 +96,5 @@ return {
     dependencies = { "nvim-telescope/telescope.nvim", 'L3MON4D3/LuaSnip' },
   },
 }
+
+-- vim: foldmethod=marker

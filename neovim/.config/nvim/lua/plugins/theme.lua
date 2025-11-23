@@ -4,7 +4,7 @@ local fileformat_symbols = { unix = '', dos = '', mac = '', }
 
 return {
   { -- MAIN COLORSCHEME
-    "bluz71/vim-nightfly-colors",
+    "bluz71/vim-nightfly-colors",-- {{{
     lazy = false,
     priority = 1000,
     config = function ()
@@ -18,6 +18,8 @@ return {
           local palette = require("nightfly").palette
           local hl_Normal = vim.api.nvim_get_hl(0, {name="Normal"})
           local hl_LineNr = vim.api.nvim_get_hl(0, {name="LineNr"})
+
+          -- Code {{{
           set_hl("Comment", { fg = palette.steel_blue, italic = false })
           set_hl("@field", { fg = "#59d6ae" })
           set_hl("@namespace", { fg = "#59d6ae" })
@@ -26,51 +28,54 @@ return {
           set_hl("@type", { fg = "#29d89e" })
           -- set_hl("@type.qualifier", { fg = "#d35281" })
           set_hl("@type.qualifier", { fg = "#ff8d59" })
+          -- }}}
 
+          -- Signcolumn {{{
           set_hl("CursorLineSign", { bg = hl_Normal.bg })
-
           set_hl("SignColumn", { fg = hl_LineNr.fg }) -- for grapple list
+          -- }}}
 
-          -- Floating windows
+          -- Floating windows {{{
           set_hl("NormalFloat", { bg = hl_Normal.bg })
           set_hl("FloatTitle", { fg = hl_LineNr.fg })
           set_hl("FloatBorder", { fg = hl_LineNr.fg })
+          -- }}}
 
-          -- Markdown stuff
-
+          -- Markdown {{{
           set_hl("@markup.strong.markdown_inline", { bold = true, fg = palette.orchid, })
           set_hl("@markup.quote.markdown", { fg = palette.cinnamon, })
           set_hl("@markup.list.markdown", { bold = true, fg = palette.watermelon, })
           set_hl("RenderMarkdownBullet", { bold = true, fg = palette.watermelon, })
-
+          -- Heading 1
           set_hl("@markup.heading.1.markdown", { bold = true, fg = palette.lavender })
           set_hl("RenderMarkdownH1Bg", { fg = palette.lavender, bg = palette.regal_blue })
-
+          -- Heading 2
           set_hl("@markup.heading.2.markdown", { fg = palette.violet }) -- default: lavender
           set_hl("RenderMarkdownH2Bg", { fg = palette.violet, bg = palette.stone_blue })
-
+          -- Heading 3
           set_hl("@markup.heading.3.markdown", { fg = palette.watermelon }) -- default: turquoise
           set_hl("RenderMarkdownH3Bg", { fg = palette.watermelon, bg = palette.storm_blue })
-
+          -- Heading 4
           set_hl("@markup.heading.4.markdown", { fg = palette.cinnamon }) -- defualt: orange
           set_hl("RenderMarkdownH4Bg", { fg = palette.cinnamon, bg = palette.storm_blue })
-
+          -- Heading 5
           set_hl("@markup.heading.5.markdown", { fg = palette.orchid }) -- default: malibu
           set_hl("RenderMarkdownH5Bg", { fg = palette.orchid, bg = palette.storm_blue })
-
+          -- Heading 6
           set_hl("@markup.heading.6.markdown", { fg = palette.ash_blue }) -- defualt: violet
           set_hl("RenderMarkdownH6Bg", { fg = palette.ash_blue, bg = palette.storm_blue })
+          -- }}}
 
         end,
         group = custom_highlight_augroup,
       })
 
       vim.cmd [[colorscheme nightfly]]
-    end
+    end-- }}}
   },
 
   { -- colorizer: highlight colour codes like #00FFAA
-    'norcalli/nvim-colorizer.lua',
+    'norcalli/nvim-colorizer.lua',-- {{{
     cmd = {
       "ColorizerAttachToBuffer",
       "ColorizerDetachFromBuffer",
@@ -92,6 +97,7 @@ return {
 
       colorizer.setup(filetypes, user_default_options)
 
+      -- User commands to switch between fg and bg display modes {{{
       vim.api.nvim_create_user_command("ColorizerModeFg",
         function()
           vim.cmd [[ ColorizerDetachFromBuffer ]]
@@ -99,7 +105,6 @@ return {
           vim.cmd [[ ColorizerAttachToBuffer ]]
         end,
         { desc = "Set display mode to foreground and attach to buffer" })
-
       vim.api.nvim_create_user_command("ColorizerModeBg",
         function()
           vim.cmd [[ ColorizerDetachFromBuffer ]]
@@ -107,12 +112,12 @@ return {
           vim.cmd [[ ColorizerAttachToBuffer ]]
         end,
         { desc = "Set display mode to background and attach to buffer" })
-    end,
-
+      -- }}}
+    end,-- }}}
   },
 
   { -- Lualine: Fancier statusline
-    'nvim-lualine/lualine.nvim',
+    'nvim-lualine/lualine.nvim',-- {{{
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = "VeryLazy",
     -- lazy = false,
@@ -126,7 +131,7 @@ return {
         section_separators = { left = '',right = '' },
         -- section_separators = { left = ' ',right = '' },
       },
-      sections = {
+      sections = {-- {{{
         lualine_b = { 'branch', 'diff', 'diagnostics', },
         lualine_x = {
           -- Custom lualine component:
@@ -149,12 +154,12 @@ return {
           end,
           'filetype',
         },
-      },
-    }
+      },-- }}}
+    }-- }}}
   },
 
   { -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
+    'lukas-reineke/indent-blankline.nvim',-- {{{
     lazy = false,
     main = 'ibl',
     opts = {
@@ -164,11 +169,11 @@ return {
         char = '┃',
       },
       scope = { enabled = false },
-    },
+    },-- }}}
   },
 
   { -- Colour line number according to current mode
-    "mawkler/modicator.nvim",
+    "mawkler/modicator.nvim",-- {{{
     event = "VeryLazy",
     opts = {
       -- Warn if any required option is missing. May emit false positives if some
@@ -190,11 +195,11 @@ return {
           highlight = 'bg',
         },
       },
-    },
+    },-- }}}
   },
 
   { -- Render markdown elements with pretty icons and colours
-    'MeanderingProgrammer/render-markdown.nvim',
+    'MeanderingProgrammer/render-markdown.nvim',-- {{{
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
@@ -205,15 +210,8 @@ return {
         width = 'block',
         border = { true, true, false },
         right_pad = 2,
-        -- sign = false,
-        -- signs = { '󰫎 ' }, -- default
-        -- signs = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
         signs = { '󰐣 ', '● ', '* ', '· ', '  ', '  ' },
-        -- icons = { ' 󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
         icons = { '󰐣 ', '·· ', '··· ', '···· ', '····· ', '······ ' },
-        -- icons = { '󰐣 ', '·· ', '··· ', '*·· ', '**· ', '*** ' },
-        -- position = "inline",
-        -- icons = {},
       },
       bullet = {
         icons = { '●', '○', '◆', '◇' }, -- default
@@ -223,7 +221,7 @@ return {
         checked = { icon = "󰄵 ", },
         unchecked = { icon = '󰄱 ', },
       },
-    },
+    },-- }}}
   },
 
   -- -- More themes
@@ -235,4 +233,4 @@ return {
 
 }
 
--- vim: ts=2 sts=2 sw=2 et foldmethod=indent
+-- vim: ts=2 sts=2 sw=2 et foldmethod=marker
