@@ -163,13 +163,21 @@ return {
     lazy = false,
     main = 'ibl',
     opts = {
-      indent = {
-        -- char = '▏', --[['┊']] --[[ , highlight = { "Comment" } ]]
-        -- char = '│',
-        char = '┃',
-      },
+      indent = { char = '┃', }, -- alternatives: '▏', '│' 
       scope = { enabled = false },
-    },-- }}}
+    },
+    config = function(_, opts)
+      require('ibl').setup(opts)
+      -- Trigger CursorMoved event when opening/closing folds to make indent-blankline
+      -- plugin process changes in visible foldtext immediately
+      local function add_CursorMoved_to_keymap(lhs)
+        vim.keymap.set("n", lhs, lhs .. "<cmd>doautocmd CursorMoved<cr>")
+      end
+      local lst = { "za", "zv", "zm", "zM", "zr", "zR", "zc", "zC", "zo", "zO", }
+      for i = 1, #lst do
+        add_CursorMoved_to_keymap(lst[i])
+      end
+    end,-- }}}
   },
 
   { -- Colour line number according to current mode
