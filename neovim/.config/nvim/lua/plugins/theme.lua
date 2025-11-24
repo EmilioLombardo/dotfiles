@@ -218,7 +218,7 @@ return {
         width = 'block',
         border = { true, true, false },
         right_pad = 2,
-        signs = { '󰐣 ', '● ', '* ', '· ', '  ', '  ' },
+        signs = { ' ', '● ', '* ', '· ', '  ', '  ' },
         icons = { '󰐣 ', '·· ', '··· ', '···· ', '····· ', '······ ' },
       },
       bullet = {
