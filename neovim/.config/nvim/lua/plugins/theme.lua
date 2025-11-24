@@ -209,6 +209,8 @@ return {
   { -- Render markdown elements with pretty icons and colours
     'MeanderingProgrammer/render-markdown.nvim',-- {{{
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    keys = { { "<leader>m", "<cmd>RenderMarkdown toggle<cr>" } },
+    ft = { "markdown", "rmd" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
