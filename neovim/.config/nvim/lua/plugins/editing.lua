@@ -111,7 +111,7 @@ return {
   { -- Code completion
     'hrsh7th/nvim-cmp',-- {{{
     event = 'InsertEnter',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'R-nvim/cmp-r' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     config = function ()
       -- See `:help cmp`
       local cmp = require 'cmp'
@@ -154,7 +154,6 @@ return {
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },-- }}}
         sources = {-- {{{
-          { name = "cmp_r" },
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
@@ -166,8 +165,6 @@ return {
         },-- }}}
         window = { documentation = { border = vim.o.winborder or "rounded", scrollbar = true, } },
       }
-
-      require("cmp_r").setup({})
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
