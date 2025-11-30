@@ -29,6 +29,7 @@
     python313Packages.python-lsp-server
     nixd
     #clangd
+    tree-sitter tree-sitter-grammars.tree-sitter-latex nodejs
 
     # --- Other ---
     gcc

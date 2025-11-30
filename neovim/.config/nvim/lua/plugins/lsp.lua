@@ -30,7 +30,7 @@ return {
     'neovim/nvim-lspconfig',-- {{{
     event = "VeryLazy",
     config = function ()
-      vim.lsp.enable({ "lua_ls", "pylsp", "clangd", "nixd", })
+      vim.lsp.enable({ "lua_ls", "pylsp", "clangd", "nixd", "texlab", })
 
       -- TODO? move lsp configs to nvim/lsp/
 
