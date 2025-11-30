@@ -18,11 +18,13 @@
   home.packages = with pkgs; [
     # --- Terminal utilities ---
     neofetch tree fzf tmux zsh-powerlevel10k
+    unzip
 
     # --- Hyprland ---
-    hyprpaper
-    rofi waybar #dolphin
-    socat jq # used in setwallpaper.sh script
+    hyprpaper hyprshot
+    swaynotificationcenter rofi waybar #dolphin
+    socat jq # used in workspace_listener.sh setwallpaper.sh scripts
+    lexend # font (used in waybar)
 
     # --- LSP ---
     lua-language-server
@@ -49,6 +51,9 @@
     # '')
     # # }}}
   ];
+
+  # Auto-enable fonts specified in home.packages
+  fonts.fontconfig.enable = true;
 
   home.file = {
     ".config/nvim".source = ./neovim/.config/nvim;
@@ -178,6 +183,8 @@
     name = "Bibata-Modern-Classic";
     size = 16;
   };
+
+  wayland.windowManager.hyprland.systemd.enable = true;
 
   # Info: home.sessionVariables # {{{
   # 
