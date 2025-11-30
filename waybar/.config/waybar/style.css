@@ -1,13 +1,15 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-    font-family: FontAwesome, FiraCode;
+    font-family: FontAwesome, Lexend, FiraCode;
     font-size: 15px;
     font-weight: 400;
     /* font-size: 14px; */
 }
 
 window#waybar {
+    /* background: #000; */
+    /* background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.45) 75%, rgba(0, 0, 0, 0) 100%); */
     /* background-color: rgba(0, 0, 0, 0.5); */
     background-color: transparent;
     /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
@@ -20,9 +22,14 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/* window#waybar.right-modules { */
-/*     background-color: rgba(0,0,0,0.4) */
-/* } */
+.modules-right {
+    margin: 4px 4px 0px 4px;
+    background-color: #111122;
+    border-radius: 2px;
+    border-color: rgba(92, 92, 92, 0.67);
+    border-width: 2px;
+    border-style: solid;
+}
 
 /*
 window#waybar.empty {
@@ -47,7 +54,7 @@ button {
     /* box-shadow: inset 0 -3px transparent; */
     /* Avoid rounded borders under each button name */
     border: none;
-    /* border-radius: 0; */
+    border-radius: 2px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -58,25 +65,22 @@ button:hover {
     /* transition: 0.2s; */
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
-/* #pulseaudio { */
-/*     min-width: 60px; */
-/* } */
-
 #workspaces {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 5px;
+    background-color: #111122;
+    border-radius: 2px;
+    border-color: rgba(92, 92, 92, 0.67);
+    border-width: 2px;
+    border-style: solid;
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 6px;
     background-color: transparent;
-    color:grey;
+    border-radius: 0;
+    color: #557;
 }
 
+/* When workspace is visible, but on an unfocused monitor */
 #workspaces button.visible {
     /* background-color: rgba(140, 190, 255, 0.2); */
     /* box-shadow: inset 0 -1px lightgrey; */
@@ -84,17 +88,22 @@ button:hover {
     /* font-weight: bold; */
 }
 
-#workspaces button.active {
-    background-color: rgba(140, 190, 255, 0.3);
-    /* box-shadow: inset 0 -2px rgba(255,255,255,0.7); */
+#workspaces button.active {  /* Currently active workspace */
+    background-color: #222235;
+    box-shadow: 0 0 0 2px rgba(51, 204, 255, 0.93);
+    border-radius: 1px;
+    border: none;
     color: white;
-    font-weight: 800;
+    font-weight: bold;
 }
 
 #workspaces button:hover {
-    background-color: rgba(140, 190, 255, 0.15);
-    /* box-shadow: inset 0 -2px rgba(255,255,255,0.2); */
+    background-color: rgba(140, 190, 255, 0.2);
+    color: white;
+    box-shadow: 0 2px 0 0 rgba(0, 255, 153, 0.93);
+    border-radius: 1px;
     transition: 0.1s;
+    border: none;
 }
 
 #workspaces button.urgent {
@@ -126,6 +135,26 @@ button:hover {
 #mpd {
     padding: 0 10px;
     color: #fcfcfc;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#tray:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#power-profiles-daemon:hover,
+#mpd:hover {
+    background-color: #222235;
 }
 
 #window,
@@ -164,6 +193,14 @@ button:hover {
     color: lightgreen;
     background-color: transparent;
 }
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+/* #pulseaudio { */
+/*     min-width: 60px; */
+/* } */
 
 #custom-power {
     font-size: 12px;
@@ -236,6 +273,7 @@ label:focus {
 #network {
     /*background-color: #2980b9;*/
     background-color: transparent;
+    padding-right: 15px; /* So that the icon is centered */
 }
 
 #network.disconnected {

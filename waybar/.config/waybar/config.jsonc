@@ -9,22 +9,22 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
-    //"modules-center": [
+    // "modules-center": [
     //    "hyprland/window"
-    //],
+    // ],
     "modules-right": [
-        "mpd",
+        // "mpd",
         //"idle_inhibitor",
-        "pulseaudio",
-        "network",
         //"cpu",
-        //"memory",
+        "memory",
         "temperature",
         //"keyboard-state",
+        "pulseaudio",
         "battery",
-        "clock",
-        "tray",
-        "custom/power"
+        "network",
+        "clock"
+        // "tray",
+        // "custom/power"
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -100,8 +100,23 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:L%e. %b, %a uke %V}\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%H:%M:%S}",
+        "locale": "nb_NO.UTF-8",
+        "calendar": {
+            "mode"          : "month",
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'>{}</span>",
+                "weeks":      "<span color='#99ffdd'><b>U{:L%V}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='white' background='#333343'><b>{}</b></span>"
+            }
+        }
     },
     "cpu": {
         "format": "{usage}% ",
@@ -119,6 +134,7 @@
         "format-icons": ["", "", ""]
     },
     "battery": {
+        "interval": 10,
         "states": {
             // "good": 95,
             "warning": 30,
@@ -148,25 +164,28 @@
       }
     },
     "network": {
+        "interval": 3,
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{essid} ({signalStrength}%) via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "{icon}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
+        "tooltip-format": "{essid} ({signalStrength}%) via {gwaddr}\n󰜮 {bandwidthDownBits}  󰜷 {bandwidthUpBits}",
+        "format-ethernet": "󰈀",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr} 󰈀\n󰜮 {bandwidthDownBits}  󰜷 {bandwidthUpBits}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "󰤮"
+        // "format-alt": "{ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{volume}% <big>{icon}</big>",
+        "format-bluetooth": "{volume}% <big>{icon}</big>",
+        "format-bluetooth-muted": "󰝟 {icon}",
+        "format-muted": "<big>󰝟</big>",
+        "format-source": "{volume}% 󰍬",
+        "format-source-muted": "󰍭",
         "format-icons": {
-            "headphone": "",
-            "default": ["", "", ""]
+            "headphone": "󰋋",
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
         "on-click": "pavucontrol"
     },
@@ -183,7 +202,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : " ",
         "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
