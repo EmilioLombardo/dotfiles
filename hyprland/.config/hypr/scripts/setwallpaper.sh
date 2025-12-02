@@ -5,8 +5,18 @@ current_monitor="$(hyprctl monitors -j | jq -r '.[] | select(.focused).name')"
 # echo $current_workspace
 # echo $current_monitor
 
+# wallpapers=( # important to use $HOME instead of ~
+#     "$HOME/Pictures/metroid_wallpapers/1_zeromission.jpg"
+#     "$HOME/Pictures/metroid_wallpapers/2_samusreturns.jpg"
+#     "$HOME/Pictures/metroid_wallpapers/3_supermetroid.jpg"
+#     "$HOME/Pictures/metroid_wallpapers/4_fusion.jpg"
+#     "$HOME/Pictures/metroid_wallpapers/5_otherm.jpg"
+#     "$HOME/Pictures/metroid_wallpapers/6_dread.jpg"
+#     "$HOME/Pictures/metroid_wallpapers/0_zerosuit.jpg"
+# )
+
 wallpapers=( # important to use $HOME instead of ~
-    "$HOME/Pictures/metroid_wallpapers/1_zeromission.jpg"
+    "/home/emilio/Pictures/Metroid/compressed_1080p/boss room 2.jpg"
     "$HOME/Pictures/metroid_wallpapers/2_samusreturns.jpg"
     "$HOME/Pictures/metroid_wallpapers/3_supermetroid.jpg"
     "$HOME/Pictures/metroid_wallpapers/4_fusion.jpg"
