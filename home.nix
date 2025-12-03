@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   home.username = "emilio";
@@ -14,6 +14,17 @@
   # release notes.
   # }}}
   home.stateVersion = "25.05"; # Please read the comment before changing.
+
+  nixpkgs = {
+    # Allow unfree packages
+    config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        unstable = pkgs-unstable;
+      })
+    ];
+  };
+
 
   home.packages = with pkgs; [
     # --- Terminal utilities ---
@@ -35,6 +46,7 @@
 
     # --- Other ---
     gcc
+    #unstable.hello
 
     # # Info: package overrides # {{{
     # # It is sometimes useful to fine-tune packages, for example, by applying
