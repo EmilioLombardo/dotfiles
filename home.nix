@@ -28,7 +28,7 @@
 
   home.packages = with pkgs; [
     # --- Terminal utilities ---
-    neofetch tree fzf tmux zsh-powerlevel10k
+    fastfetch tree fzf tmux zsh-powerlevel10k
     unzip
 
     # --- Hyprland ---
