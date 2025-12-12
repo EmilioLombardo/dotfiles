@@ -2,8 +2,6 @@
 
 current_workspace="$(hyprctl activeworkspace -j | jq .id)"
 current_monitor="$(hyprctl monitors -j | jq -r '.[] | select(.focused).name')"
-# echo $current_workspace
-# echo $current_monitor
 
 # wallpapers=( # important to use $HOME instead of ~
 #     "$HOME/Pictures/metroid_wallpapers/1_zeromission.jpg"
@@ -16,7 +14,7 @@ current_monitor="$(hyprctl monitors -j | jq -r '.[] | select(.focused).name')"
 # )
 
 wallpapers=( # important to use $HOME instead of ~
-    "/home/emilio/Pictures/Metroid/compressed_1080p/boss room 2.jpg"
+    "$HOME/Pictures/metroid_wallpapers/1_zeromission.jpg"
     "$HOME/Pictures/metroid_wallpapers/2_samusreturns.jpg"
     "$HOME/Pictures/metroid_wallpapers/3_supermetroid.jpg"
     "$HOME/Pictures/metroid_wallpapers/4_fusion.jpg"
