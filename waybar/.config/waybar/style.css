@@ -91,7 +91,7 @@ button:hover {
 #workspaces button.active {  /* Currently active workspace */
     background-color: #222235;
     box-shadow: 0 0 0 2px rgba(51, 204, 255, 0.93);
-    border-radius: 1px;
+    border-radius: 0.25px;
     border: none;
     color: white;
     font-weight: bold;
