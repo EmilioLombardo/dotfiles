@@ -18,11 +18,14 @@ wallpapers=( # important to use $HOME instead of ~
 
 random_numbers=(${(f)"$(shuf -i 1-${#wallpapers})"})
 
-# monitors=(${(f)"$(hyprctl monitors -j | jq -r '.[].name')"}) # get currently active displays
-monitors=("eDP-1" "HDMI-A-1") # hp-laptop: internal display and HDMI-connected display
-n=${#monitors}
+monitors=(${(f)"$(hyprctl monitors -j | jq -r '.[].name')"}) # get currently active displays
+# monitors=("eDP-1" "HDMI-A-1") # hp-laptop: internal display and HDMI-connected display
 
-# Loop through all monitors
+n=$((${#monitors} + 1))
+# Indexing the list past its last element gives an empty string for the monitor name.
+# When hyprpaper gets an empty monitor name, it sets that wallpaper as a fallback.
+
+# Loop through all active monitors, plus an empty monitor name
 for i in {1..$n}; do
     i_mod_n=$(( ( ($i - 1) % $n ) + 1 ))
     monitor="${monitors[$i]}"
