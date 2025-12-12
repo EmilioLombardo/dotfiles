@@ -21,16 +21,12 @@
     {
       homeConfigurations."emilio" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
         extraSpecialArgs = {
+          # Attributes defined in here will be passed as arguments to the
+          # modules below, e.g. home.nix
           inherit pkgs-unstable;
         };
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        modules = [ ./home.nix ];
       };
     };
 }
