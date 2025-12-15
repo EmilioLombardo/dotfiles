@@ -106,6 +106,23 @@ return {
     },-- }}}
   },
 
+  { -- Make table editing easy :)
+    "dhruvasagar/vim-table-mode",-- {{{
+    ft = { "markdown", "rmd" },
+    cmd = {
+      "TableModeEnable", "TableModeToggle", "TableModeDisable",
+      "TableModeRealign", "Tableize", "TableSort",
+    },
+    keys = { "<leader>tm", "<leader>tt", "<leader>T" },
+    init = function()
+      -- Default config
+      vim.g.table_mode_delete_row_map = "<Leader>tdd"
+      vim.g.table_mode_delete_column_map = "<Leader>tdc"
+      vim.g.table_mode_insert_column_after_map = "<Leader>tic"
+      vim.g.table_mode_insert_column_before_map = "<Leader>tiC"
+    end-- }}}
+  },
+
   { -- Extends functionality for commenting visual regions/lines (keybind `gc`)
     'numToStr/Comment.nvim', event = "VeryLazy", opts = {},
   },
