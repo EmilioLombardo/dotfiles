@@ -24,6 +24,10 @@
 "       use cron to do some clean job.
 "
 "       Most of code is from wiki.
+"
+" Edited by Emilio Lombardo
+" Changes:
+" - Ignore gitcommit filetype
 
 
 if exists("g:loaded_restore_view")
@@ -41,6 +45,7 @@ function! MakeViewCheck()
     if expand('%') =~ '\[.*\]' | return 0 | endif
     if empty(glob(expand('%:p'))) | return 0 | endif
     if &modifiable == 0 | return 0 | endif
+    if index(["gitcommit"], &filetype) >= 0 | return 0 | endif
     if len($TEMP) && expand('%:p:h') == $TEMP | return 0 | endif
     if len($TMP) && expand('%:p:h') == $TMP | return 0 | endif
 
