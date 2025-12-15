@@ -47,6 +47,93 @@ return {
     end,-- }}}
   },
 
+  {
+    "lervag/wiki.vim",-- {{{
+    -- tag = "v0.10", -- uncomment to pin to a specific release
+    init = function()
+      vim.g.wiki_root = '~/wiki'
+      vim.g.wiki_mappings_use_defaults = "none"
+
+      vim.g.wiki_mappings_prefix = '<leader>w'
+
+      -- Global mappings (always active)
+      -- Prefix followed by...
+      -- i -> index, n -> open page by title, j -> journal, x -> reload plugin
+      vim.g.wiki_mappings_global = {-- {{{
+        ['<plug>(wiki-index)'] = '<wiki-prefix>i',
+        ['<plug>(wiki-open)'] = '<wiki-prefix>n',
+        ['<plug>(wiki-journal)'] = '<wiki-prefix>j',
+        ['<plug>(wiki-reload)'] = '<wiki-prefix>x',
+      }-- }}}
+      
+      -- Local mappings (only active when editing pages of the wiki)
+      vim.g.wiki_mappings_local = {-- {{{
+        -- g -> graph --
+        ['<plug>(wiki-graph-find-backlinks)'] = '<wiki-prefix>gb',
+        ['<plug>(wiki-graph-related)'] = '<wiki-prefix>gr',
+        ['<plug>(wiki-graph-check-links)'] = '<wiki-prefix>gc',
+        ['<plug>(wiki-graph-check-links-g)'] = '<wiki-prefix>gC',
+        ['<plug>(wiki-graph-check-orphans)'] = '<wiki-prefix>gO',
+        ['<plug>(wiki-graph-in)'] = '<wiki-prefix>gi',
+        ['<plug>(wiki-graph-out)'] = '<wiki-prefix>go',
+        -- link stuff
+        ['<plug>(wiki-link-add)'] = '<wiki-prefix>a',
+        ['i_<plug>(wiki-link-add)'] = '<c-q>', -- "Qreate link"
+        ['x_<plug>(wiki-link-add)'] = '<wiki-prefix>a',
+        ['<plug>(wiki-link-remove)'] = '<wiki-prefix>lr',
+        ['<plug>(wiki-link-next)'] = '<wiki-prefix>ln',--'<tab>',
+        ['<plug>(wiki-link-prev)'] = '<wiki-prefix>lp',--'<s-tab>',
+        ['<plug>(wiki-link-show)'] = '<wiki-prefix>ll',
+        ['<plug>(wiki-link-extract-header)'] = '<wiki-prefix>lh',
+        ['x_<plug>(wiki-link-extract-header)'] = '<wiki-prefix>lh',
+        ['<plug>(wiki-link-follow)'] = 'gl',--'<cr>', -- "go ->"
+        ['<plug>(wiki-link-follow-split)'] = '<c-w><cr>',
+        ['<plug>(wiki-link-follow-vsplit)'] = '<c-w><tab>',
+        ['<plug>(wiki-link-follow-tab)'] = '<c-w>u',
+        ['<plug>(wiki-link-return)'] = 'gh',--'<bs>', -- "go <-"
+        ['<plug>(wiki-link-transform)'] = '<wiki-prefix>f', -- "forvandle (lenke)"
+        ['x_<plug>(wiki-link-transform-visual)'] = '<wiki-prefix>f',--'<cr>',
+        ['<plug>(wiki-link-transform-operator)'] = '',--'gl',
+        ['<plug>(wiki-link-incoming-toggle)'] = '<wiki-prefix>li',
+        ['<plug>(wiki-link-incoming-hover)'] = '<wiki-prefix>lI',
+        -- page stuff
+        ['<plug>(wiki-page-delete)'] = '<wiki-prefix>d', -- "delete (page)"
+        ['<plug>(wiki-page-rename)'] = '<wiki-prefix>rp', -- "rename page"
+        ['<plug>(wiki-page-rename-section)'] = '<wiki-prefix>rs', -- "rename section"
+        -- toc -- table of contents
+        ['<plug>(wiki-toc-generate)'] = '<wiki-prefix>t',
+        ['<plug>(wiki-toc-generate-local)'] = '<wiki-prefix>T',
+        -- export
+        ['<plug>(wiki-export)'] = '<wiki-prefix>p', -- "print"
+        ['x_<plug>(wiki-export)'] = '<wiki-prefix>p',
+        -- tags
+        ['<plug>(wiki-tag-list)'] = '<wiki-prefix>sl',
+        ['<plug>(wiki-tag-reload)'] = '<wiki-prefix>sr',
+        ['<plug>(wiki-tag-search)'] = '<wiki-prefix>ss',
+        ['<plug>(wiki-tag-rename)'] = '<wiki-prefix>sn',
+        -- textobjects
+        ['o_<plug>(wiki-au)'] = 'au',
+        ['x_<plug>(wiki-au)'] = 'au',
+        ['o_<plug>(wiki-iu)'] = 'iu',
+        ['x_<plug>(wiki-iu)'] = 'iu',
+        ['o_<plug>(wiki-at)'] = 'at',
+        ['x_<plug>(wiki-at)'] = 'at',
+        ['o_<plug>(wiki-it)'] = 'it',
+        ['x_<plug>(wiki-it)'] = 'it',
+      }-- }}}
+
+      -- Journal-local mappings (only active when editing pages of the journal)
+      vim.g.wiki_mappings_local_journal = {-- {{{
+        ['<plug>(wiki-journal-prev)'] = '<c-p>',
+        ['<plug>(wiki-journal-next)'] = '<c-n>',
+        ['<plug>(wiki-journal-copy-tonext)'] = '<leader><c-n>',
+        ['<plug>(wiki-journal-toweek)'] = '<wiki-prefix>u',
+        ['<plug>(wiki-journal-tomonth)'] = '<wiki-prefix>m',
+      }-- }}}
+
+    end-- }}}
+  },
+
   { -- hardtime.nvim: Block repeating stuff like jjjjj and give vim motion hints
     "m4xshen/hardtime.nvim",-- {{{
     lazy = false,
