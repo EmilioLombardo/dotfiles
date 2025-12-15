@@ -43,7 +43,10 @@ return {
 
           -- Markdown {{{
           set_hl("@markup.strong.markdown_inline", { bold = true, fg = palette.orchid, })
-          set_hl("@markup.quote.markdown", { fg = palette.cinnamon, })
+          set_hl("@markup.quote.markdown", { fg = palette.lavender, })
+          set_hl("RenderMarkdownQuote", { fg = palette.lavender, })
+          set_hl("@markup.link.label.markdown_inline", { fg = palette.blue })
+          set_hl("RenderMarkdownLink", { fg = palette.bay_blue })
           set_hl("@markup.list.markdown", { bold = true, fg = palette.watermelon, })
           set_hl("RenderMarkdownBullet", { bold = true, fg = palette.watermelon, })
           -- Heading 1
@@ -230,6 +233,12 @@ return {
         right_pad = 0, -- make todo items aligned with bullet point items
         checked = { icon = "󰄵 ", },
         unchecked = { icon = '󰄱 ', },
+      },
+      link = {
+        custom = {
+          ntnu = { pattern = 'ntnu%.no', icon = '󱗝 ' },
+          markdown = { pattern = '%.md', icon = '󱗖 ' },
+        },
       },
     },-- }}}
   },
