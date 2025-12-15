@@ -3,28 +3,51 @@
 local M = {}
 
 M.tick_box = function(undojoin)
-  -- return pcall(vim.cmd, "s/\\[ \\]/[x]")
   local undoj = ""
   if undojoin then undoj = "undojoin | " end
+
+  -- Back up previous search pattern
+  local prev_pattern = vim.fn.getreg("/")
+
   -- Regex stuff used:
   -- start of line: ^
   -- capture group: \(...\)
   -- any amount of whitespace: \s*
+  -- literal dash: -
+  -- literal brackets in the regex: \[...\]
   -- any char that isn't x: [^x]
   -- reinsert first capture group: \1
-  return pcall(vim.cmd, undoj .. "s/^\\(\\s*-\\s*\\)\\[[^x]\\]/\\1[x]")
+  -- literal brackets with an x between them (in the replacement text): [x]
+  local success = pcall(vim.cmd, undoj .. "s/^\\(\\s*-\\s*\\)\\[[^x]\\]/\\1[x]")
+
+  -- Restore previous search pattern
+  vim.fn.setreg("/", prev_pattern)
+
+  return success
 end
 M.untick_box = function(undojoin)
-  -- return pcall(vim.cmd, "s/\\[x\\]/[ ]")
   local undoj = ""
   if undojoin then undoj = "undojoin | " end
+
+  -- Back up previous search pattern
+  local prev_pattern = vim.fn.getreg("/")
+
   -- Regex stuff used:
   -- start of line: ^
   -- capture group: \(...\)
   -- any amount of whitespace: \s*
-  -- any char that isn't an x: [^x]
+  -- literal dash: -
+  -- literal brackets in the regex: \[...\]
+  -- any char that isn't a space: [^ ]
   -- reinsert first capture group: \1
-  return pcall(vim.cmd, undoj .. "s/^\\(\\s*-\\s*\\)\\[[^ ]\\]/\\1[ ]")
+  -- literal brackets with a space between them (in the replacement text): [ ]
+  local success = pcall(vim.cmd, undoj .. "s/^\\(\\s*-\\s*\\)\\[[^ ]\\]/\\1[ ]")
+
+  vim.fn.setreg("/", prev_pattern)
+  -- vim.cmd('let @/ = "' .. prev_pattern .. '"')
+  -- print(prev_pattern)
+
+  return success
 end
 
 M.toggle_checkbox = function()
