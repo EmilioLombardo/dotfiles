@@ -49,6 +49,8 @@ return {
           set_hl("RenderMarkdownLink", { fg = palette.bay_blue })
           set_hl("@markup.list.markdown", { bold = true, fg = palette.watermelon, })
           set_hl("RenderMarkdownBullet", { bold = true, fg = palette.watermelon, })
+          set_hl("@markup.list.unchecked", { fg = palette.blue, })
+          set_hl("@markup.list.checked", { fg = palette.emerald, })
           -- Heading 1
           set_hl("@markup.heading.1.markdown", { bold = true, fg = palette.lavender })
           set_hl("RenderMarkdownH1Bg", { fg = palette.lavender, bg = palette.regal_blue })
@@ -231,13 +233,22 @@ return {
       },
       checkbox = {
         right_pad = 0, -- make todo items aligned with bullet point items
-        checked = { icon = "󰄵 ", },
+        -- checked = { icon = "󰄵 ", },
+        -- checked = { icon = "󰄲 ", },
+        checked = { icon = "󰡖 ", },
         unchecked = { icon = '󰄱 ', },
+        custom = {
+            todo = { raw = '[-]', rendered = ' ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+        },
       },
       link = {
         custom = {
           ntnu = { pattern = 'ntnu%.no', icon = '󱗝 ' },
           markdown = { pattern = '%.md', icon = '󱗖 ' },
+          nixoswiki = { pattern = 'nixos%.wiki', icon = '󱄅 ' },
+          nixosforum = { pattern = 'nixos%.org', icon = '󱄅 ' },
+          twitter = { pattern = '[^A-Za-z]x%.com', icon = ' ' },
+          twitter2 = { pattern = '^x%.com', icon = ' ' },
         },
       },
     },-- }}}
