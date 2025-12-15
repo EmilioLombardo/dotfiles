@@ -21,12 +21,12 @@ return {
       vim.keymap.set("n", "<leader>h", function() gitsigns.preview_hunk() end,
         { desc = "Gitsigns: Preview hunk under cursor" })
 
-      vim.keymap.set("n", "gs", function() gitsigns.stage_hunk() end,
+      vim.keymap.set("n", "gS", function() gitsigns.stage_hunk() end,
         { desc = "Gitsigns: Stage/unstage hunk under cursor" })
       vim.keymap.set("n", "gX", function() gitsigns.reset_hunk() end,
         { desc = "Gitsigns: Reset hunk under cursor" })
 
-      vim.keymap.set("x", "gs", function()
+      vim.keymap.set("x", "gS", function()
         vim.cmd("norm! ") -- ESC out of visual mode to set marks '< and '>
         vim.cmd("'<,'>Gitsigns stage_hunk")
       end, { desc = "Gitsigns: Stage/unstage selected lines" })
