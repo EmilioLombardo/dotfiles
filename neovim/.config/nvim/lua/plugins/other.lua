@@ -142,6 +142,7 @@ return {
       disabled_filetypes = {
         ["harpoon"] = true,
         ["grapple"] = true,
+        ["markdown"] = true,
       },
     },-- }}}
   },
