@@ -58,7 +58,7 @@ return {
 
       -- Global mappings (always active)
       -- Prefix followed by...
-      -- i -> index, n -> open page by title, j -> journal, x -> reload plugin
+      -- i -> index, n -> new page, j -> journal, x -> reload plugin
       vim.g.wiki_mappings_global = {-- {{{
         ['<plug>(wiki-index)'] = '<wiki-prefix>i',
         ['<plug>(wiki-open)'] = '<wiki-prefix>n',
