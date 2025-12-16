@@ -254,6 +254,35 @@ return {
     },-- }}}
   },
 
+  { -- Fold headings in markdown
+    "masukomi/vim-markdown-folding",-- {{{
+    ft = { "markdown", "rmd", },
+    cmd = { "FoldToggle", },
+    init = function()
+      -- function MDfoldtext()
+      --   local line = vim.fn.getline(vim.v.foldstart)
+      --   local heading_level = #line:match("^#+")
+      --   local signs = { ' ', ' ●', ' *', ' ·', '  ', '  ' }
+      --   local space = string.rep(" ", heading_level - 2)
+      --   local sub = line:gsub("^#+", signs[heading_level] .. space)
+      --   return sub .. "  "
+      -- end
+      vim.g.markdown_fold_override_foldtext = 1
+      local md_folds_augroup = vim.api.nvim_create_augroup("CustomMarkdownFolds", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown", "rmd", },
+        callback = function()
+          -- vim.wo.foldmethod = "expr" -- this is set in ftplugin/markdown.lua
+          vim.wo.foldexpr = "NestedMarkdownFolds()"
+          -- vim.wo.foldtext = "v:lua.MDfoldtext()"
+          vim.wo.foldtext = "" -- retain syntax highlighting of folded headings
+          vim.wo.fillchars = "fold: "
+        end,
+        group = md_folds_augroup,
+      })
+    end,-- }}}
+  },
+
   -- -- More themes
   -- "catppuccin/nvim",
   -- "phanviet/vim-monokai-pro",
