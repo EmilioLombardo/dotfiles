@@ -58,7 +58,7 @@ return {
         go_next_heading = "]]", -- (string|boolean) set cursor to next section heading
         go_prev_heading = "[[", -- (string|boolean) set cursor to previous section heading
       },
-      inline_surround = {
+      inline_surround = {-- {{{
         -- For the emphasis, strong, strikethrough, and code fields:
         -- * 'key': used to specify an inline style in toggle, delete, and change operations
         -- * 'txt': text inserted when toggling or changing to the corresponding inline style
@@ -78,31 +78,38 @@ return {
           key = "c",
           txt = "`",
         },
-      },
-      link = {
+      },-- }}}
+      link = {-- {{{
         paste = {
           enable = false, -- whether to convert URLs to links on paste
         },
-      },
-      toc = {
+      },-- }}}
+      toc = {-- {{{
         -- Comment text to flag headings/sections for omission in table of contents.
         omit_heading = "toc omit heading",
         omit_section = "toc omit section",
         -- Cycling list markers to use in table of contents.
         -- Use '.' and ')' for ordered lists.
         markers = { "-" },
-      },
+      },-- }}}
       -- Hook functions allow for overriding or extending default behavior.
       -- Called with a table of options and a fallback function with default behavior.
       -- Signature: fun(opts: table, fallback: fun())
-      hooks = {
+      hooks = {-- {{{
         -- Called when following links. Provided the following options:
         -- * 'dest' (string): the link destination
         -- * 'use_default_app' (boolean|nil): whether to open the destination with default application
         --   (refer to documentation on <Plug> mappings for explanation of when this option is used)
         follow_link = nil,
-      },
-      on_attach = nil, -- (fun(bufnr: integer)) callback when plugin attaches to a buffer
+      },-- }}}
+      on_attach = function(bufnr) -- (fun(bufnr: integer)) callback when plugin attaches to a buffer
+        local map = vim.keymap.set
+        local opts = { buffer = bufnr }
+        map({ 'n', 'i' }, '<c-l>', '<Cmd>MDListItemBelow<CR>', opts)
+        map({ 'n', 'i' }, '<m-c-l>', '<Cmd>MDListItemAbove<CR>', opts)
+        -- map('n', '<M-c>', '<Cmd>MDTaskToggle<CR>', opts)
+        -- map('x', '<M-c>', ':MDTaskToggle<CR>', opts)
+      end,
     },-- }}}
   },
 
