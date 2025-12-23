@@ -27,7 +27,7 @@ return {
             return lang == "latex" and ft == "tex"
           end
         },-- }}}
-        indent = { enable = true, disable = { 'python' } },
+        indent = { enable = true, disable = { 'python', 'markdown', }, },
         incremental_selection = {-- {{{
           enable = true,
           keymaps = {
