@@ -162,6 +162,31 @@ return {
     end-- }}}
   },
 
+  {
+    "emiliolombardo/lists.vim",
+    ft = { "markdown", "rmd", },
+    init = function()
+      -- vim.keymap.set("i", "<c-s>", "<Plug>(lists-toggle)")
+      vim.g.lists_maps_default_override = {
+        ["<plug>(lists-toggle)"] = "<c-s>",
+        ["i_<plug>(lists-toggle)"] = "<c-s>",
+        ["<plug>(lists-toggle-checkbox)"] = "",
+        ["i_<plug>(lists-new-element)"] = "",
+        ["<plug>(lists-moveup)"] = "<leader>lk",
+        ["<plug>(lists-movedown)"] = "<leader>lj",
+        ["<plug>(lists-uniq)"] = "<leader>lu",
+        ["<plug>(lists-uniq-local)"] = "<leader>lU",
+        ["<plug>(lists-bullet-toggle-local)"] = "<leader>lT",
+        ["<plug>(lists-bullet-toggle-all)"] = "<leader>lt",
+        -- ["<plug>(lists-al)"] = "al",
+        -- ["<plug>(lists-il)"] = "il",
+          -- \ 'i_<plug>(lists-new-element)': '<c-t>',
+          -- \ 'i_<plug>(lists-toggle)': '',
+          -- \ '<plug>(lists-toggle)': '<c-y>',
+      }
+    end
+  },
+
 }
 
 -- vim: foldmethod=marker
