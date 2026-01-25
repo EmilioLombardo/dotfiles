@@ -191,12 +191,12 @@ return {
   autoexpand('([^%a\\])log', "\\log", { regTrig=true, name="\\log", }),
   autoexpand('([^%a\\])lg', "\\lg", { regTrig=true, name="\\lg", }),
   autoexpand('([^%a\\])ln', "\\ln", { regTrig=true, name="\\ln", }),
-  snip_command("([^%a\\])sin", "\\sin\\left(<>\\right)", { regTrig=true, name="\\sin(...)", }),
-  snip_command("([^%a\\])Sin", "\\sin^2\\left(<>\\right)", { regTrig=true, name="\\sin^2(...)", }),
-  snip_command("([^%a\\])cos", "\\cos\\left(<>\\right)", { regTrig=true, name="\\cos(...)", }),
-  snip_command("([^%a\\])Cos", "\\cos^2\\left(<>\\right)", { regTrig=true, name="\\cos^2(...)", }),
-  snip_command("([^%a\\])tan", "\\tan\\left(<>\\right)", { regTrig=true, name="\\tan(...)", }),
-  snip_command("([^%a\\])Tan", "\\tan^2\\left(<>\\right)", { regTrig=true, name="\\tan^2(...)", }),
+  snip_command("([^%a\\])sin", "\\sin(<>)", { regTrig=true, name="\\sin(...)", }),
+  snip_command("([^%a\\])Sin", "\\sin^2(<>)", { regTrig=true, name="\\sin^2(...)", }),
+  snip_command("([^%a\\])cos", "\\cos(<>)", { regTrig=true, name="\\cos(...)", }),
+  snip_command("([^%a\\])Cos", "\\cos^2(<>)", { regTrig=true, name="\\cos^2(...)", }),
+  snip_command("([^%a\\])tan", "\\tan(<>)", { regTrig=true, name="\\tan(...)", }),
+  snip_command("([^%a\\])Tan", "\\tan^2(<>)", { regTrig=true, name="\\tan^2(...)", }),
   -- }}}
 
   -- j< -> \inner{...}{} (NB! Custom command) {{{
