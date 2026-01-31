@@ -55,6 +55,11 @@ theme = "Abernathy"
 background-opacity=0.85
 background-blur=5
 
+bell-features = "no-system,no-attention"
+
+# Custom app icon on MacOS
+macos-icon = "xray"
+
 # Cursor settings
 cursor-color = "#fefefe"
 cursor-text = "black"
@@ -64,7 +69,7 @@ adjust-box-thickness = 1
 
 # Quick terminal settings
 keybind = "global:alt+space=toggle_quick_terminal"
-quick-terminal-size = 70%
+quick-terminal-size = 100%
 quick-terminal-position = "top"
 quick-terminal-animation-duration = 0
 
