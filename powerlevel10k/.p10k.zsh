@@ -108,6 +108,7 @@
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
     # cpu_arch              # CPU architecture
     # time                  # current time
+    foam                    # CUSTOM: Show if OpenFOAM shell is active
     # =========================[ Line #2 ]=========================
     newline                 # \n
     # ip                    # ip address and bandwidth usage for a specified network interface
@@ -1686,6 +1687,12 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_foam() {
+    # Check if FOAM_APPBIN environment variable is set  
+    [[ -n $FOAM_APPBIN ]] || return  
+    p10k segment -f 39 -i '∇'
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
