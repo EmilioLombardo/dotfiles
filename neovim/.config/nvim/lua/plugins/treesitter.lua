@@ -2,6 +2,7 @@ return {
 
   { -- Treesitter: Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    tag = "v0.10.0",
     build = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
