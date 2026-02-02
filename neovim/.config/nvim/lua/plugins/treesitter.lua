@@ -2,14 +2,14 @@ return {
 
   { -- Treesitter: Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    tag = "v0.10.0",
+    branch = "main",
     build = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
     event = "VeryLazy",
     config = function ()
       ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
+      require('nvim-treesitter.config').setup {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
           'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim',
