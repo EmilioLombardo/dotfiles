@@ -98,6 +98,7 @@
       d = "dirs -v | head -10";
       # gt -> git log with nice graph view
       gt = "git log --graph --abbrev-commit --decorate --oneline --all";
+      start-ssh-agent="eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/id_ed25519";
     };
     plugins = [# {{{
     {
