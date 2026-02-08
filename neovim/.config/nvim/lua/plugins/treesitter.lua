@@ -3,38 +3,38 @@ return {
   { -- Treesitter: Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     branch = "main",
-    build = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
+    build = ":TSUpdate",
     event = "VeryLazy",
     config = function ()
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.config').setup {
-        -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = {
-          'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim',
-          "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
-          "html",
-        },
-        highlight = {-- {{{
-          enable = true,
-          disable = function(lang, bufnr)
-            -- disable for .tex files to avoid conflict with VimTeX plugin
-            local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-            return lang == "latex" and ft == "tex"
-          end
-        },-- }}}
-        indent = { enable = true, disable = { 'python', 'markdown', }, },
-        incremental_selection = {-- {{{
-          enable = true,
-          keymaps = {
-            init_selection = '<c-g>',
-            node_incremental = '<c-g>',
-            -- scope_incremental = '<c-s>',
-            node_decremental = '<c-h>',
-          },
-        },-- }}}
+      local ts = require("nvim-treesitter")
+      local parsers = {
+        'c', 'cpp', 'lua', 'python', 'vimdoc', 'vim', "markdown",
+        "markdown_inline", "r", "rnoweb", "yaml", "csv", "html",
       }
+      for _, parser in ipairs(parsers) do
+        ts.install(parser)
+      end
+
+      -- Not every tree-sitter parser is the same as the file type detected, so
+      -- we need to get the relevant filetype patterns for each parser.
+      local patterns = {}
+      for _, parser in ipairs(parsers) do
+        local parser_patterns = vim.treesitter.language.get_filetypes(parser)
+        for _, pp in pairs(parser_patterns) do
+          table.insert(patterns, pp)
+        end
+      end
+
+      local treesitter_augroup = vim.api.nvim_create_augroup(
+        "treesitter_augroup", { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = patterns,
+        callback = function()
+          vim.treesitter.start()
+        end,
+        group = treesitter_augroup,
+      })
+
     end
   },
 
