@@ -4,7 +4,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     branch = "main",
     build = ":TSUpdate",
-    event = "VeryLazy",
+    lazy = false,
     config = function ()
       local ts = require("nvim-treesitter")
       local parsers = {
