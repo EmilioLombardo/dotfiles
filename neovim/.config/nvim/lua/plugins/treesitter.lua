@@ -1,3 +1,11 @@
+local function remove_by_value(tbl, value)-- {{{
+  for i = #tbl, 1, -1 do
+    if tbl[i] == value then
+      table.remove(tbl, i)
+    end
+  end
+end-- }}}
+
 return {
 
   { -- Treesitter: Highlight, edit, and navigate code
@@ -7,33 +15,49 @@ return {
     lazy = false,
     config = function ()
       local ts = require("nvim-treesitter")
-      local parsers = {
+
+      -- Install some parsers 
+      local default_parsers = {
         'c', 'cpp', 'lua', 'python', 'vimdoc', 'vim', "markdown",
-        "markdown_inline", "r", "rnoweb", "yaml", "csv", "html",
+        "markdown_inline", "yaml", "csv", "html",
       }
-      for _, parser in ipairs(parsers) do
+      for _, parser in ipairs(default_parsers) do
         ts.install(parser)
       end
 
-      -- Not every tree-sitter parser is the same as the file type detected, so
-      -- we need to get the relevant filetype patterns for each parser.
+      -- Auto-start all installed parsers by default.
+      local parsers_to_enable = ts.get_installed()
+
+      -- Disable automatic call to vim.treesitter.start() for some parsers {{{
+      local parsers_disable_hl = {
+        -- The latex parser is needed for the R.nvim plugin, but I don't want
+        -- to use it for highlighting .tex files, since I prefer VimTeX to do
+        -- that. Therefore "latex" is listed here.
+        "latex",
+      }
+      for _, parser in ipairs(parsers_disable_hl) do
+        remove_by_value(parsers_to_enable, parser)
+      end-- }}}
+
+      -- Find the relevant FileType patterns for each parser {{{
       local patterns = {}
-      for _, parser in ipairs(parsers) do
+      for _, parser in ipairs(parsers_to_enable) do
         local parser_patterns = vim.treesitter.language.get_filetypes(parser)
         for _, pp in pairs(parser_patterns) do
           table.insert(patterns, pp)
         end
-      end
+      end-- }}}
 
+      -- Autocmd to start treesitter for the relevant filetypes {{{
       local treesitter_augroup = vim.api.nvim_create_augroup(
         "treesitter_augroup", { clear = true })
       vim.api.nvim_create_autocmd('FileType', {
         pattern = patterns,
-        callback = function()
-          vim.treesitter.start()
+        callback = function(args)
+          vim.treesitter.start(args.buf)
         end,
         group = treesitter_augroup,
-      })
+      })-- }}}
 
     end
   },
