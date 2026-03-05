@@ -134,21 +134,6 @@ return {
     end-- }}}
   },
 
-  { -- hardtime.nvim: Block repeating stuff like jjjjj and give vim motion hints
-    "m4xshen/hardtime.nvim",-- {{{
-    lazy = false,
-    dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {
-      enabled = false,
-      disabled_filetypes = {
-        ["harpoon"] = true,
-        ["grapple"] = true,
-        ["markdown"] = true,
-      },
-    },-- }}}
-  },
-
-
   { -- grapple: per-project file switcher (replacement for harpoon)
     "cbochs/grapple.nvim",-- {{{
     event = { "BufReadPost", "BufNewFile" },
