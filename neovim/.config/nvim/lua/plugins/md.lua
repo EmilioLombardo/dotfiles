@@ -38,6 +38,7 @@ return {
           nixosforum = { pattern = 'nixos%.org', icon = '󱄅 ' },
           twitter = { pattern = '[^A-Za-z]x%.com', icon = ' ' },
           twitter2 = { pattern = '^x%.com', icon = ' ' },
+          archwiki = { pattern = 'wiki%.archlinux%.org', icon = '󰣇 ' },
         },
       },
     },-- }}}
