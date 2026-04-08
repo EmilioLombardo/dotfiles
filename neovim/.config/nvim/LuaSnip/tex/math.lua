@@ -591,6 +591,10 @@ return {
   autoexpand(",.Y", "\\Psi"),
   autoexpand(",.w", "\\omega"),
   autoexpand(",.W", "\\Omega"),
+
+  autoexpand("bmw", "\\bm\\omega"),
+  autoexpand("bmW", "\\bm\\Omega"),
+  autoexpand("Dt", "\\Delta t"),
 -- }}}
 
 }
