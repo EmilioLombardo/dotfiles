@@ -456,6 +456,8 @@ return {
   snip_command("jsB", [[\left\{<>\right\}]], { name="\\left\\{...\\right\\}", dscr="Surround with curly brace delimeters", }),-- }}}
   -- jsv -> \left\lvert...\right\rvert {{{
   snip_command("jsv", [[\left\lvert<>\right\rvert]], { name="\\left\\lvert...\\right\\rvert", dscr="Surround with vertical bar delimeters", }),-- }}}
+  -- || -> \lvert...\rvert {{{
+  snip_command("||", [[\lvert<>\rvert]], { name="\\lvert...\\rvert", dscr="Surround with vertical bar delimeters (small)", }),-- }}}
   -- jsV -> \left\lVert...\right\rVert {{{
   snip_command("jsV", [[\left\lVert<>\right\rVert]], { name="\\left\\lVert...\\right\\rVert", dscr="Surround with double vertical bar delimeters", }),-- }}}
   -- jsa -> \left\langle...\right\rangle {{{
