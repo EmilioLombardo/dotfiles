@@ -49,6 +49,7 @@ vim.opt.path:append("**") -- use :find to search in subdirectories as well
 -- FOLDS
 vim.o.foldmethod = "syntax"
 vim.o.foldlevelstart = 2
+vim.o.foldminlines = 3
 
 -- OTHER
 vim.o.lazyredraw = false
