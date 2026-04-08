@@ -470,6 +470,9 @@ return {
   s({ trig="jsa", name="\\left. ...\\right\\rvert_{...}", dscr="'Evaluated at' vertical bar", wordTrig=false, snippetType="autosnippet" },
     fmta( [[\left.<>\rvert_{<>}]], { d(1, get_visual), i(2), } )),-- }}}
 
+  -- skew matrix notation
+  -- jsk -> \left[...\right]_{\!\times} {{{
+  snip_command("jsk", [[\left[<>\right]_{\!\times}]], { name="[...]_x", dscr="Surround with skew matrix notation", }),-- }}}
   -- }}}
 
   -- [[ Text styles ]] (text, substack, mathcal, mathrm, ...) {{{
