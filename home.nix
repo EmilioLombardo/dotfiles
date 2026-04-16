@@ -33,7 +33,9 @@
 
     # --- Hyprland ---
     hyprpaper hyprshot
-    swaynotificationcenter rofi waybar #dolphin
+    swaynotificationcenter rofi #dolphin
+    waybar
+    unstable.ashell
     socat jq # used in workspace_listener.sh setwallpaper.sh scripts
     lexend # font (used in waybar)
 
@@ -72,6 +74,7 @@
     ".tmux.conf".source = ./tmux/.tmux.conf;
     ".config/hypr".source = ./hyprland/.config/hypr;
     ".config/waybar".source = ./waybar/.config/waybar;
+    ".config/ashell".source = ./ashell/.config/ashell;
     ".config/xkb".source = ./xkb/.config/xkb;
   };
 

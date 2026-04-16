@@ -1,0 +1,78 @@
+enable_esc_key = true
+
+[modules]
+left = [ "Workspaces" ]
+center = [ "WindowTitle" ]
+right = [ "SystemInfo", [ "Tempo", "Clock" ], [ "Privacy", "Settings" ] ]
+
+[workspaces]
+# max_workspaces = 5
+# enable_workspace_filling = true
+workspace_names = ["󰬺", "󰬻", "󰬼", "󰬽", "󰬾", "󰬿", "󰭀", "󰭁", "󰭂", "󰬅"]
+# workspace_names = ["󰫶", "󰫶󰫶", "󰫶󰫶󰫶", "󰫶󰬃", "󰬃", "󰬃󰫶", "󰬃󰫶󰫶", "󰬃󰫶󰫶󰫶", "󰫶󰬅", "󰬅"]
+
+[window_title]
+mode = "Title"
+truncate_title_after_length = 50
+
+[system_info]
+indicators = [ "Temperature" ]
+
+[clock]
+format = "%a w%W · %d %b · %R"
+
+[tempo]
+clock_format = "%a %x %R"
+formats = [
+    "%R",
+    "%a w%W",
+    "%d %b",
+]
+weather_location = "Current"
+weather_indicator = "Icon"
+
+
+[appearance]
+font_name = "SUSE"
+scale_factor = 1.2
+opacity = 0.9
+# menu.opacity = 0.9
+
+# primary_color = "#7aa2f7"
+success_color = "#9ece6a"
+# text_color = "#a9b1d6"
+text_color = "#b9c1e6"
+
+workspace_colors = [ "#7aa2f7", "#9ece6a" ]
+
+[appearance.primary_color]
+base = "#82aaff" # Button color / slider hover
+weak = "#97ccff" # Button hover
+strong = "#729af0" # Slider color
+
+[appearance.danger_color]
+# base = "#f7768e"
+base = "#ff5874" # nightfly watermelon
+weak = "#e0af68"
+
+[appearance.background_color]
+# base = "#1a1b26"
+base = "#011020" # Litt mørkere enn nightfly black #011627
+# weak = "#24273a"
+weak = "#09243a" # nightfly ink_blue
+strong = "#414868"
+
+[appearance.secondary_color]
+base = "#0c0d14"
+
+# [appearance]
+# # background_color = "#"
+# primary_color = "#7aa2f7"
+# success_color = "#9ece6a"
+# text_color = "#a9b1d6"
+#
+# [appearance.background_color]
+# base = "#448877"
+# strong = "#448888"
+# weak = "#448855"
+# text = "#ffffff"
