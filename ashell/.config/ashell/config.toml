@@ -1,9 +1,10 @@
 enable_esc_key = true
 
 [modules]
-left = [ "Workspaces" ]
-center = [ "WindowTitle" ]
-right = [ "SystemInfo", [ "Tempo", "Clock" ], [ "Privacy", "Settings" ] ]
+left = [ "Workspaces", "WindowTitle" ]
+# center = [ ]
+center = [ "Clock" ]
+right = [ "MediaPlayer", "SystemInfo", [ "Tempo" ], [ "Privacy", "Settings" ] ]
 
 [workspaces]
 # max_workspaces = 5
@@ -13,13 +14,17 @@ workspace_names = ["󰬺", "󰬻", "󰬼", "󰬽", "󰬾", "󰬿", "󰭀", "󰭁
 
 [window_title]
 mode = "Title"
-truncate_title_after_length = 50
+truncate_title_after_length = 70
 
 [system_info]
-indicators = [ "Temperature" ]
+indicators = [ "Cpu", "Memory", "Temperature" ]
 
 [clock]
-format = "%a w%W · %d %b · %R"
+# format = "·· %R ··"
+format = "    %R    "
+# format = "%R"
+# format = "%a w%W · %d %b · %R"
+# format = "󰃶 %d.%m  %a w%W  %R"
 
 [tempo]
 clock_format = "%a %x %R"
