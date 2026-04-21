@@ -36,7 +36,7 @@ return {
       -- TODO? move lsp configs to nvim/lsp/
 
       vim.lsp.config["clangd"] = {
-        cmd = { "clangd", "-style=file:~/.clangd-format" },
+        cmd = { "clangd" },
       }
 
       -- Lua_ls settings for neovim config editing. Provide completions,
