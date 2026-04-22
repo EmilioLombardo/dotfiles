@@ -75,6 +75,7 @@
     ".config/hypr".source = ./hyprland/.config/hypr;
     ".config/waybar".source = ./waybar/.config/waybar;
     ".config/ashell".source = ./ashell/.config/ashell;
+    ".config/niri".source = ./niri/.config/niri;
     ".config/xkb".source = ./xkb/.config/xkb;
   };
 
