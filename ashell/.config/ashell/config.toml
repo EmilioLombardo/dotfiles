@@ -1,15 +1,19 @@
 enable_esc_key = true
+position = "Top"
+# layer = "Overlay"
 
 [modules]
-left = [ "Workspaces", "WindowTitle" ]
-# center = [ ]
-center = [ "Clock" ]
-right = [ "MediaPlayer", "SystemInfo", [ "Tempo" ], [ "Privacy", "Settings" ] ]
+# left = [ "Workspaces", "WindowTitle" ]
+left = [ "Workspaces" ]
+# left = [  ]
+center = [ ]
+# center = [ "Clock" ]
+right = [ "MediaPlayer", "Tray", "SystemInfo", [ "Tempo" ], [ "Privacy", "Settings" ] ]
 
 [workspaces]
-# max_workspaces = 5
-# enable_workspace_filling = true
-workspace_names = ["󰬺", "󰬻", "󰬼", "󰬽", "󰬾", "󰬿", "󰭀", "󰭁", "󰭂", "󰬅"]
+# group_by_monitor = true
+visibility_mode = "MonitorSpecific"
+# workspace_names = ["󰬺", "󰬻", "󰬼", "󰬽", "󰬾", "󰬿", "󰭀", "󰭁", "󰭂", "󰬅"]
 # workspace_names = ["󰫶", "󰫶󰫶", "󰫶󰫶󰫶", "󰫶󰬃", "󰬃", "󰬃󰫶", "󰬃󰫶󰫶", "󰬃󰫶󰫶󰫶", "󰫶󰬅", "󰬅"]
 
 [window_title]
@@ -17,7 +21,8 @@ mode = "Title"
 truncate_title_after_length = 70
 
 [system_info]
-indicators = [ "Cpu", "Memory", "Temperature" ]
+# indicators = [ "Cpu", "Memory", "Temperature" ]
+indicators = [ "Temperature" ]
 
 [clock]
 # format = "·· %R ··"
@@ -27,15 +32,25 @@ format = "    %R    "
 # format = "󰃶 %d.%m  %a w%W  %R"
 
 [tempo]
-clock_format = "%a %x %R"
+clock_format = "w%W %R"
 formats = [
     "%R",
-    "%a w%W",
-    "%d %b",
+    "󰨳 %W    %R",
+    # "%a %d %b",
+    # "%a w%W",
+    # "%a w%W  %d %b",
+    "󰃭 %a %d %b    %R",
 ]
 weather_location = "Current"
-weather_indicator = "Icon"
+weather_indicator = "None"
 
+[settings]
+remove_airplane_btn = true
+audio_sinks_more_cmd = "pavucontrol"
+bluetooth_more_cmd = "ghostty -e bluetui"
+wifi_more_cmd = "ghostty -e impala"
+# [[settings.brightness]]
+# brightness_indicator_format = "Icon"
 
 [appearance]
 font_name = "SUSE"
