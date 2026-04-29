@@ -32,10 +32,10 @@ format = "    %R    "
 # format = "󰃶 %d.%m  %a w%W  %R"
 
 [tempo]
-clock_format = "w%W %R"
+clock_format = "w%V %R"
 formats = [
     "%R",
-    "󰨳 %W    %R",
+    "󰨳 %V    %R",
     # "%a %d %b",
     # "%a w%W",
     # "%a w%W  %d %b",
