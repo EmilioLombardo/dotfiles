@@ -462,10 +462,10 @@ binds {
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
-    // Mod+J     { focus-window-down; }
-    // Mod+K     { focus-window-up; }
-    Mod+J     { focus-window-or-workspace-down; } // will move across workspaces when reaching first/last window in column
-    Mod+K     { focus-window-or-workspace-up; } // will move across workspaces when reaching first/last window in column
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    // Mod+J     { focus-window-or-workspace-down; } // will move across workspaces when reaching first/last window in column
+    // Mod+K     { focus-window-or-workspace-up; } // will move across workspaces when reaching first/last window in column
     Mod+L     { focus-column-right; }
 
     Mod+Shift+Left  { move-column-left; }
