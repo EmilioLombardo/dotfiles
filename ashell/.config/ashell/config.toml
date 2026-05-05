@@ -8,7 +8,7 @@ left = [ "Workspaces" ]
 # left = [  ]
 center = [ ]
 # center = [ "Clock" ]
-right = [ "MediaPlayer", "Tray", "SystemInfo", [ "Tempo" ], [ "Privacy", "Settings" ] ]
+right = [ "MediaPlayer", "Tray", "SystemInfo", "Tempo", [ "Privacy", "Settings" ] ]
 
 [workspaces]
 # group_by_monitor = true
@@ -48,9 +48,8 @@ weather_indicator = "None"
 remove_airplane_btn = true
 audio_sinks_more_cmd = "pavucontrol"
 bluetooth_more_cmd = "ghostty -e bluetui"
-wifi_more_cmd = "ghostty -e impala"
-# [[settings.brightness]]
-# brightness_indicator_format = "Icon"
+wifi_more_cmd = "ghostty -e nmtui"
+indicators = [ "IdleInhibitor", "Audio", "Bluetooth", "Network", "Battery" ]
 
 [appearance]
 font_name = "SUSE"
