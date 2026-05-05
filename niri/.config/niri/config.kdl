@@ -106,12 +106,17 @@ output "eDP-1" {
     position x=0 y=0
 }
 
+output "Dell Inc. DELL P2422H HBW0YP3" {
+    scale 1
+    position x=-228 y=-1080
+    mode "1920x1080@60.000"
+}
+
 output "HDMI-A-1" {
     scale 1
-    position x=0 y=-1080
-    // scale 1.25
-    // position x=0 y=-864
+    position x=-228 y=-1080
 }
+
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
