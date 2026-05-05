@@ -7,11 +7,11 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "niri/workspaces"
     ],
-    // "modules-center": [
-    //    "hyprland/window"
-    // ],
+    "modules-center": [
+        "clock"
+    ],
     "modules-right": [
         // "mpd",
         //"idle_inhibitor",
@@ -21,23 +21,22 @@
         //"keyboard-state",
         "pulseaudio",
         "battery",
-        "network",
-        "clock"
-        // "tray",
+        "network"
+        // "tray"
         // "custom/power"
     ],
     // Modules configuration
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": false,
-        "warp-on-scroll": false,
-        "format": "{name}",
-        //"format-icons": {
-        //    "urgent": "",
-        //    "active": "",
-        //    "default": ""
-        //}
-    },
+    // "hyprland/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": false,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}",
+    //     //"format-icons": {
+    //     //    "urgent": "",
+    //     //    "active": "",
+    //     //    "default": ""
+    //     //}
+    // },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
