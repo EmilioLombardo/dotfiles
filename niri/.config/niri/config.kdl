@@ -65,7 +65,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="10%"
+    focus-follows-mouse max-scroll-amount="20%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -267,12 +267,13 @@ layout {
         // hide-when-single-tab
         place-within-column
         gap 4
-        width 5
+        width 6
         length total-proportion=0.6
         position "left"
         gaps-between-tabs 4
         corner-radius 2
-        active-color "#7fc8ff"
+        // active-color "#7fc8ff"
+        active-color "#afc8ff"
         inactive-color "#77da"
         urgent-color "yellow"
 
@@ -358,20 +359,49 @@ animations {
     }
 }
 
+recent-windows {
+    open-delay-ms 250
+    highlight {
+        corner-radius 4
+    }
+}
+
+blur {
+    passes 2
+    offset 2
+    noise 0.02
+    saturation 1.2
+}
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
-    // background-effect {
-    //     xray true
-    // }
+    background-effect {
+        xray true
+        blur true
+    }
+    open-maximized-to-edges false
+    border {
+        off
+    }
 }
 
+window-rule {
+    match is-floating=true
+    shadow {
+        on
+        softness 30
+        spread 2
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        // inactive-color "#00000064"
+    }
+}
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -381,20 +411,48 @@ window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
 }
 
+// New, empty browser window
+window-rule {
+    match app-id=r#"zen$"# title="^Zen Browser$"
+    // open-maximized true
+    default-column-width { proportion 0.66667; }
+}
+
+// Floating windows of gnome apps
+window-rule {
+    match app-id=r#"^org\.gnome\..*$"# title="" is-floating=true
+    geometry-corner-radius 18
+}
+
+// GNOME Calculator
+window-rule {
+    match app-id=r#"^org.gnome.Calculator$"#
+    // open-maximized true
+    default-column-width { proportion 0.33333; }
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
     open-floating true
+    default-floating-position x=8 y=8 relative-to="bottom-right"
+    default-window-height { fixed 324; }
+    default-column-width { fixed 576; }
+    // default-window-height { fixed 346; }
+    // default-column-width { fixed 615; }
+    // default-window-height { proportion 0.29629; }
+    // default-column-width { proportion 0.33333; }
 }
 
 window-rule {
-    match app-id="^zen$" title="^Extension: (Bitwarden Password Manager)"
-    // open-floating true
+    // match app-id="zen$" title=r#"^Extension: "#
+    match app-id="zen$" title=r#"Extension: \(Bitwarden Password Manager\).*"#
     open-maximized false
-    default-column-width { proportion 0.333; }
+    default-column-width { proportion 0.33333; }
 }
 
 // Example: block out two password managers from screen capture.
@@ -402,6 +460,8 @@ window-rule {
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id="zen$" title=r#"Extension: \(Bitwarden Password Manager\).*"#
+    // TODO: add bitwarden app
 
     block-out-from "screen-capture"
 
@@ -692,3 +752,11 @@ binds {
 
     Mod+N { spawn "swaync-client" "--toggle-panel"; }
 }
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
+
+    // hide-when-typing
+    // hide-after-inactive-ms 1000
+}
+
