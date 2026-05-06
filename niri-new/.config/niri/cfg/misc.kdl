@@ -9,7 +9,7 @@ environment {
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
-    GTK_IM_MODE "simple"
+    GTK_IM_MODULE "simple"
 }
 
 cursor {
