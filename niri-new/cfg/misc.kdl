@@ -1,25 +1,50 @@
-    prefer-no-csd
-    screenshot-path null
+prefer-no-csd
+// The path is formatted with strftime(3) to give you the screenshot date and time.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-    environment {
-        ELECTRON_OZONE_PLATFORM_HINT "auto"
-        QT_QPA_PLATFORM "wayland"
-        QT_QPA_PLATFORMTHEME "gtk3"
-        QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-        XDG_CURRENT_DESKTOP "niri"
-        XDG_SESSION_TYPE "wayland"
-    }
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+}
 
-    cursor {
-        xcursor-theme "capitaine-cursors"
-        xcursor-size 24
-    }
+cursor {
+    xcursor-theme "capitaine-cursors"
+    // xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
+}
 
-    debug {
-        // Allows notification actions and window activation from Noctalia.
-        honor-xdg-activation-with-invalid-serial
-    }
+debug {
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+}
 
-    hotkey-overlay {
-       skip-at-startup
+hotkey-overlay {
+   skip-at-startup
+}
+
+recent-windows {
+    open-delay-ms 250
+    highlight {
+        corner-radius 4
     }
+}
+
+blur {
+    passes 2
+    offset 2
+    noise 0.02
+    saturation 1.2
+}
+
+gestures {
+    // dnd-edge-view-scroll {}
+    dnd-edge-workspace-switch {
+        trigger-height 100
+        delay-ms 500
+        max-speed 1500
+    }
+}

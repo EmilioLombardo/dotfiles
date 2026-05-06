@@ -1,22 +1,94 @@
-    window-rule {
-        geometry-corner-radius 20 // Set every window radius to 20
-        clip-to-geometry true
+// Master rule for all windows
+window-rule {
+    geometry-corner-radius 4
+    clip-to-geometry true
+    background-effect {
+        xray true
+        blur true
     }
+    open-maximized-to-edges false
+    border {
+        off
+    }
+}
 
-     // if you use steam you will probably like these
-    window-rule {
-        match app-id="steam"
-        exclude title=r#"^[Ss]team$"#
-        open-floating true
+// Master rule for floating windows
+window-rule {
+    match is-floating=true
+    shadow {
+        on
+        softness 30
+        spread 2
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        // inactive-color "#00000064"
     }
+}
 
-    window-rule {
-       match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-       default-floating-position x=10 y=10 relative-to="bottom-right"
-       open-focused false
-    }
+ // Steam rules
+window-rule {
+    match app-id="steam"
+    exclude title=r#"^[Ss]team$"#
+    open-floating true
+}
+window-rule {
+   match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+   default-floating-position x=10 y=10 relative-to="bottom-right"
+   open-focused false
+}
 
-    layer-rule {
-        match namespace="^noctalia-wallpaper*"
-        place-within-backdrop true
-    }
+// New, empty browser window
+window-rule {
+    match app-id=r#"zen$"# title="^Zen Browser$"
+    // open-maximized true
+    default-column-width { proportion 0.66667; }
+}
+
+// Floating windows of gnome apps
+window-rule {
+    match app-id=r#"^org\.gnome\..*$"# title="" is-floating=true
+    geometry-corner-radius 18
+}
+
+// GNOME Calculator
+window-rule {
+    match app-id=r#"^org.gnome.Calculator$"#
+    // open-maximized true
+    default-column-width { proportion 0.33333; }
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    open-floating true
+    default-floating-position x=8 y=8 relative-to="bottom-right"
+    default-window-height { fixed 324; }
+    default-column-width { fixed 576; }
+    // default-window-height { fixed 346; }
+    // default-column-width { fixed 615; }
+    // default-window-height { proportion 0.29629; }
+    // default-column-width { proportion 0.33333; }
+}
+
+// Block out sensitive stuff from screen capture
+window-rule {
+    // match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id="zen$" title=r#"Extension: \(Bitwarden Password Manager\).*"#
+    match app-id="Bitwarden"
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+// Noctalia wallpaper
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}

@@ -7,6 +7,8 @@ input {
             //If you want to overwrite your keyboard layout,
             // uncomment the line below and change the layout accordingly.
             //layout "us" // Use the American keyboard layout
+            layout "no"
+            options "altwin:swap_lalt_lwin,ctrl:swapcaps"
         }
         numlock // Enable numlock on startup
     }
@@ -23,6 +25,12 @@ input {
         //accel-speed 0.0
     }
 
-    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    warp-mouse-to-focus
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse max-scroll-amount="20%"
+
     workspace-auto-back-and-forth // Enable workspace back & forth switching
 }
