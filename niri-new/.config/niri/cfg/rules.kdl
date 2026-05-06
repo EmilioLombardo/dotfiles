@@ -38,6 +38,12 @@ window-rule {
    open-focused false
 }
 
+// Noctalia (settings)
+window-rule {
+    match app-id=r#"noctalia.noctalia-qs$"# title="^Noctalia$"
+    // open-maximized true
+    default-column-width { proportion 0.66667; }
+}
 // New, empty browser window
 window-rule {
     match app-id=r#"zen$"# title="^Zen Browser$"
