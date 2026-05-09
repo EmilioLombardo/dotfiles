@@ -44,10 +44,12 @@
 # }}}
 
 command = "/bin/zsh"
+shell-integration-features = "no-ssh-terminfo,ssh-env"
+mouse-hide-while-typing = true
 
 # Font settings
 font-family = "FiraCode Nerd Font"
-font-size = 17
+font-size = 13
 font-thicken = true
 
 # Window settings
@@ -73,4 +75,4 @@ quick-terminal-size = 100%
 quick-terminal-position = "top"
 quick-terminal-animation-duration = 0
 
-# vim: foldmethod=marker foldlevelstart=0 foldlevel=0
+# vim: foldmethod=marker foldlevelstart=0
