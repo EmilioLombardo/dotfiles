@@ -10,7 +10,8 @@ input {
             layout "no"
             options "altwin:swap_lalt_lwin,ctrl:swapcaps"
         }
-        numlock // Enable numlock on startup
+        repeat-delay 300
+        repeat-rate 25
     }
 
     touchpad {
