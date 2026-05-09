@@ -28,6 +28,12 @@ window-rule {
 
  // Steam rules
 window-rule {
+    match app-id="steam" title=r#"^[Ss]team$"#
+    default-column-width { proportion 1.0; }
+}
+
+ // Steam rules
+window-rule {
     match app-id="steam"
     exclude title=r#"^[Ss]team$"#
     open-floating true
@@ -43,6 +49,7 @@ window-rule {
     match app-id=r#"noctalia.noctalia-qs$"# title="^Noctalia$"
     // open-maximized true
     default-column-width { proportion 0.66667; }
+    geometry-corner-radius 19
 }
 // New, empty browser window
 window-rule {
@@ -62,6 +69,12 @@ window-rule {
     match app-id=r#"^org.gnome.Calculator$"#
     // open-maximized true
     default-column-width { proportion 0.33333; }
+}
+
+// Launch games in full screen
+window-rule {
+    match app-id=r#"^Minecraft"# title="^Minecraft"
+    open-fullscreen true
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -93,8 +106,3 @@ window-rule {
     // block-out-from "screencast"
 }
 
-// Noctalia wallpaper
-layer-rule {
-    match namespace="^noctalia-wallpaper*"
-    place-within-backdrop true
-}
