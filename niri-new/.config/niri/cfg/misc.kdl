@@ -13,8 +13,8 @@ environment {
 }
 
 cursor {
-    xcursor-theme "capitaine-cursors"
-    // xcursor-theme "Bibata-Modern-Classic"
+    // xcursor-theme "capitaine-cursors"
+    xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 24
 }
 
@@ -39,6 +39,10 @@ blur {
     offset 2
     noise 0.02
     saturation 1.2
+}
+
+overview {
+    backdrop-color "#202433"
 }
 
 gestures {
