@@ -43,6 +43,13 @@ binds {
     XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
 
+    // --- Other special controls ---
+    XF86TouchpadToggle repeat=false { spawn "/home/emilio/.local/bin/toggle-touchpad-script"; }
+    Shift+XF86TouchpadToggle repeat=false { spawn "/home/emilio/.local/bin/toggle-dwt-script"; }
+    // Power profile key (on F3) on the Tuxedo InfinityBook
+    Super+Alt+F6 repeat=false { spawn-sh "~/.local/bin/tuxedo-power-profile cycle && notify-send \"$(~/.local/bin/tuxedo-power-profile active_name)\""; }
+    Shift+Super+Alt+F6 repeat=false { spawn "tuxedo-control-center"; }
+
     // ─── Window Movement and Focus ───
     Mod+Q repeat=false { close-window; }
 
