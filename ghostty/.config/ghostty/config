@@ -70,9 +70,9 @@ adjust-cursor-thickness = 1
 adjust-box-thickness = 1
 
 # Quick terminal settings
-keybind = "global:alt+space=toggle_quick_terminal"
-quick-terminal-size = 100%
-quick-terminal-position = "top"
-quick-terminal-animation-duration = 0
+# keybind = "global:alt+space=toggle_quick_terminal"
+# quick-terminal-size = 100%
+# quick-terminal-position = "top"
+# quick-terminal-animation-duration = 0
 
 # vim: foldmethod=marker foldlevelstart=0
