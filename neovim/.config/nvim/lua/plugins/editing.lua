@@ -40,8 +40,16 @@ return {
     end,-- }}}
   },
 
-  { -- Extends functionality for commenting visual regions/lines (keybind `gc`)
-    'numToStr/Comment.nvim', event = "VeryLazy", opts = {},
+  -- { -- Extends functionality for commenting visual regions/lines (keybind `gc`)
+  --   'numToStr/Comment.nvim', event = "VeryLazy", opts = {},
+  --   enable = false, -- currently broken for filetypes without a treesitter parser (May 2026)
+  -- },
+
+  { -- `gc` keybind to comment visual selection, `gcc` to comment current line
+    'nvim-mini/mini.comment',
+    event = "VeryLazy",
+    version = false, -- use main branch
+    opts = {},
   },
 
   -- Detects tabstop and shiftwidth automatically for each file
