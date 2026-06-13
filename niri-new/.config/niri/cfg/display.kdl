@@ -14,6 +14,13 @@ output "Dell Inc. DELL P2422H HBW0YP3" {
     mode "1920x1080@60.000"
 }
 
+
+output "Philips Consumer Electronics Company Philips FTV 0x01010101" {
+    scale 1
+    position x=-282 y=-1080
+    mode "1920x1080@60.000"
+}
+
 // Internal laptop screen
 output "eDP-1" {
     // Uncomment this line to disable this output.
@@ -26,6 +33,9 @@ output "eDP-1" {
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
     mode "2880x1800@120.000"
+
+    // mode "1920x1200@120.000"
+    // scale 1
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.75
