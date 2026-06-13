@@ -134,6 +134,56 @@ return {
     end-- }}}
   },
 
+  { -- file picker 
+    'nvim-mini/mini.files',-- {{{
+    version = false,
+    opts = {},
+    config = function(_, opts)
+      require('mini.files').setup(opts)
+
+      -- Functions for custom explorer actions {{{
+      -- Set focused directory as current working directory
+      local set_cwd = function()
+        local path = (MiniFiles.get_fs_entry() or {}).path
+        if path == nil then return vim.notify('Cursor is not on valid entry') end
+        vim.fn.chdir(vim.fs.dirname(path))
+      end
+      -- Yank in register full path of entry under cursor
+      local yank_path = function()
+        local path = (MiniFiles.get_fs_entry() or {}).path
+        if path == nil then return vim.notify('Cursor is not on valid entry') end
+        vim.fn.setreg(vim.v.register, path)
+      end
+      -- Open path with system default handler (useful for non-text files)
+      local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
+      -- }}}
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'MiniFilesBufferCreate',
+        callback = function(args)
+          local b = args.data.buf_id
+          vim.keymap.set('n', 'gc', set_cwd,   { buffer = b, desc = 'Set cwd' })
+          vim.keymap.set('n', 'gx', ui_open,   { buffer = b, desc = 'OS open' })
+          vim.keymap.set('n', 'gy', yank_path, { buffer = b, desc = 'Yank path' })
+        end,
+      })
+
+      --- Global keymaps (open file explorer) ---
+
+      local minifiles_toggle = function(...)
+        if not MiniFiles.close() then MiniFiles.open(...) end
+      end
+
+      -- Toggle file explorer
+      vim.keymap.set('n', '<leader>e', minifiles_toggle, { desc = "Open/close file explorer (mini.files)" })
+      -- Open directory of current file (in last used state) focused on the file
+      vim.keymap.set('n', '<leader>E', function() minifiles_toggle(vim.api.nvim_buf_get_name(0)) end, { desc = "Open file explorer at current file (mini.files)" })
+      -- Fresh explorer in current working directory
+      vim.keymap.set('n', '<leader><c-e>', function() minifiles_toggle(nil, false) end, { desc = "Open fresh file explorer at cwd (mini.files)" })
+
+    end-- }}}
+  },
+
   { -- grapple: per-project file switcher (replacement for harpoon)
     "cbochs/grapple.nvim",-- {{{
     event = { "BufReadPost", "BufNewFile" },
