@@ -108,6 +108,21 @@ vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("custom-qf-window", { clear = true }),
 })
 
+-- Markdown syntax highlighting: conceal backslashes
+-- - Conceal the backslash in `\[`, and colour the bracket like normal text.
+-- - Also conceal the backslash when it stops the renderer making a numbered
+--   list, e.g. a line starting with `\17. mai`
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.cmd[=[syntax match markdownEscapingBackslash /\\[\[\]]\@=/ conceal cchar= ]=]
+    vim.cmd[=[syntax match markdownEscapingBackslash /^\\\d\@=/ conceal cchar= ]=]
+    vim.fn.matchadd("Normal", [=[[\\]\@<=[]=], 200, -1)
+    vim.fn.matchadd("Normal", [=[[\\]\@<=]]=], 200, -1)
+    -- vim.cmd[=[syntax match markdownEscapedBracket /[\\]\@<=[\[\]]/ contained]=]
+    -- vim.cmd[=[highlight! link markdownEscapedBracket Normal]=]
+  end
+})
 
 -- Hack to remove border from backdrop of Lazy's floating window
 -- Shouldn't be needed once this issue is resolved:
