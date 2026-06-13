@@ -1,0 +1,23 @@
+always_show_default = true
+# command = 'xdg-open'
+command = 'zen-browser --blank-window'
+engines_as_actions = false
+# entries = []
+history = true
+history_when_empty = false
+text_prefix = 'Search: '
+
+[Config]
+hide_from_providerlist = false
+icon = 'applications-internet'
+min_score = 20
+name_pretty = ''
+
+[[entries]]
+default = true
+name = "Kagi"
+url = "https://kagi.com/search?q=%TERM%"
+
+[[entries]]
+name = "DuckDuckGo"
+url = "https://www.duckduckgo.com/search?q=%TERM%"

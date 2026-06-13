@@ -1,0 +1,9 @@
+action_delay = 0
+history = true
+history_when_empty = true
+
+[Config]
+hide_from_providerlist = false
+icon = 'view-grid'
+min_score = 20
+name_pretty = ''
