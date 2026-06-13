@@ -4,19 +4,20 @@
 input {
     keyboard {
         xkb {
-            //If you want to overwrite your keyboard layout,
-            // uncomment the line below and change the layout accordingly.
-            //layout "us" // Use the American keyboard layout
             layout "no"
-            options "altwin:swap_lalt_lwin,ctrl:swapcaps"
+            // options "altwin:swap_lalt_lwin,ctrl:swapcaps"
+            options "altwin:swap_lalt_lwin,caps:ctrl_modifier,shift:both_capslock_cancel"
         }
         repeat-delay 300
         repeat-rate 25
     }
 
     touchpad {
+        // off  // managed by toggle-touchpad-script
         tap // Enable tap-to-click
         natural-scroll // Enable natural (macOS-style) scrolling
+        scroll-factor 0.5
+        dwt  // Disable while typing -- managed by toggle-dwt-script
     }
 
     mouse {
