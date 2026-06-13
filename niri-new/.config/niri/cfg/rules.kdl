@@ -51,16 +51,25 @@ window-rule {
     default-column-width { proportion 0.66667; }
     geometry-corner-radius 19
 }
-// New, empty browser window
+
+// Use wider window for these apps
 window-rule {
+    // New, empty browser window
     match app-id=r#"zen$"# title="^Zen Browser$"
-    // open-maximized true
+    // Lutris
+    match app-id=r#"^net\.lutris\.Lutris$"# title="Lutris"
     default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match title="^btop$"
+    default-column-width { proportion 0.66667; } // has no effect:(
+    min-width 635
 }
 
 // Floating windows of gnome apps
 window-rule {
-    match app-id=r#"^org\.gnome\..*$"# title="" is-floating=true
+    match app-id=r#"^org\.gnome\..*$"# is-floating=true
     geometry-corner-radius 18
 }
 
