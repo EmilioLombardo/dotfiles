@@ -22,6 +22,7 @@ binds {
     // ─── Applications ───
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+B hotkey-overlay-title="Open Browser: zen" { spawn "zen-browser"; }
+    Mod+Shift+B { spawn "zen-browser" "--blank-window"; }
     Mod+E hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
     // Open notes (opening more windows will connect them to the same nvim server)
     Mod+N { spawn "ghostty" "-e" "/home/emilio/.local/bin/launch-nvim-wiki"; }
