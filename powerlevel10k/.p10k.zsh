@@ -200,6 +200,16 @@
   typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=$([[ -n "$IN_NIX_SHELL" ]] && echo 055 || echo 238)
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
+  # If on CachyOS, set OS icon to that of Arch Linux
+  local os_release_id
+  if [[ -r /etc/os-release ]]; then
+    local lines=(${(f)"$(</etc/os-release)"})
+    lines=(${(@M)lines:#ID=*})
+    (( $#lines == 1 )) && os_release_id=${(Q)${lines[1]#ID=}}
+  fi
+  case $os_release_id in
+    *cachyos*)    typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='󰣇';;
+  esac
 
   ################################[ prompt_char: prompt symbol ]################################
   # Transparent background.
