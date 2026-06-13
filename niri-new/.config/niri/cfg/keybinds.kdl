@@ -10,12 +10,14 @@ binds {
 
     // --- Noctalia ---
     Mod+Alt+L   hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Mod+Alt+Shift+L   { spawn-sh "qs -c noctalia-shell ipc call sessionMenu lockAndSuspend"; }
     Mod+Shift+Q hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     // Mod+Space   hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+Space   hotkey-overlay-title="Open App Launcher: walker" { spawn-sh "walker"; }
 
-    Mod+Alt+B   { spawn-sh "qs -c noctalia-shell ipc call bar setDisplayMode always_visible all"; }
-    Mod+Alt+Shift+B   { spawn-sh "qs -c noctalia-shell ipc call bar setDisplayMode auto_hide all"; }
+    // Mod+Alt+B   { spawn-sh "qs -c noctalia-shell ipc call bar setDisplayMode always_visible all"; }
+    Mod+Alt+B   { spawn-sh "~/.local/bin/toggle_noctalia_bar_mode"; }
+    // Mod+Alt+Shift+B   { spawn-sh "qs -c noctalia-shell ipc call bar setDisplayMode auto_hide all"; }
 
     // ─── Applications ───
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
