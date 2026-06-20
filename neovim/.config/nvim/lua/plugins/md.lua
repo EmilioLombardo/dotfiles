@@ -39,6 +39,7 @@ return {
           twitter = { pattern = '[^A-Za-z]x%.com', icon = ' ' },
           twitter2 = { pattern = '^x%.com', icon = ' ' },
           archwiki = { pattern = 'wiki%.archlinux%.org', icon = '󰣇 ' },
+          typst = { pattern = 'typst%.app', icon = ' ' },
         },
       },
     },-- }}}
