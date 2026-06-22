@@ -1,0 +1,50 @@
+// ────────────── Output Configuration ──────────────
+// You can run `niri msg outputs` to get the correct name for your displays.
+// You will have to remove "/-" and edit it before it takes effect.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+
+/- output "DP-1" {
+    mode "2560x1440@359.979" // Set resolution and refresh rate
+    scale 1 // No scaling (use 2 for HiDPI)
+}
+
+output "Philips Consumer Electronics Company Philips FTV 0x01010101" {
+    scale 1
+    position x=-282 y=-1080
+    mode "1920x1080@60.000"
+}
+
+// Internal laptop screen
+output "eDP-1" {
+    // Resolution and, optionally, refresh rate of the output.
+    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
+    // If the refresh rate is omitted, niri will pick the highest refresh rate
+    // for the resolution.
+    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
+    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+
+    // mode "2496x1664" // Oppløsning for Surface laptop 15"
+
+    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    scale 1.75
+
+    // Position of the output in the global coordinate space.
+    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+    // The cursor can only move between directly adjacent outputs.
+    // Output scale and rotation has to be taken into account for positioning:
+    // outputs are sized in logical, or scaled, pixels.
+    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+    // so to put another output directly adjacent to it on the right, set its x to 1920.
+    // If the position is unset or results in an overlap, the output is instead placed
+    // automatically.
+    position x=0 y=0
+}
+
+// TODO: Legge til de eskterne skjermene på kontorplassen
+output "ThinkVision DEN TIL VENSTRE" {
+    transform "90"
+    // plassere til venstre, rotert 90 grader
+}
+output "ThinkVision DEN TIL HØYRE" {
+    // plassere oppe
+}

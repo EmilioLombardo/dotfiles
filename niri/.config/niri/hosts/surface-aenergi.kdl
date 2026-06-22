@@ -1,0 +1,9 @@
+include "../cfg/keybinds-noctalia.kdl"
+include "../cfg/keybinds-surface-aenergi.kdl"
+
+spawn-sh-at-startup "qs -c noctalia-shell"
+//spawn-sh-at-startup "walker --gapplication-service"
+
+switch-events {
+    lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+}
