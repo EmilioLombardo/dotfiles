@@ -1,0 +1,128 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Fedora package setup for a fresh machine.
+# Run as your normal user; sudo is used where needed.
+
+sudo dnf upgrade --refresh -y
+
+# Enable COPRs.
+sudo dnf copr enable -y scottames/ghostty
+sudo dnf copr enable -y zhangyi6324/noctalia-shell
+
+# Core packages.
+sudo dnf install -y \
+  git \
+  neovim \
+  zsh \
+  tmux \
+  ripgrep \
+  fzf \
+  niri \
+  btop \
+  zoxide \
+  tree \
+  stow \
+  fd-find \
+  gcc \
+  gcc-c++ \
+  make \
+  unzip \
+  curl \
+  wget \
+  fontconfig \
+  flatpak \
+  ghostty \
+  noctalia-shell
+
+# Enable Flathub.
+if ! flatpak remotes --columns=name | grep -qx flathub; then
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+fi
+
+# Zen Browser.
+flatpak install -y flathub app.zen_browser.zen
+
+# FiraCode Nerd Font.
+FONT_DIR="$HOME/.local/share/fonts/FiraCodeNerdFont"
+FONT_ZIP="/tmp/FiraCode.zip"
+
+mkdir -p "$FONT_DIR"
+
+curl -fL \
+  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip" \
+  -o "$FONT_ZIP"
+
+# Clear old files in this font-specific dir only.
+find "$FONT_DIR" -mindepth 1 -maxdepth 1 -delete
+
+unzip -q "$FONT_ZIP" -d "$FONT_DIR"
+rm -f "$FONT_ZIP"
+
+fc-cache -fv "$HOME/.local/share/fonts"
+
+# Julia via juliaup.
+if ! command -v julia >/dev/null 2>&1 && ! command -v juliaup >/dev/null 2>&1; then
+  curl -fsSL https://install.julialang.org | sh
+fi
+
+# Zsh plugins/themes.
+mkdir -p "$HOME/.local/opt"
+
+if [ ! -d "$HOME/.local/opt/powerlevel10k/.git" ]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+    "$HOME/.local/opt/powerlevel10k"
+fi
+
+if [ ! -d "$HOME/.local/opt/zsh-vi-mode/.git" ]; then
+  git clone --depth=1 https://github.com/jeffreytse/zsh-vi-mode.git \
+    "$HOME/.local/opt/zsh-vi-mode"
+fi
+
+
+# Set Zen Browser as the default browser.
+ZEN_DESKTOP="app.zen_browser.zen.desktop"
+
+xdg-settings set default-web-browser "$ZEN_DESKTOP"
+
+xdg-mime default "$ZEN_DESKTOP" x-scheme-handler/http
+xdg-mime default "$ZEN_DESKTOP" x-scheme-handler/https
+xdg-mime default "$ZEN_DESKTOP" text/html
+xdg-mime default "$ZEN_DESKTOP" application/xhtml+xml
+
+# Verify.
+xdg-settings get default-web-browser
+xdg-mime query default x-scheme-handler/http
+xdg-mime query default x-scheme-handler/https
+xdg-mime query default text/html
+
+
+
+cat <<'EOF'
+
+Done.
+
+Suggested additions to ~/.zshrc:
+
+  source ~/.local/opt/powerlevel10k/powerlevel10k.zsh-theme
+  source ~/.local/opt/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+  eval "$(zoxide init zsh)"
+
+To change your login shell to zsh, run:
+
+  command -v zsh
+  sudo lchsh "$USER"
+
+When lchsh prompts for the new shell, paste the path printed by:
+
+  command -v zsh
+
+Usually this is:
+
+  /usr/bin/zsh
+
+Zen Browser:
+
+  flatpak run app.zen_browser.zen
+
+EOF

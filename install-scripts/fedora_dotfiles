@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Clone and stow dotfiles on Fedora.
+# Assumes your GitHub SSH key is already set up.
+
+DOTFILES_DIR="$HOME/.dotfiles"
+DOTFILES_REPO="git@github.com:EmilioLombardo/dotfiles.git"
+
+sudo dnf install -y git stow
+
+if [ -d "$DOTFILES_DIR/.git" ]; then
+  echo "Dotfiles repo already exists at:"
+  echo "  $DOTFILES_DIR"
+  echo
+  echo "Pulling latest changes."
+  git -C "$DOTFILES_DIR" pull --ff-only
+elif [ -e "$DOTFILES_DIR" ]; then
+  echo "Error: $DOTFILES_DIR exists but is not a Git repo." >&2
+  exit 1
+else
+  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+fi
+
+if [ ! -f "$DOTFILES_DIR/zshrc-template/.zshrc" ]; then
+  echo "Error: missing template:" >&2
+  echo "  $DOTFILES_DIR/zshrc-template/.zshrc" >&2
+  exit 1
+fi
+
+if [ -e "$HOME/.zshrc" ] || [ -L "$HOME/.zshrc" ]; then
+  BACKUP="$HOME/.zshrc.backup.$(date +%Y%m%d-%H%M%S)"
+  echo "Existing ~/.zshrc found. Backing it up to:"
+  echo "  $BACKUP"
+  mv "$HOME/.zshrc" "$BACKUP"
+fi
+
+cp "$DOTFILES_DIR/zshrc-template/.zshrc" "$HOME/.zshrc"
+
+cd "$DOTFILES_DIR"
+
+
+echo "\nstow neovim\nstow powerlevel10k\nstow ghostty\nstow tmux\nstow niri\n"
+
+stow neovim
+stow powerlevel10k
+stow ghostty
+stow tmux
+stow niri
+
+echo "Done."

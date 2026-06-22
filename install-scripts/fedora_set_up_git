@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Git + SSH setup for a new Fedora machine.
+# Run as your normal user.
+
+sudo dnf install -y git openssh
+
+GIT_NAME="EmilioLombardo"
+SSH_KEY="$HOME/.ssh/id_ed25519"
+SSH_PUBKEY="$SSH_KEY.pub"
+
+printf "Git email: "
+read -r GIT_EMAIL
+
+if [ -z "$GIT_EMAIL" ]; then
+  echo "Error: email cannot be empty." >&2
+  exit 1
+fi
+
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+
+if [ -e "$SSH_KEY" ] || [ -e "$SSH_PUBKEY" ]; then
+  echo "SSH key already exists:"
+  echo "  $SSH_KEY"
+  echo
+  echo "Not overwriting it."
+else
+  ssh-keygen -t ed25519 -C "$GIT_EMAIL" -f "$SSH_KEY"
+fi
+
+chmod 600 "$SSH_KEY"
+chmod 644 "$SSH_PUBKEY"
+
+cat > "$HOME/.gitconfig" <<EOF
+[user]
+    name = $GIT_NAME
+    email = $GIT_EMAIL
+    signingkey = $SSH_PUBKEY
+[core]
+    editor = nvim
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
+[push]
+    autosetupremote = true
+[diff]
+    tool = nvimdiff
+[merge]
+    tool = nvimdiff
+EOF
+
+ssh-keyscan github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null || true
+sort -u "$HOME/.ssh/known_hosts" -o "$HOME/.ssh/known_hosts"
+chmod 644 "$HOME/.ssh/known_hosts"
+
+echo "Here is the public key. Add it to your GitHub account.\n"
+
+cat "$SSH_PUBKEY"
