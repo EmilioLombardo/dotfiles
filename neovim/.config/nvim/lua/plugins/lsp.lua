@@ -31,12 +31,20 @@ return {
     event = "VeryLazy",
     config = function ()
       vim.lsp.enable({ "lua_ls", "pylsp", "clangd", "nixd", "texlab",
-        "hls", "foam_ls", "julials" })
+        "hls", "foam_ls", "julials", "tinymist" })
 
       -- TODO? move lsp configs to nvim/lsp/
 
       vim.lsp.config["clangd"] = {
         cmd = { "clangd" },
+      }
+
+      vim.lsp.config["tinymist"] = {
+        settings = {
+          formatterMode = "typstyle",
+          exportPdf = "onType",
+          semanticTokens = "disable"
+        }
       }
 
       -- Lua_ls settings for neovim config editing. Provide completions,

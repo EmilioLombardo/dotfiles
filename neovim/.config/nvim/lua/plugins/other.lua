@@ -48,6 +48,18 @@ return {
   },
 
   {
+    'chomosuke/typst-preview.nvim',
+    ft = 'typst',
+    version = '1.*',
+    opts = {
+      dependencies_bin = {
+        tinymist = nil,
+        websocat = nil
+      },
+    },
+  },
+
+  {
     "lervag/wiki.vim",-- {{{
     -- tag = "v0.10", -- uncomment to pin to a specific release
     init = function()
