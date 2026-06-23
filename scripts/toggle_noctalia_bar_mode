@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if ! command -v jq >/dev/null 2>&1; then
+    echo "Error: required command not found: jq" >&2
+    exit 1
+fi
+
+if [[ $(qs -c noctalia-shell ipc call state all | jq '.settings.bar.displayMode') == '"always_visible"' ]]; then
+    qs -c noctalia-shell ipc call bar setDisplayMode auto_hide;
+else
+    qs -c noctalia-shell ipc call bar setDisplayMode always_visible;
+fi

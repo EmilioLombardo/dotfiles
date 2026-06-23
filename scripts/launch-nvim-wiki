@@ -1,0 +1,30 @@
+#!/bin/sh
+set -eu
+
+SOCK="${XDG_RUNTIME_DIR:-/tmp}/nvim-wiki.sock"
+NOTES="$HOME/wiki/index.md"
+LOG="/tmp/nvim-wiki.log"
+
+# Fast path: if the socket exists, attach immediately.
+if [ -S "$SOCK" ]; then
+    exec nvim --server "$SOCK" --remote-ui
+fi
+
+# No socket, so start the headless server.
+rm -f "$SOCK"
+
+setsid nvim --headless --listen "$SOCK" -c "cd $HOME/wiki" "$NOTES" \
+    >"$LOG" 2>&1 &
+
+i=0
+while [ ! -S "$SOCK" ]; do
+    i=$((i + 1))
+    if [ "$i" -gt 100 ]; then
+        echo "Timed out starting wiki Neovim server" >&2
+        echo "Check log: $LOG" >&2
+        exit 1
+    fi
+    sleep 0.05
+done
+
+exec nvim --server "$SOCK" --remote-ui
