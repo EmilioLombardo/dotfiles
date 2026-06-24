@@ -1,14 +1,6 @@
 // cp this-host-example.kdl this-host.kdl && vim this-host.kdl
 
-//include "../cfg/keybinds-noctalia.kdl"
-include "../cfg/keybinds-HOST.kdl"
+//include "./hosts/INSERT_HOSTNAME_HERE.kdl"
 
-// add more host-specific options here...
-
-// // Example:
-// spawn-sh-at-startup "qs -c noctalia-shell"
-// spawn-sh-at-startup "walker --gapplication-service"
-// 
-// switch-events {
-//     lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-// }
+// Do not add any more settings in this file. Instead, add them to the config
+// file in ./hosts/ included above.
