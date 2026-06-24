@@ -2,9 +2,44 @@ include "../cfg/keybinds-noctalia.kdl"
 include "../cfg/outputs-surface-aenergi.kdl"
 // include optional=true "../cfg/keybinds-surface-aenergi.kdl"
 
+input {
+    // IMPORTANT! For the Surface laptop, resuming after suspend using the
+    // power key is handled twice (one time by some deep rooted firmware, and a
+    // second time by niri), so the device supends again immediately after
+    // resume.
+    // The fix is to have niri disable its power key handling, which is what
+    // this setting does. With this setting, the power key does not work for
+    // suspend (which is an ok compromise, you can trigger suspend in other
+    // ways), and it works fine for resuming.
+    disable-power-key-handling
+}
+
 spawn-sh-at-startup "qs -c noctalia-shell"
-//spawn-sh-at-startup "walker --gapplication-service"
+spawn-sh-at-startup "walker --gapplication-service"
 
 switch-events {
     lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 28
+}
+
+window-rule {
+    match title="^btop$"
+    min-width 756
+}
+
+binds {
+    // ─── Applications ───
+    Mod+Space   hotkey-overlay-title="Open App Launcher: walker" { spawn-sh "walker"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    Mod+B hotkey-overlay-title="Open Browser: zen" { spawn "~/.local/bin/zen-browser"; }
+    Mod+Shift+B { spawn "~/.local/bin/zen-browser" "--blank-window"; }
+    Mod+E hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
+    // Open notes (opening more windows will connect them to the same nvim server)
+    Mod+N { spawn "ghostty" "-e" "/home/emilio/.local/bin/launch-nvim-wiki"; }
+    // Close notes (closes all windows connected to the shared nvim server)
+    Mod+Shift+N { spawn "/home/emilio/.local/bin/stop-nvim-wiki"; }
 }

@@ -23,10 +23,8 @@ output "eDP-1" {
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
 
-    // mode "2496x1664" // Oppløsning for Surface laptop 15"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1.75
+    mode "2496x1664" // Oppløsning for Surface laptop 15"
+    scale 1.5
 
     // Position of the output in the global coordinate space.
     // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
@@ -41,10 +39,14 @@ output "eDP-1" {
 }
 
 // TODO: Legge til de eskterne skjermene på kontorplassen
-output "ThinkVision DEN TIL VENSTRE" {
-    transform "90"
+output "Lenovo Group Limited P27q-20 V90AD1KA" {
+    transform "270"
+    mode "2560x1440"
     // plassere til venstre, rotert 90 grader
+    position x=-1440 y=-1800
 }
-output "ThinkVision DEN TIL HØYRE" {
+output "Lenovo Group Limited P27q-20 V90AD1KP" {
+    mode "2560x1440"
     // plassere oppe
+    position x=0 y=-1440
 }

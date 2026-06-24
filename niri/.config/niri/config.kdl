@@ -4,12 +4,11 @@ include "./cfg/autostart.kdl"
 include "./cfg/keybinds-base.kdl"
 
 include "./cfg/input.kdl"
-include "./cfg/outputs-tuxedo.kdl"
 include "./cfg/layout.kdl"
 include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
 
-include optional=true "./this-host.kdl"
+include "./this-host.kdl"
 
 include optional=true "./noctalia.kdl" // Theme override by Noctalia
 
