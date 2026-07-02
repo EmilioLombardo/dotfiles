@@ -4,7 +4,7 @@ binds {
     XF86TouchpadToggle repeat=false { spawn "/home/emilio/.local/bin/toggle-touchpad-script"; }
     Shift+XF86TouchpadToggle repeat=false { spawn "/home/emilio/.local/bin/toggle-dwt-script"; }
     // Power profile key (on F3) on the Tuxedo InfinityBook
-    Super+Alt+F6 repeat=false { spawn-sh "~/.local/bin/tuxedo-power-profile cycle && notify-send \"$(~/.local/bin/tuxedo-power-profile active_name)\""; }
+    Super+Alt+F6 repeat=false { spawn-sh "~/.local/bin/tuxedo-power-profile cycle && notify-send --urgency=low --app-icon=tuxedo-control-center -e -a \"Power profile\" \"$(~/.local/bin/tuxedo-power-profile active_name)\""; }
     Shift+Super+Alt+F6 repeat=false { spawn "tuxedo-control-center"; }
 
     // ─── Applications ───

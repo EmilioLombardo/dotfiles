@@ -5,7 +5,7 @@ SOCK="${XDG_RUNTIME_DIR:-/tmp}/nvim-wiki.sock"
 LAUNCHER="$HOME/.local/bin/launch-nvim-wiki"
 
 notify() {
-    notify-send -a "nvim wiki script" "$1"
+    notify-send -e --urgency=low -a "nvim wiki script" "$1"
 }
 
 if [ ! -S "$SOCK" ]; then
