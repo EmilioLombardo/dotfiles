@@ -26,6 +26,36 @@ window-rule {
     }
 }
 
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#edbd2d"
+        // active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        on
+        offset x=0 y=0
+        spread 4
+        softness 0
+        color "#edbd2d"
+        inactive-color "#7d0d2d"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
  // Steam rules
 window-rule {
     match app-id="steam" title=r#"^[Ss]team$"#

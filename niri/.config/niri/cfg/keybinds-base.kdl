@@ -131,6 +131,11 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print  { screenshot-window; }
 
+    // --- Screen sharing ---
+    Mod+S { set-dynamic-cast-window; }
+    Mod+Shift+S { clear-dynamic-cast-target; }
+    Mod+Ctrl+S { set-dynamic-cast-monitor; }
+
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.
