@@ -1,5 +1,6 @@
 include "../cfg/keybinds-noctalia.kdl"
 include "../cfg/keybinds-tuxedo.kdl"
+include "../cfg/outputs-tuxedo.kdl"
 
 spawn-sh-at-startup "qs -c noctalia-shell"
 spawn-sh-at-startup "walker --gapplication-service"
