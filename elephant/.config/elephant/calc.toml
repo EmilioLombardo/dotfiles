@@ -2,7 +2,7 @@ async = false
 autosave = false
 command = "wl-copy -n '%VALUE%'"
 max_items = 100
-min_chars = 3
+min_chars = 1
 placeholder = 'calculating...'
 require_number = true
 
