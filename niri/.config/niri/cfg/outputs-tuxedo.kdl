@@ -17,7 +17,7 @@ output "Dell Inc. DELL P2422H HBW0YP3" {
 
 output "Philips Consumer Electronics Company Philips FTV 0x01010101" {
     scale 1
-    position x=-282 y=-1080
+    position x=0 y=-1080
     mode "1920x1080@60.000"
 }
 
