@@ -32,6 +32,7 @@ window-rule {
 
     focus-ring {
         active-color "#edbd2d"
+        inactive-gradient from="#edbd2d" to="#ad2d2d" angle=0
         // active-color "#f38ba8"
         inactive-color "#7d0d2d"
     }
@@ -47,12 +48,15 @@ window-rule {
         spread 4
         softness 0
         color "#edbd2d"
-        inactive-color "#7d0d2d"
+        // inactive-color "#7d0d2d"
+        inactive-color "#ad2d2d"
     }
 
     tab-indicator {
-        active-color "#f38ba8"
-        inactive-color "#7d0d2d"
+        // active-color "#f38ba8"
+        active-color "#edbd2d"
+        // inactive-color "#7d0d2d"
+        inactive-color "#adad2d"
     }
 }
 
