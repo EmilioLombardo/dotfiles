@@ -31,7 +31,7 @@ return {
     event = "VeryLazy",
     config = function ()
       vim.lsp.enable({ "lua_ls", "pylsp", "clangd", "nixd", "texlab",
-        "hls", "foam_ls", "julials", "tinymist" })
+        "hls", "foam_ls", "julials", "tinymist", "ols" })
 
       -- TODO? move lsp configs to nvim/lsp/
 
