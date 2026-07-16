@@ -93,8 +93,8 @@ return {
     end-- }}}
   },
 
-  -- R stuff
-  { "R-nvim/R.nvim", lazy = false },
+  -- -- R stuff
+  -- { "R-nvim/R.nvim", lazy = false },
 
 }
 
