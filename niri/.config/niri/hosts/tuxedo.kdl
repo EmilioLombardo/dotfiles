@@ -1,10 +1,10 @@
-include "../cfg/keybinds-noctalia.kdl"
+include "../cfg/keybinds-noctalia-v5.kdl"
 include "../cfg/keybinds-tuxedo.kdl"
 include "../cfg/outputs-tuxedo.kdl"
 
-spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-sh-at-startup "noctalia"
 spawn-sh-at-startup "walker --gapplication-service"
 
 switch-events {
-    lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    lid-close { spawn "noctalia" "msg" "session" "lock"; }
 }
