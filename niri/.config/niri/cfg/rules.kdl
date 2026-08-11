@@ -149,3 +149,7 @@ window-rule {
     // block-out-from "screencast"
 }
 
+window-rule {
+    match app-id="^qemu$"
+    open-fullscreen true
+}
