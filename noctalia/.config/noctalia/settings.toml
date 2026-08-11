@@ -1,0 +1,386 @@
+[include]
+files = [
+    "bar-toggle.toml"
+]
+
+# --- BAR ---
+
+[bar.default]
+background_opacity = 0.9499999787658453
+capsule_thickness = 0.84999998472630978
+center = [ "audio_visualizer_3", "date", "spacer_3", "clock", "spacer_2", "week", "audio_visualizer_2" ]
+concave_edge_corners = false
+end = [ "tray", "notifications", "group:g1", "network", "bluetooth", "volume", "battery", "control-center" ]
+margin_ends = 0
+padding = 10
+radius = 0
+scale = 1.0500000081956387
+shadow = false
+start = [ "workspaces" ]
+thickness = 30
+widget_spacing = 10
+
+    [[bar.default.capsule_group]]
+    accordion = true
+    accordion_direction = "start"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "sysmon", "sysmon_3", "sysmon_2" ]
+    opacity = 0.0
+    padding = 6.0
+
+# --- BAR WIDGETS ---
+
+[widget.battery]
+device = "/org/freedesktop/UPower/devices/battery_BAT0"
+display_mode = "graphic"
+font_weight = 400
+scale = 0.90000000000000002
+
+[widget.clock]
+anchor = true
+capsule_padding = 10
+font_weight = 500
+scale = 1.1000000000000001
+
+[widget.control-center]
+scale = 1.1500000000000001
+# ↓ to track or not to track, that is the question ↓
+custom_image = "/usr/share/icons/cachyos.svg"
+custom_image_colorize = true
+
+[widget.date]
+color = "on_surface_variant"
+font_weight = 400
+format = "{:%-d. %-b}"
+interactive = false
+scale = 0.80000000000000004
+
+[widget.network]
+show_label = false
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+type = "spacer"
+
+[widget.sysmon]
+show_value = false
+
+[widget.sysmon_2]
+stat = "cpu_temp"
+type = "sysmon"
+
+[widget.sysmon_3]
+stat = "ram_used"
+type = "sysmon"
+
+[widget.tray]
+drawer = true
+
+[widget.volume]
+show_label = false
+
+[widget.week]
+color = "on_surface_variant"
+font_weight = 400
+format = "uke {:%V}"
+interactive = false
+scale = 0.80000000000000004
+type = "clock"
+
+[widget.workspaces]
+capsule_radius = "auto"
+font_weight = 700
+labels_only_when_occupied = true
+
+# --- CONTROL CENTER ---
+
+[control_center]
+hidden_tabs = [ "screen-time" ]
+
+    [control_center.calendar]
+    show_events_card = false
+    show_week_numbers = true
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "wallpaper"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "clipboard"
+
+# --- DOCK ---
+
+[dock]
+auto_hide = true
+background_opacity = 0.84999998100101948
+border_width = 1.0
+enabled = true
+inactive_opacity = 0.99999997764825821
+inactive_scale = 1.0
+item_spacing = 0
+magnification_scale = 1.2000000029802322
+main_axis_padding = 8
+margin_edge = 10
+reserve_space = false
+shadow = false
+show_dots = true
+show_instance_count = false
+# ↓ to track or not to track, that is the question ↓
+pinned = [ "zen", "com.mitchellh.ghostty", "org.gnome.Nautilus" ]
+
+# --- KEYBINDS --- (navigation in menus)
+
+[keybinds]
+down = [ "Down", "Ctrl+j" ]
+left = [ "Left", "Ctrl+h" ]
+right = [ "Right", "Ctrl+l" ]
+tab_next = [ "Tab", "Ctrl+n" ]
+tab_previous = [ "Shift+ISO_Left_Tab", "Ctrl+p" ]
+up = [ "Up", "Ctrl+k" ]
+
+# --- PLUGINS ---
+[plugins]
+enabled = [ "yocraft/battery-widget" ] #used on lock screen
+
+# --- SHELL ---
+
+[shell]
+corner_radius_scale = 1.5000000223517418
+polkit_agent = true
+
+    [shell.animation]
+    speed = 3.0000000447034836
+
+    [shell.launcher]
+    categories = false
+    provider_prefix = ";"
+
+        [shell.launcher.providers.calculator]
+        prefix = "="
+
+        [shell.launcher.providers.emoji]
+        prefix = "emo"
+
+        [shell.launcher.providers.session]
+        prefix = "pow"
+
+        [shell.launcher.providers.wallpaper]
+        prefix = ""
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    open_near_click_control_center = true
+
+    [shell.screen_corners]
+    enabled = true
+    size = 7
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [shell.shadow]
+    alpha = 0.4999999888241291
+
+# --- Lockscreen widgets ---
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003",
+    "lockscreen-widget-0000000000000004",
+    "lockscreen-widget-0000000000000005"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 720.0
+    cx = 960.0
+    cy = 961.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 846.0234375
+    cy = 514.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.0
+        background_radius = 32.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 32.0
+        layout = "compact"
+        show_caps_lock = true
+        show_keyboard_layout = false
+        show_login_button = true
+        show_media = false
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 64.0
+    box_width = 448.0
+    cx = 823.0
+    cy = 354.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        background_opacity = 0.80000000000000004
+        background_padding = 0
+        background_radius = 12
+        center_text = true
+        color = "on_surface"
+        format = "{:%-d. %B – %A uke %-V}"
+        shadow = true
+        timezone = ""
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 192.0
+    box_width = 416.0
+    cx = 823.0
+    cy = 258.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+        background = false
+        clock_style = "digital"
+        format = "{:%H:%M}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 634.19140625
+    cy = 514.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "button"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+        background = true
+        color = "primary"
+        command = "systemctl suspend"
+        glyph = "zzz"
+        label = ""
+        variant = "default"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+    box_height = 48.0
+    box_width = 96.0
+    cx = 823.0
+    cy = 962.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "yocraft/battery-widget:widget"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        background_padding = 8
+        background_radius = 32
+        battery = "bat0"
+        charging_color = "on_surface_variant"
+        hide_plugged = false
+        layout = "horizontal"
+        refresh_interval = 5
+        show_glyph = true
+        show_label = true
+
+# --- MISC ---
+[location]
+auto_locate = true
+
+[osd]
+position = "bottom_center"
+
+    [osd.kinds]
+    keyboard_backlight = false
+    media = false
+

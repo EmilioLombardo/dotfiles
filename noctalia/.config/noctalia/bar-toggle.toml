@@ -1,0 +1,6 @@
+[bar.default]
+# reserve_space = false  # bar-state-1
+# smart_auto_hide = true # bar-state-1
+reserve_space = true    # bar-state-2
+auto_hide = false       # bar-state-2
+smart_auto_hide = false # bar-state-2
