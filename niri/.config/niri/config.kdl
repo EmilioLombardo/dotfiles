@@ -8,7 +8,7 @@ include "./cfg/layout.kdl"
 include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
 
-include "./this-host.kdl"
+include optional=true "./this-host.kdl"
 
 include optional=true "./noctalia.kdl" // Theme override by Noctalia
 
