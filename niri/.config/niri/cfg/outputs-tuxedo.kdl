@@ -1,12 +1,6 @@
 // ────────────── Output Configuration ──────────────
 // You can run `niri msg outputs` to get the correct name for your displays.
-// You will have to remove "/-" and edit it before it takes effect.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-
-/- output "DP-1" {
-    mode "2560x1440@359.979" // Set resolution and refresh rate
-    scale 1 // No scaling (use 2 for HiDPI)
-}
 
 output "Dell Inc. DELL P2422H HBW0YP3" {
     scale 1
@@ -14,10 +8,11 @@ output "Dell Inc. DELL P2422H HBW0YP3" {
     mode "1920x1080@60.000"
 }
 
-
-output "Philips Consumer Electronics Company Philips FTV 0x01010101" {
+output "HDMI-A-1" {
     scale 1
-    position x=0 y=-1080
+    // 2880 at 1.75 scale = 1645 logical pixels
+    // to center external monitor above laptop monitor: x=(1645-1920)/2=-137.5
+    position x=-137 y=-1080
     mode "1920x1080@60.000"
 }
 
