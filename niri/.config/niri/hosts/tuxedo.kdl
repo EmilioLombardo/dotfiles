@@ -4,7 +4,22 @@ include "../cfg/outputs-tuxedo.kdl"
 
 spawn-sh-at-startup "noctalia"
 spawn-sh-at-startup "walker --gapplication-service"
+spawn-at-startup "fcitx5" "-d"
 
 switch-events {
     lid-close { spawn "noctalia" "msg" "session" "lock"; }
+}
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+
+    GTK_IM_MODULE ""
+    XMODIFIERS "@im=fctix"
+    // QT_IM_MODULES "wayland;fctix"
+    QT_IM_MODULE "fctix"
 }
