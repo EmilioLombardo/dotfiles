@@ -163,3 +163,8 @@ window-rule {
     match app-id="^qemu$"
     open-fullscreen true
 }
+
+window-rule {
+    match app-id="org.inkscape.Inkscape" title="^Paper Sizes$"
+    open-floating true
+}
