@@ -196,8 +196,22 @@
   #################################[ os_icon: os identifier ]##################################
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255
+
+  # OS icon background color
+  local default_gray=238
+  local nix_purple=055
+  local python_green=029
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=$(
+    if [[ -n "$IN_NIX_SHELL" ]]; then
+      echo $nix_purple
+    elif [[ -n "$VIRTUAL_ENV" ]]; then
+      echo $python_green
+    else
+      echo $default_gray
+    fi
+  )
   # typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=$([[ -n "$IN_NIX_SHELL" ]] && echo 051 || echo 255)
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=$([[ -n "$IN_NIX_SHELL" ]] && echo 055 || echo 238)
+
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
   # If on CachyOS, set OS icon to that of Arch Linux
@@ -1753,7 +1767,7 @@
   # For example, you can type POWERLEVEL9K_BACKGROUND=red and see your prompt turn red. Hot reload
   # can slow down prompt by 1-2 milliseconds, so it's better to keep it turned off unless you
   # really need it.
-  typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+  typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=false
 
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
