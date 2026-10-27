@@ -1,1 +1,2 @@
-vim.wo.colorcolumn = "81"
+vim.wo.colorcolumn = "89"
+vim.bo.textwidth = 88
